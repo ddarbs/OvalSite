@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
   <!-- Site Properties -->
-  <title>Fixed Menu Example - Semantic</title>
+  <title>Oval's R Combat Sim</title>
 
   <link rel="stylesheet" type="text/css" href="../dist/components/reset.css">
   <link rel="stylesheet" type="text/css" href="../dist/components/site.css">
@@ -60,10 +60,9 @@
 			        url: "https://rextester.com/rundotnet/api",
 			        type: "POST",
 			        data: to_compile
-			    }).done(function(data) {
-					var NewLine = JSON.stringify(data).replace(\n/g, 'n');
-					
-					document.getElementsByName('ovaloutput')[0].value= JSON.stringify(data, null, '\n');
+			    }).done(function(data) {					
+					document.getElementsByName('ovaloutput')[0].value=JSON.stringify(data, null, '\n');
+
 			    }).fail(function(data, err) {
 			        document.getElementsByName('ovaloutput')[0].value="fail " + JSON.stringify(data) + " " + JSON.stringify(err);
 		        });
@@ -103,7 +102,7 @@
         Community Tools <i class="dropdown icon"></i>
         <div class="menu">
 			<div class="header">Official</div>
-			<a class="item" href="https://damascus.fandom.com/wiki/Skills">Fandom Wiki</a>
+			<a class="item" href="https://damascus.fandom.com/wiki/Skills" target="_blank">Fandom Wiki</a>
 			<div class="divider"></div>
 			<div class="header">Unofficial</div>
 			<a class="active item" href="oval.html">Oval's Combat Simulator</a>
@@ -117,29 +116,28 @@
         <input type="text" placeholder="Search">
       </div>
     </div>
-    <a class="item">Wiki</a>
+    <a class="item" href="https://discord.gg/Fwfgfs28w4" target="_blank">Discord</a>
   </div>
     </div>
   </div>
 
-  <div class="ui main text container">
+  <div class="ui main text container" style="text-align:center; vertical-align:middle;">
     <h1 class="ui header">Oval's R Combat Simulator</h1>
     <p>This is a basic fixed menu template using fixed size containers.</p>
     <p>A text container is used for the main container, which is useful for single column layouts</p>
-    <div class="ui horizontal section divider">Celled Grid</div>
+    <div class="ui horizontal section divider"><button class="black ui button" id="run" style="width: 100px;">Run</button></div>
 	<div class="ui centered grid">
-	<button class="black ui button" id="run" style="width: 100px;">Run</button>
 	</div>
   </div>
 
   <div class="ui two column grid">
   <div class="ui main text container">
-	<textarea class="textbox" id="ovalgithubpull" style="height: 500px; width: 700px; background: transparent;"></textarea>
-       <script> $( "#ovalgithubpull" ).load( "https://raw.githubusercontent.com/Barrettnj0/DamascusFightSimulator/main/DamascusFightSimulator.v2.Rmd"); </script>
+	<textarea id="ovalgithubpull" style="height: 500px; width: 700px; background: transparent; margin-left:80px; margin-top:-50px"></textarea>
+       <script> $("#ovalgithubpull").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/oval/OvalCombatCalculator.r"); </script>
 
 </div>
   <div class="ui main text container">
-   <textarea class="textbox" id="code" name="ovaloutput" style="height: 500px; width: 700px; background: transparent;"></textarea>
+   <textarea id="code" name="ovaloutput" style="height: 500px; width: 700px; background: transparent; margin-left:-100px; margin-top:-50px" readonly></textarea>
   </div>
   
 </div>
