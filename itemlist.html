@@ -8,6 +8,55 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+<!-- start of rextester API for R -->
+  <script>
+    $(document).ready(function() {
+
+    promise = $.ajax({
+        type:"GET",
+        dataType:"text",
+        url:"assets/mh1/itemlist.csv",
+        cache:false
+    });
+
+    promise.done(function(data){
+
+        //Parse CSV File
+        //split on new line
+        var dataArr = data.split("\n");
+
+        //for each line in array
+        $.each(dataArr,function(){
+            if (this != "") {
+
+                //split files and create row
+                var row = new String("");
+                valArr = this.split(",");
+                    row += "<tr>"
+
+                $.each(valArr, function(){
+                    row += "<td>" + this +"</td>"
+                });     
+
+                    row += "</tr>"
+
+                    //Add row to table
+                    $('tbody').append(row);
+
+            }
+
+        });
+
+    });
+
+    // Run script if request fails
+    promise.fail(function() {
+       console.log('A failure ocurred');
+    });
+
+});
+	</script>
+	<!-- end of rextester API for R -->
   <!-- end of scripts section --> 
   
   <!-- start of extra style section -->
@@ -49,12 +98,11 @@
 <!-- start of navbar header section -->
   <div class="ui fixed inverted menu">
     <div class="ui container" style="margin-left:50px;">
+	<!-- CHANGE active item BASED ON WHAT PAGE THIS IS -->
       <a href="index.html" class="header item">
         <img class="logo" src="assets/images/logo.png">
-        Unofficial Damascus Tools
+        DamascusTools Home
       </a>
-	  <!-- CHANGE active item BASED ON WHAT PAGE THIS IS -->
-      <a href="index.html" class="active item">Home</a>
       <div class="ui simple dropdown item">
         Dropdown <i class="dropdown icon"></i>
         <div class="menu">
@@ -80,19 +128,14 @@
 			<a class="item" href="https://damascus.fandom.com/wiki/Skills" target="_blank">Fandom Wiki</a>
 			<div class="divider"></div>
 			<div class="header">Unofficial</div>
-			<a class="item" href="oval.html">Oval's Combat Simulator</a>
+			<a class="active item" href="oval.html">Oval's Combat Simulator</a>
 			<a class="item" href="#">mh1's Tools Sheet</a>
         </div>
 		</div>
 	
     </div>
 	<div class="right menu">
-    <div class="item">
-      <div class="ui transparent inverted icon input">
-        <i class="search icon"></i>
-        <input type="text" placeholder="Search">
-      </div>
-    </div>
+    
     <a class="item" href="https://discord.gg/Fwfgfs28w4" target="_blank">Discord</a>
   </div>
   </div>
@@ -100,48 +143,37 @@
  
 <!-- start of main body section --> 
   <div class="ui main text container" style="text-align:center; vertical-align:middle;">
-    <h1 class="ui header">Semantic UI Fixed Template</h1>
+    <h1 class="ui header">Oval's R Combat Simulator</h1>
     <p>This is a basic fixed menu template using fixed size containers.</p>
     <p>A text container is used for the main container, which is useful for single column layouts</p>
-    <div class="ui horizontal section divider">Skill List</div>
-	<div class="ui celled grid">
-        <div class="row">
-          <div class="five wide column centered">hp</div>
-          <div class="five wide column centered">acc</div>
-          <div class="five wide column centered">def</div>
-        </div>
-        <div class="row">
-          <div class="five wide column centered">melee</div>
-          <div class="five wide column centered">ranged</div>
-          <div class="five wide column centered">psychic</div>
-        </div>
-		<div class="row">
-          <div class="five wide column centered">destruction</div>
-          <div class="five wide column centered">stamina</div>
-          <div class="five wide column centered">survival</div>
-        </div>
-		<div class="row">
-          <div class="five wide column centered">mining</div>
-          <div class="five wide column centered">mechanics</div>
-          <div class="five wide column centered">trading</div>
-        </div>
-		<div class="row">
-          <div class="five wide column centered">fletching</div>
-          <div class="five wide column centered">stealing</div>
-          <div class="five wide column centered">metalworking</div>
-        </div>
-		<div class="row">
-          <div class="five wide column centered">explosives</div>
-          <div class="five wide column centered">farming</div>
-          <div class="five wide column centered">chemistry</div>
-        </div>
-		<div class="row">
-          <div class="five wide column centered">guildwork</div>
-          <div class="five wide column centered">TBD</div>
-          <div class="five wide column centered">TBD</div>
-        </div>
-      </div>
+    <div class="ui horizontal section divider"><button class="black ui button" id="run" style="width: 100px;">Run</button></div>
+	<div class="ui centered grid">
+	</div>
   </div>
+
+  <div class="ui two column grid">
+  <div class="ui main text container">
+	<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Fund</th>
+            <th>Change</th>
+            <th>Points</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+       
+
+</div>
+  <div class="ui main text container">
+   <textarea id="code" name="ovaloutput" style="height: 500px; width: 700px; background: transparent; margin-left:-100px; margin-top:-50px" readonly></textarea>
+  </div>
+  
+</div>
 <!-- end of main body section --> 
 <!-- start of end footer section --> 
   <div class="ui inverted vertical footer segment">
