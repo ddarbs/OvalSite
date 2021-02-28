@@ -1,0 +1,28 @@
+body {
+	background-color: #fcfcfc;
+}
+.ui.menu .item img.logo {
+	margin-right: 1.5em;
+}
+.main.container {
+	margin-top: 7em;
+	min-height:100%;
+}
+.wireframe {
+	margin-top: 2em;
+}
+
+.ui.table>tbody>tr>td, .ui.table>tr>td { 
+	padding: .3em 0em;
+}
+
+.ui.inverted.menu .header.item:hover {
+	background:inherit;
+	color:rgba(255,255,255,.9);
+}
+
+.ui.footer.segment {
+	margin: 10em 0em 0em;
+	padding: 5em 0em;
+	padding-bottom:20px;
+}

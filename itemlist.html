@@ -58,22 +58,23 @@
 });
 
 function itemlistSearch() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
+  var input, filter, table, tr, td, cell, i, j;
   input = document.getElementById("itemlistInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("itemlistTable");
   tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+  for (i = 1; i < tr.length; i++) {
+    // Hide the row initially.
+    tr[i].style.display = "none";
+  
+    td = tr[i].getElementsByTagName("td");
+    for (var j = 0; j < td.length; j++) {
+      cell = tr[i].getElementsByTagName("td")[j];
+      if (cell) {
+        if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+          break;
+        } 
       }
     }
   }
@@ -95,35 +96,27 @@ function itemlistSearch() {
   <link rel="stylesheet" type="text/css" href="../dist/components/segment.css">
   <link rel="stylesheet" type="text/css" href="../dist/components/dropdown.css">
   <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/allpages.css">
 
   <style type="text/css">
-  body {
-    background-color: #fcfcfc;
-  }
-  .ui.menu .item img.logo {
-    margin-right: 1.5em;
-  }
-  .main.container {
-    margin-top: 7em;
-  }
-  .wireframe {
-    margin-top: 2em;
-  }
-  .ui.footer.segment {
-    margin: 20em 0em 0em;
-    padding: 5em 0em;
-  }
+  <!-- start of page specific styling -->
+	.ui.grid>* {
+		padding: 0 0;
+	}
   
-  .ui.table>tbody>tr>td, .ui.table>tr>td { 
-  padding: .3em 0em;
-  }
-  .ui.grid>* {
-  padding: 0 0;
-  }
-  
-  .ui.table>thead>tr>th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
-    content: "\25BE" 
-}
+	.ui.table>thead>tr>th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+		content: "\25BE" 
+	}
+	
+	.ui.table>thead>tr>th {
+		cursor: pointer;
+	}	
+	
+	.ui.table>tbody>tr>td {
+		cursor: default;
+	}
+
+  <!-- end of page specific styling -->
   </style>
   <!-- end of extra style section -->
   <title>Item List</title>
@@ -132,12 +125,12 @@ function itemlistSearch() {
 <!-- start of navbar header section -->
   <div class="ui fixed inverted menu">
     <div class="ui container" style="margin-left:50px;">
-      <a href="index" class="header item">
+      <a class="header item" style="cursor: default">
         <img class="logo" src="assets/images/logo.png">
-        Unofficial Damascus Tools
+        DamascusTools
       </a>
 	  <!-- CHANGE active item BASED ON WHAT PAGE THIS IS -->
-		<a href="index" class="item">Home</a>
+		<a href="http://www.damascustools.com/" class="item">Home</a>
 		<a class="active item" href="itemlist" >Item List</a>
 		<a class="item" href="oval">Combat Simulator</a>
 		<a class="item" href="gearcompare">Gear Comparison</a>	
@@ -170,18 +163,18 @@ function itemlistSearch() {
 <!-- start of main body section --> 
   <div class="ui main text container" style="text-align:center; vertical-align:middle;">
     <h1 class="ui header">mh1's Item List</h1>
-    <p>This is a copy of <a href="https://docs.google.com/spreadsheets/d/1SefVyd5xBGwxUDDiR-rf2pcNksmlxbEY7MDs-rDzzfk/edit#gid=1150267781">mh1's Damascus Google Sheet</a></p>
-    <p>A text container is used for the main container, which is useful for single column layouts</p>
-    
-	<div class="ui horizontal section divider">Item List Search</div>
+    <p>Updated on <i><b>Feb 26, 2021</b></i> for the Punk Hazzard Patch</p>
+    <p>Items can be filtered through the search bar below, and you can sort columns by clicking on them</p>
+	<div class="ui horizontal section divider">Item Name Search</div>
 	<div class="ui centered grid">
 	
 	<div class="ui icon input">
-		<input type="text" id="itemlistInput" onkeyup="itemlistSearch()" placeholder="e. copper 2h warhammer"><i class="search icon"></i>
+		<input type="text" id="itemlistInput" onkeyup="itemlistSearch()" placeholder="e. copper 2h warhammer" style="width:250px;"><i class="search icon" style="margin-left: -40px;position: relative;"></i>
 	</div>
 
-	<table class="ui single line inverted table" id="itemlistTable" style="width:50%; text-align:center; vertical-align: middle; font-size:12px;">
-    <thead style="white-space: nowrap;">
+	<table class="ui single line selectable inverted table" id="itemlistTable" style="text-align:center; vertical-align: middle; font-size:12px; padding: 0 0 0 0;">
+    <thead style="white-space: nowrap; cursor: move;">
+		
         <tr>
 			<th class="sorttable_numeric">ItemID</th>	
 			<th class="sorttable_alpha">Item Name</th>
@@ -191,9 +184,9 @@ function itemlistSearch() {
 			<th class="sorttable_numeric">Min Damage</th>
 			<th class="sorttable_numeric">Max Damage</th>
 			<th class="sorttable_numeric">Tickspeed</th>
-			<th class="sorttable_numeric">Level Req</th>
-			<th class="sorttable_numeric">Skill Use Lvl Req</th>
-			<th class="sorttable_numeric">Craft Lvl Req</th>
+			<th class="sorttable_numeric" title="Skill level required to equip. EX: 70 Melee to equip a Demon Slayer Katana or 68 Ranging to equip a Damascus Pistol">Level Req</th>
+			<th class="sorttable_numeric" title="Skill level required to use for skill. EX: 50 Survival to use an E. Gold Axe or 70 Mining to use a Damascus Pickaxe">Skill Use Lvl Req</th>
+			<th class="sorttable_numeric" title="Skill level required to craft. EX: 1 Metalworking to craft a Copper Dagger, 70 Metalworking to smelt a Damascus Bar">Craft Lvl Req</th>
 			<th class="sorttable_numeric">Heals</th>
 			<th class="sorttable_numeric">Range</th>
 			<th class="sorttable_numeric">Melee Def</th>
@@ -202,11 +195,13 @@ function itemlistSearch() {
 			<th class="sorttable_numeric">Destruction XP</th>
 			<th class="sorttable_numeric">Alch Value</th>
         </tr>
+		
     </thead>
     <tbody>
 
     </tbody>
 </table>
+ </div>
  </div>
 <!-- end of main body section --> 
 <!-- start of end footer section --> 
