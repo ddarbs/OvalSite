@@ -11,6 +11,14 @@
 <script src="http://damascustools.com/assets/scripts/sorttable.js"></script>
   <script>
   
+  $(function () {
+  var includes = $('[data-include]')
+  $.each(includes, function () {
+    var file = 'assets/html/' + $(this).data('include') + '.html'
+    $(this).load(file)
+  })
+})
+  
     $(document).ready(function() {
 
     promise = $.ajax({
@@ -245,8 +253,8 @@ function itemlistSearch() {
       <div class="ui horizontal inverted small divided link list">
         <a class="item" href="#">Site Map</a>
         <a class="item" href="#">Contact Us</a>
-        <a class="item" href="#">Terms and Conditions</a>
-        <a class="item" href="#">Privacy Policy</a>
+        <a class="item" href="#">Oval's Github</a>
+        <a class="item" href="#">DamascusTools Github</a>
       </div>
     </div>
   </div>
