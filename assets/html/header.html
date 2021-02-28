@@ -1,0 +1,49 @@
+<!-- start of navbar header section -->
+  <div class="ui fixed inverted menu">
+    <div class="ui container" style="margin-left:50px;">
+      <a class="header item" style="cursor: default">
+        <img class="logo" src="assets/images/logo.png">
+        DamascusTools
+      </a>
+	  <!-- CHANGE active item BASED ON WHAT PAGE THIS IS -->
+		<a href="http://www.damascustools.com/" class="item">Home</a>
+		<a class="item" href="itemlist" >Item List</a>
+		<a class="item" href="oval">Combat Simulator</a>
+		<a class="item" href="gearcompare">Gear Comparison</a>	
+		<div class="ui simple dropdown item">
+        Skill Guides <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="#">Link Item</a>
+          <a class="item" href="#">Link Item</a>
+          <div class="divider"></div>
+          <div class="header">Header Item</div>
+          <div class="item">
+            <i class="dropdown icon"></i>
+            Sub Menu
+            <div class="menu">
+              <a class="item" href="#">Link Item</a>
+              <a class="item" href="#">Link Item</a>
+            </div>
+          </div>
+          <a class="item" href="#">Link Item</a>
+        </div>
+		</div>
+    </div>
+	<div class="right menu">
+	<a class="item" href="https://damascus.fandom.com/wiki/Skills" target="_blank">Wiki</a>
+    <a class="item" href="https://discord.gg/Fwfgfs28w4" target="_blank">Discord</a>
+  </div>
+  </div>
+<!-- end of navbar header section -->
+<script>
+$(function(){
+    var current = location.pathname;
+    $( 'a' ).each(function(){
+        var $this = $(this);
+        // if the current path is like this link, make it active
+        if($this.attr('href').indexOf(current) !== -1){
+            $this.removeClass( 'item' ).addClass( 'active item' );
+        }
+    })
+})
+</script>
