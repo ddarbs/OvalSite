@@ -25,6 +25,11 @@
 			    "Input": "",
 			    "CompilerArgs" : ""
 		    };
+			
+			$(this).removeClass('black ui button').addClass('ui secondary double loading button');
+            setTimeout(function () {
+				$(this).removeClass('ui secondary double loading button').addClass('black ui button');
+            }.bind(this), 4000);
 
 		    $.ajax ({
 			        url: "https://rextester.com/rundotnet/api",
