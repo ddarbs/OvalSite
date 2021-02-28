@@ -14,17 +14,9 @@
       $("#header").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/header.html");
 	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
     });
-	
-	$(function(){
-    var current = location.pathname;
-    $('#item').each(function(){
-        var $this = $(this);
-        // if the current path is like this link, make it active
-        if($this.attr('href').indexOf(current) !== -1){
-            $this.addClass('active');
-        }
-    })
-})
+
+
+
   
     $(document).ready(function(){
         $("button").click(function(){
@@ -79,7 +71,7 @@
   <style type="text/css">
   <!-- start of page specific styling -->
 .main.container {
-	min-height: 0;
+	min-height: 100%;
 }
   <!-- end of page specific styling -->
   </style>
@@ -115,4 +107,7 @@
 <!-- start of end footer section --> 
 <div id="footer"></div>
 <!-- end of end footer section --> 
+<script>
+$( "a" ).removeClass( "item" ).addClass( "active item" );
+</script>
 </body></html>
