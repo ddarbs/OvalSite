@@ -8,14 +8,14 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
-<!-- start of rextester API for R -->
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
   <script>
     $(document).ready(function() {
 
     promise = $.ajax({
         type:"GET",
         dataType:"text",
-        url:"https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/mh1/itemlist.csv",
+        url:"assets/scripts/sorttable_mh1.js",
         cache:false
     });
 
@@ -55,7 +55,6 @@
     });
 
 });
-<!-- end of rextester API for R -->
 
 function itemlistSearch() {
   // Declare variables
@@ -134,8 +133,9 @@ function itemlistSearch() {
       </a>
 	  <!-- CHANGE active item BASED ON WHAT PAGE THIS IS -->
       <a href="index.html" class="item">Home</a>
+	  
       <div class="ui simple dropdown item">
-        Dropdown <i class="dropdown icon"></i>
+        Skill Guides <i class="dropdown icon"></i>
         <div class="menu">
           <a class="item" href="#">Link Item</a>
           <a class="item" href="#">Link Item</a>
@@ -152,6 +152,9 @@ function itemlistSearch() {
           <a class="item" href="#">Link Item</a>
         </div>
 		</div>
+		<a class="active item" href="itemlist.html" >Item List</a>
+		<a class="item" href="oval.html">Combat Simulator</a>
+		<a class="item" href="gearcompare.html">Gear Comparison</a>
 		<div class="ui simple dropdown item">
         Community Tools <i class="dropdown icon"></i>
         <div class="menu">
@@ -159,8 +162,8 @@ function itemlistSearch() {
 			<a class="item" href="https://damascus.fandom.com/wiki/Skills" target="_blank">Fandom Wiki</a>
 			<div class="divider"></div>
 			<div class="header">Unofficial</div>
-			<a class="item" href="oval.html">Oval's Combat Simulator</a>
-			<a class="active item" href="itemlist.html">mh1's Tools Sheet</a>
+			<a class="item" href="oval.html">Combat Simulator</a>
+			<a class="item" href="gearcompare.html">Gear Comparison</a>
         </div>
 		</div>
 	
@@ -184,7 +187,6 @@ function itemlistSearch() {
 		<input type="text" id="itemlistInput" onkeyup="itemlistSearch()" placeholder="e. copper 2h warhammer"><i class="search icon"></i>
 	</div>
 
-  <!-- <div class="ui main text container"> -->
 	<table class="ui single line inverted table" id="itemlistTable" style="width:50%; text-align:center; vertical-align: middle; font-size:12px;">
     <thead style="white-space: nowrap;">
         <tr>
@@ -212,10 +214,7 @@ function itemlistSearch() {
 
     </tbody>
 </table>
- </div>    
-
-<!-- </div> -->
-
+ </div>
 <!-- end of main body section --> 
 <!-- start of end footer section --> 
   <div class="ui inverted vertical footer segment">
@@ -264,4 +263,8 @@ function itemlistSearch() {
     </div>
   </div>
 <!-- end of end footer section --> 
-</body></html>
+</body>
+<script>
+sorttable.makeSortable(newTableObject);
+</script>
+</html>
