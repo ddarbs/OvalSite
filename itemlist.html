@@ -78,34 +78,6 @@ function itemlistSearch() {
     }
   }
 }
-
-function includeHTML() {
-  var z, i, elmnt, file, xhttp;
-  /* Loop through a collection of all HTML elements: */
-  z = document.getElementsByTagName("*");
-  for (i = 0; i < z.length; i++) {
-    elmnt = z[i];
-    /*search for elements with a certain atrribute:*/
-    file = elmnt.getAttribute("w3-include-html");
-    if (file) {
-      /* Make an HTTP request using the attribute value as the file name: */
-      xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4) {
-          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-          /* Remove the attribute, and call this function once more: */
-          elmnt.removeAttribute("w3-include-html");
-          includeHTML();
-        }
-      }
-      xhttp.open("GET", file, true);
-      xhttp.send();
-      /* Exit the function: */
-      return;
-    }
-  }
-}
 	</script>
 	
   <!-- end of scripts section --> 
@@ -150,20 +122,64 @@ function includeHTML() {
   }
   </style>
   <!-- end of extra style section -->
-  <title>Fixed Menu Example - Semantic</title>
+  <title>Item List</title>
 </head>
 <body>
-
-<div w3-include-html="assets/html/header.html"></div>
+<!-- start of navbar header section -->
+  <div class="ui fixed inverted menu">
+    <div class="ui container" style="margin-left:50px;">
+      <a href="index.html" class="header item">
+        <img class="logo" src="assets/images/logo.png">
+        Unofficial Damascus Tools
+      </a>
+	  <!-- CHANGE active item BASED ON WHAT PAGE THIS IS -->
+      <a href="index.html" class="item">Home</a>
+      <div class="ui simple dropdown item">
+        Dropdown <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="#">Link Item</a>
+          <a class="item" href="#">Link Item</a>
+          <div class="divider"></div>
+          <div class="header">Header Item</div>
+          <div class="item">
+            <i class="dropdown icon"></i>
+            Sub Menu
+            <div class="menu">
+              <a class="item" href="#">Link Item</a>
+              <a class="item" href="#">Link Item</a>
+            </div>
+          </div>
+          <a class="item" href="#">Link Item</a>
+        </div>
+		</div>
+		<div class="ui simple dropdown item">
+        Community Tools <i class="dropdown icon"></i>
+        <div class="menu">
+			<div class="header">Official</div>
+			<a class="item" href="https://damascus.fandom.com/wiki/Skills" target="_blank">Fandom Wiki</a>
+			<div class="divider"></div>
+			<div class="header">Unofficial</div>
+			<a class="item" href="oval.html">Oval's Combat Simulator</a>
+			<a class="active item" href="itemlist.html">mh1's Tools Sheet</a>
+        </div>
+		</div>
+	
+    </div>
+	<div class="right menu">
+    <a class="item" href="https://discord.gg/Fwfgfs28w4" target="_blank">Discord</a>
+  </div>
+  </div>
+<!-- end of navbar header section -->
  
 <!-- start of main body section --> 
   <div class="ui main text container" style="text-align:center; vertical-align:middle;">
     <h1 class="ui header">mh1's Item List</h1>
-    <p>This is a basic fixed menu template using fixed size containers.</p>
+    <p>This is a copy of <a href="https://docs.google.com/spreadsheets/d/1SefVyd5xBGwxUDDiR-rf2pcNksmlxbEY7MDs-rDzzfk/edit#gid=1150267781">mh1's Damascus Google Sheet</a></p>
     <p>A text container is used for the main container, which is useful for single column layouts</p>
-    <div class="ui horizontal section divider">Search</div>
-	
+    
+	<div class="ui horizontal section divider">Item List Search</div>
 	<div class="ui centered grid">
+	
 	<div class="ui icon input">
 		<input type="text" id="itemlistInput" onkeyup="itemlistSearch()" placeholder="e. copper 2h warhammer"><i class="search icon"></i>
 	</div>
@@ -248,8 +264,4 @@ function includeHTML() {
     </div>
   </div>
 <!-- end of end footer section --> 
-</body>
-<script>
-includeHTML();
-</script>
-</html>
+</body></html>
