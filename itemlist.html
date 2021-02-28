@@ -11,13 +11,10 @@
 <script src="http://damascustools.com/assets/scripts/sorttable.js"></script>
   <script>
   
-  $(function () {
-  var includes = $('[data-include]')
-  $.each(includes, function () {
-    var file = 'assets/html/' + $(this).data('include') + '.html'
-    $(this).load(file)
-  })
-})
+  $(function(){
+      $("#header").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/header.html");
+	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
+    });
   
     $(document).ready(function() {
 
@@ -131,41 +128,7 @@ function itemlistSearch() {
 </head>
 <body>
 <!-- start of navbar header section -->
-  <div class="ui fixed inverted menu">
-    <div class="ui container" style="margin-left:50px;">
-      <a class="header item" style="cursor: default">
-        <img class="logo" src="assets/images/logo.png">
-        DamascusTools
-      </a>
-	  <!-- CHANGE active item BASED ON WHAT PAGE THIS IS -->
-		<a href="http://www.damascustools.com/" class="item">Home</a>
-		<a class="active item" href="itemlist" >Item List</a>
-		<a class="item" href="oval">Combat Simulator</a>
-		<a class="item" href="gearcompare">Gear Comparison</a>	
-		<div class="ui simple dropdown item">
-        Skill Guides <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item" href="#">Link Item</a>
-          <a class="item" href="#">Link Item</a>
-          <div class="divider"></div>
-          <div class="header">Header Item</div>
-          <div class="item">
-            <i class="dropdown icon"></i>
-            Sub Menu
-            <div class="menu">
-              <a class="item" href="#">Link Item</a>
-              <a class="item" href="#">Link Item</a>
-            </div>
-          </div>
-          <a class="item" href="#">Link Item</a>
-        </div>
-		</div>
-    </div>
-	<div class="right menu">
-	<a class="item" href="https://damascus.fandom.com/wiki/Skills" target="_blank">Wiki</a>
-    <a class="item" href="https://discord.gg/Fwfgfs28w4" target="_blank">Discord</a>
-  </div>
-  </div>
+<div id="header"></div>
 <!-- end of navbar header section -->
  
 <!-- start of main body section --> 
