@@ -32,7 +32,7 @@ sorttable = {
     sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
 
     forEach(document.getElementsByTagName('table'), function(table) {
-      if (table.className.search(/\bui single line inverted table\b/) != -1) {
+      if (table.className.search('ui single line inverted table') != -1) {
         sorttable.makeSortable(table);
       }
     });
