@@ -8,7 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
-<script type="text/json" src="https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/scripts/sorttable.js"></script>
+<script src="http://damascustools.com/assets/scripts/sorttable.js"></script>
   <script>
   
     $(document).ready(function() {
@@ -120,6 +120,10 @@ function itemlistSearch() {
   .ui.grid>* {
   padding: 0 0;
   }
+  
+  .ui.table>thead>tr>th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: "\25BE" 
+}
   </style>
   <!-- end of extra style section -->
   <title>Item List</title>
@@ -128,12 +132,12 @@ function itemlistSearch() {
 <!-- start of navbar header section -->
   <div class="ui fixed inverted menu">
     <div class="ui container" style="margin-left:50px;">
-      <a href="index.html" class="header item">
+      <a href="index" class="header item">
         <img class="logo" src="assets/images/logo.png">
         Unofficial Damascus Tools
       </a>
 	  <!-- CHANGE active item BASED ON WHAT PAGE THIS IS -->
-      <a href="index.html" class="item">Home</a>
+      <a href="index" class="item">Home</a>
 	  
       <div class="ui simple dropdown item">
         Skill Guides <i class="dropdown icon"></i>
@@ -153,9 +157,9 @@ function itemlistSearch() {
           <a class="item" href="#">Link Item</a>
         </div>
 		</div>
-		<a class="active item" href="itemlist.html" >Item List</a>
-		<a class="item" href="oval.html">Combat Simulator</a>
-		<a class="item" href="gearcompare.html">Gear Comparison</a>
+		<a class="active item" href="itemlist" >Item List</a>
+		<a class="item" href="oval">Combat Simulator</a>
+		<a class="item" href="gearcompare">Gear Comparison</a>
 		<div class="ui simple dropdown item">
         Community Tools <i class="dropdown icon"></i>
         <div class="menu">
@@ -163,8 +167,8 @@ function itemlistSearch() {
 			<a class="item" href="https://damascus.fandom.com/wiki/Skills" target="_blank">Fandom Wiki</a>
 			<div class="divider"></div>
 			<div class="header">Unofficial</div>
-			<a class="item" href="oval.html">Combat Simulator</a>
-			<a class="item" href="gearcompare.html">Gear Comparison</a>
+			<a class="item" href="oval">Combat Simulator</a>
+			<a class="item" href="gearcompare">Gear Comparison</a>
         </div>
 		</div>
 	
@@ -191,24 +195,24 @@ function itemlistSearch() {
 	<table class="ui single line inverted table" id="itemlistTable" style="width:50%; text-align:center; vertical-align: middle; font-size:12px;">
     <thead style="white-space: nowrap;">
         <tr>
-			<th>ItemID</th>	
-			<th>Item Name</th>
-			<th>Melee Accuracy</th>
-			<th>Ranged Accuracy</th>
-			<th>Psychic Accuracy </th>
-			<th>Min Damage</th>
-			<th>Max Damage</th>
-			<th>Tickspeed</th>
-			<th>Level Req</th>
-			<th>Skill Use Lvl Req</th>
-			<th>Craft Lvl Req</th>
-			<th>Heals</th>
-			<th>Range</th>
-			<th>Melee Def</th>
-			<th>Ranged Def</th>
-			<th>Psychic Def</th>	
-			<th>Destruction XP</th>
-			<th>Alch Value</th>
+			<th class="sorttable_numeric">ItemID</th>	
+			<th class="sorttable_alpha">Item Name</th>
+			<th class="sorttable_numeric">Melee Accuracy</th>
+			<th class="sorttable_numeric">Ranged Accuracy</th>
+			<th class="sorttable_numeric">Psychic Accuracy </th>
+			<th class="sorttable_numeric">Min Damage</th>
+			<th class="sorttable_numeric">Max Damage</th>
+			<th class="sorttable_numeric">Tickspeed</th>
+			<th class="sorttable_numeric">Level Req</th>
+			<th class="sorttable_numeric">Skill Use Lvl Req</th>
+			<th class="sorttable_numeric">Craft Lvl Req</th>
+			<th class="sorttable_numeric">Heals</th>
+			<th class="sorttable_numeric">Range</th>
+			<th class="sorttable_numeric">Melee Def</th>
+			<th class="sorttable_numeric">Ranged Def</th>
+			<th class="sorttable_numeric">Psychic Def</th>	
+			<th class="sorttable_numeric">Destruction XP</th>
+			<th class="sorttable_numeric">Alch Value</th>
         </tr>
     </thead>
     <tbody>
@@ -265,7 +269,9 @@ function itemlistSearch() {
   </div>
 <!-- end of end footer section --> 
 </body>
-<script>
-sorttable.makeSortable(newTableObject);
-</script>
+
+<!-- <script> -->
+<!-- var newTableObject = document.getElementById('itemlistTable') -->
+<!-- sorttable.makeSortable(newTableObject); -->
+<!-- </script> -->
 </html>
