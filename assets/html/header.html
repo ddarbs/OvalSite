@@ -36,14 +36,12 @@
   </div>
 <!-- end of navbar header section -->
 <script>
-$(function(){
-    var current = location.pathname;
-    $( 'a' ).each(function(){
-        var $this = $(this);
-        // if the current path is like this link, make it active
-        if($this.attr('href').indexOf(current) !== -1){
-            $this.removeClass( 'item' ).addClass( 'active item' );
-        }
-    })
-})
+$(function($) {
+ let url = window.location.href;
+  $('a').each(function() {
+   if (this.href === url) {
+   $(this).removeClass('item').addClass('active item');
+  }
+ });
+});
 </script>
