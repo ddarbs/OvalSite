@@ -1,0 +1,121 @@
+<html><head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  <!-- start of scripts section --> 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+<!-- start of rextester API for R -->
+  <script>
+  $(function(){
+      $("#header").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/header.html");
+	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
+    });
+
+  
+    $(document).ready(function(){
+        $("button").click(function(){
+
+		    var to_compile = {
+			    "LanguageChoice": "31",
+			    "Program": $("#ovalgithubpull").val(),
+			    "Input": "",
+			    "CompilerArgs" : ""
+		    };
+			
+			$(this).removeClass('black ui button').addClass('ui secondary double loading button');
+            setTimeout(function () {
+				$(this).removeClass('ui secondary double loading button').addClass('black ui button');
+            }.bind(this), 4000);
+
+		    $.ajax ({
+			        url: "https://rextester.com/rundotnet/api",
+			        type: "POST",
+			        data: to_compile
+			    }).done(function(data) {					
+					<!-- document.getElementsByName('ovaloutput')[0].value=JSON.stringify(data, null, '\n'); -->
+					stringed = JSON.stringify(data, null, '\n');
+					replaced = stringed.replace(/\\n/g, '\n');
+					finalformat = replaced.replace(/\\/g, '');
+					trim = finalformat.replace(/\[1\]/g, '');
+					trimtwo = trim.replace(/"Result\"\: \" /g, '"Result\"\:\n');
+					trimthree = trimtwo.replace(/ "/g, '');
+					trimfour = trimthree.replace(/"/g, '');
+					trimfive = trimfour.replace(/\{\n\n/g, '');
+					document.getElementsByName('ovaloutput')[0].innerHTML=trimfive.replace(/\n\n,.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*/g, '');
+
+			    }).fail(function(data, err) {
+			        document.getElementsByName('ovaloutput')[0].value="fail " + JSON.stringify(data) + " " + JSON.stringify(err);
+		        });
+	    });
+    });
+	</script>
+	<!-- end of rextester API for R -->
+  <!-- end of scripts section --> 
+  
+  <!-- start of extra style section -->
+<link rel="stylesheet" type="text/css" href="assets/css/allpages.css">
+
+  <style type="text/css">
+  <!-- start of page specific styling -->
+.main.container {
+	min-height: 100%;
+}
+  <!-- end of page specific styling -->
+  </style>
+  <!-- end of extra style section -->
+  <title>DTS - Combat Calc</title>
+</head>
+<body>
+<!-- start of navbar header section -->
+<div id="header"></div>
+<!-- end of navbar header section -->
+<!-- start of main body section --> 
+  <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
+    <h1 class="ui header">Oval's R Combat Simulator</h1>
+    <p>End to end Combat Simulator built in R</p>
+    <p>blah blah blah text inputs just use the sheet for now</p>
+    <div class="ui horizontal section divider"><button class="black ui button" id="run" style="width: 100px;">Run</button></div>
+	<div class="ui centered grid">
+	</div>
+  </div>
+
+  <div class="ui two column grid">
+  <div class="ui main text container">
+	<textarea id="ovalgithubpull" style="height: 500px; width: 700px; background: transparent; margin-left:80px; margin-top:-50px"></textarea>
+       <script> $("#ovalgithubpull").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/oval/OvalCombatCalculator.r"); </script>
+
+</div>
+  <div class="ui main text container">
+    <script src="http://d3js.org/d3.v3.js"></script>
+  <script>
+  d3.csv("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/mh1/itemlist.csv", function(error, data) {
+    var select = d3.select("body")
+      .append("div")
+      .append("select")
+
+    select
+      .on("change", function(d) {
+        var value = d3.select(this).property("value");
+        alert(value);
+      });
+
+    select.selectAll("option")
+      .data(data)
+      .enter()
+        .append("option")
+        .attr("value", function (d) { return d.value; })
+        .text(function (d) { return d.label; });
+  });
+  </script>
+  </div>
+  
+</div>
+<!-- end of main body section --> 
+<!-- start of end footer section --> 
+<div id="footer"></div>
+<!-- end of end footer section --> 
+</body></html>
