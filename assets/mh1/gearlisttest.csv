@@ -1,3 +1,4 @@
+ItemID,ItemName,mAccMod,rAccMod,pAccMod,mindamage,maxdamage,tickspeed,level req,extra level req,skill level req,heal amount,range,mDefMod,rDefMod,pDefMod,destruction xp,alch value
 0,Coins,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
 1,Copper Dagger,0,0,0,0,1,4,1,0,1,0,0,0,0,0,1,1
 2,Copper Short Sword,0,0,0,2,3,6,1,0,2,0,0,0,0,0,1,2
