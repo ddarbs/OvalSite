@@ -16,9 +16,6 @@
 	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
     });
 
-	
-
-
      window.onload = function()
         {
         d3.csv("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/mh1/gearlisttest.csv",
@@ -27,12 +24,13 @@
                 return {
 
                     TPC: +d.ItemID,
-                    Subcategory: d.ItemName
+                    Subcategory: d.ItemName,
+
 
                 };  
             },      
             function(data) {
-                console.log(data)
+                <!-- console.log(data) -->
                 populate_ComboExample(data)
             });
         }
@@ -41,14 +39,16 @@
 
             var example_list= {};
             var example_text= {};
-            console.log(data.length)
+
+            <!-- console.log(data.length) -->
             for (i=0;i<data.length; i++ ) { // you can calculate the length with js, I choose 10 here for the example
-                example_list[i]=data[i].TPC;
+                example_list[i]=data[i].TPC;	
                 example_text[i]=data[i].Subcategory;
             }
 
 
-            var select  = document.getElementById("exampleList")
+            var select  = document.getElementById("weaponinput")
+			
 
             for (i=0; i < data.length; i++ ) {
                 var el = document.createElement("option");
@@ -62,47 +62,46 @@
         function combo_change(thelist) {
 
             var idx_1 = thelist.selectedIndex;
-            <!-- alert(thelist.options[idx_1].value); -->
-
+            var itemid = thelist.options[idx_1].value;	// item ID
+			var itemname = thelist.options[idx_1+1].value;	// item name
+			var meleedef = thelist.options[idx_1+2].value;	// melee def
+			var rangdef = thelist.options[idx_1+3].value;	// rang def
+			var psydef = thelist.options[4].value;	// psy def
+			var meleeacc = thelist.options[5].value;	// melee acc
+			var rangacc = thelist.options[6].value;	// rang acc
+			var psyacc = thelist.options[7].value;	// psy acc
+			var mindmg = thelist.options[8].value;	// min dmg
+			var maxdmg = thelist.options[9].value;	// max dmg
+			var tickspeed = thelist.options[10].value;	// tickspeed
+			var range = thelist.options[11].value;	// range
+			var levelreq = thelist.options[12].value;	// level req
+			var skilllvlreq = thelist.options[13].value;	// skill use lvl req
+			var craftlvlreq = thelist.options[14].value;	// craft lvl req
+			var heals = thelist.options[15].value;	// heals
+			var destroxp = thelist.options[16].value;	// destro xp
+			var alchvalue = thelist.options[17].value;	// alch value
+			
+			document.getElementById("itemid").value = itemid
+			document.getElementById("itemname").value = itemname
+			document.getElementById("meleedef").value = meleedef
+			document.getElementById("rangdef").value = rangdef
+			document.getElementById("psydef").value = psydef
+			document.getElementById("meleeacc").value = meleeacc
+			document.getElementById("rangacc").value = rangacc
+			document.getElementById("psyacc").value = psyacc
+			document.getElementById("mindmg").value = mindmg
+			document.getElementById("maxdmg").value = maxdmg
+			document.getElementById("tickspeed").value = tickspeed
+			document.getElementById("range").value = range
+			document.getElementById("levelreq").value = levelreq
+			document.getElementById("skilllvlreq").value = skilllvlreq
+			document.getElementById("craftlvlreq").value = craftlvlreq
+			document.getElementById("heals").value = heals
+			document.getElementById("destroxp").value = destroxp
+			document.getElementById("alchvalue").value = alchvalue
         }
 
-  
-    $(document).ready(function(){
-        $("button").click(function(){
 
-		    var to_compile = {
-			    "LanguageChoice": "31",
-			    "Program": $("#ovalgithubpull").val(),
-			    "Input": "",
-			    "CompilerArgs" : ""
-		    };
-			
-			$(this).removeClass('black ui button').addClass('ui secondary double loading button');
-            setTimeout(function () {
-				$(this).removeClass('ui secondary double loading button').addClass('black ui button');
-            }.bind(this), 4000);
-
-		    $.ajax ({
-			        url: "https://rextester.com/rundotnet/api",
-			        type: "POST",
-			        data: to_compile
-			    }).done(function(data) {					
-					<!-- document.getElementsByName('ovaloutput')[0].value=JSON.stringify(data, null, '\n'); -->
-					stringed = JSON.stringify(data, null, '\n');
-					replaced = stringed.replace(/\\n/g, '\n');
-					finalformat = replaced.replace(/\\/g, '');
-					trim = finalformat.replace(/\[1\]/g, '');
-					trimtwo = trim.replace(/"Result\"\: \" /g, '"Result\"\:\n');
-					trimthree = trimtwo.replace(/ "/g, '');
-					trimfour = trimthree.replace(/"/g, '');
-					trimfive = trimfour.replace(/\{\n\n/g, '');
-					document.getElementsByName('ovaloutput')[0].innerHTML=trimfive.replace(/\n\n,.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*/g, '');
-
-			    }).fail(function(data, err) {
-			        document.getElementsByName('ovaloutput')[0].value="fail " + JSON.stringify(data) + " " + JSON.stringify(err);
-		        });
-	    });
-    });
 	</script>
 	<!-- end of rextester API for R -->
   <!-- end of scripts section --> 
@@ -125,32 +124,49 @@
 <div id="header"></div>
 <!-- end of navbar header section -->
 <!-- start of main body section --> 
+<div class="ui inverted segment">
   <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
-    <h1 class="ui header">Oval's R Combat Simulator</h1>
-    <p>End to end Combat Simulator built in R</p>
-    <p>blah blah blah text inputs just use the sheet for now</p>
-    <div class="ui horizontal section divider"><button class="black ui button" id="run" style="width: 100px;">Run</button></div>
+    <h1 class="ui inverted header">mh1's Gear Simulator</h1>
+    <p>"when is this going to be done" -gooby I bet</p>
+    <p>yee haw there's a snake in my boot</p>
+    <div class="ui inverted horizontal section divider">e</div>
 	<div class="ui centered grid">
 	</div>
   </div>
 
   <div class="ui two column grid">
   <div class="ui main text container">
-	<textarea id="ovalgithubpull" style="height: 500px; width: 700px; background: transparent; margin-left:80px; margin-top:-50px"></textarea>
-       <script> $("#ovalgithubpull").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/oval/OvalCombatCalculator.r"); </script>
-
-</div>
+	<input type="text" id="itemid">itemid
+	<input type="text" id="itemname">itemname
+	<input type="text" id="meleedef">meleedef
+	<input type="text" id="rangdef">rangdef
+	<input type="text" id="psydef">psydef
+	<input type="text" id="meleeacc">meleeacc
+	<input type="text" id="rangacc">rangacc
+	<input type="text" id="psyacc">psyacc
+	<input type="text" id="mindmg">mindmg
+	<input type="text" id="maxdmg">maxdmg
+	<input type="text" id="tickspeed">tickspeed
+	<input type="text" id="range">range
+	<input type="text" id="levelreq">levelreq
+	<input type="text" id="skilllvlreq">
+	<input type="text" id="craftlvlreq">
+	<input type="text" id="heals">
+	<input type="text" id="destroxp">
+	<input type="text" id="alchvalue">
+	</div>
   <div class="ui main text container" id="option">
 
 
     <form class="comboExample">
     <h4>Subcategory</h4>
-    <select class="ui search dropdown" name="example_select" id="exampleList" onChange="combo_change(this)">
+    <select class="ui search selection dropdown" name="example_select" id="weaponinput" onChange="combo_change(this)">
+	<select class="ui search selection dropdown" name="example_select" id="weaponinput" onChange="combo_change(this)">
     </select> 
     </form>
 
   </div>
-  
+ </div>
 </div>
 <!-- end of main body section --> 
 <!-- start of end footer section --> 
