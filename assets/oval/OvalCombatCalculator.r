@@ -46,12 +46,15 @@ E.Psychic = 1
 if(Type == "M"){
   primarystat <- Melee
   TrueAccuracy <- Accuracy + MeleeAccuracy
+  E.secondarystat <- E.Melee
 } else if(Type == "R"){
   primarystat <- Ranging
   TrueAccuracy <-Accuracy + RangingAccuracy
+  E.secondarystat <- E.Ranging
 } else if(Type == "P"){
   primarystat <- Psychic
   TrueAccuracy <- Accuracy + PsychicAccuracy
+  E.secondarystat <- E.Psychic
 }
 
 if(E.Type == "M"){
@@ -69,8 +72,8 @@ if(E.Type == "M"){
 }
 
 
-hitprob <- (TrueAccuracy + (primarystat/10))/(TrueAccuracy + E.Defense + (primarystat/10) + (E.primarystat/10))
-E.hitprob <- (E.Accuracy + (E.primarystat/10))/(E.Accuracy + (E.primarystat/10) + trueDef + (secondarystat/10))
+hitprob <- (TrueAccuracy + (primarystat/4))/(TrueAccuracy + E.Defense + (primarystat/4) + (E.secondarystat/4))
+E.hitprob <- (E.Accuracy + (E.primarystat/4))/(E.Accuracy + trueDef + (E.primarystat/4) + (secondarystat/4))
 
 
 SimulateFights <- function(n){
