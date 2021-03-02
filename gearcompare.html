@@ -8,12 +8,63 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+    <script src="http://d3js.org/d3.v4.js"></script>
 <!-- start of rextester API for R -->
   <script>
   $(function(){
       $("#header").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/header.html");
 	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
     });
+
+	
+
+
+     window.onload = function()
+        {
+        d3.csv("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/mh1/gearlisttest.csv",
+
+            function(d) {
+                return {
+
+                    TPC: +d.ItemID,
+                    Subcategory: d.ItemName
+
+                };  
+            },      
+            function(data) {
+                console.log(data)
+                populate_ComboExample(data)
+            });
+        }
+
+        function populate_ComboExample(data) {
+
+            var example_list= {};
+            var example_text= {};
+            console.log(data.length)
+            for (i=0;i<data.length; i++ ) { // you can calculate the length with js, I choose 10 here for the example
+                example_list[i]=data[i].TPC;
+                example_text[i]=data[i].Subcategory;
+            }
+
+
+            var select  = document.getElementById("exampleList")
+
+            for (i=0; i < data.length; i++ ) {
+                var el = document.createElement("option");
+                var temp=example_text[i]
+                el.textContent = temp;
+                el.value =example_list[i];
+                select.appendChild(el);
+            }
+        }
+
+        function combo_change(thelist) {
+
+            var idx_1 = thelist.selectedIndex;
+            <!-- alert(thelist.options[idx_1].value); -->
+
+        }
 
   
     $(document).ready(function(){
@@ -89,28 +140,15 @@
        <script> $("#ovalgithubpull").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/oval/OvalCombatCalculator.r"); </script>
 
 </div>
-  <div class="ui main text container">
-    <script src="http://d3js.org/d3.v3.js"></script>
-  <script>
-  d3.csv("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/mh1/itemlist.csv", function(error, data) {
-    var select = d3.select("body")
-      .append("div")
-      .append("select")
+  <div class="ui main text container" id="option">
 
-    select
-      .on("change", function(d) {
-        var value = d3.select(this).property("value");
-        alert(value);
-      });
 
-    select.selectAll("option")
-      .data(data)
-      .enter()
-        .append("option")
-        .attr("value", function (d) { return d.value; })
-        .text(function (d) { return d.label; });
-  });
-  </script>
+    <form class="comboExample">
+    <h4>Subcategory</h4>
+    <select class="ui search dropdown" name="example_select" id="exampleList" onChange="combo_change(this)">
+    </select> 
+    </form>
+
   </div>
   
 </div>

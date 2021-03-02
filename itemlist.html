@@ -123,17 +123,18 @@ function itemlistSearch() {
 <!-- end of navbar header section -->
  
 <!-- start of main body section --> 
+<div class="ui inverted segment">
   <div class="ui main text container" style="text-align:center; vertical-align:middle; margin-left: 10px; margin-right: 10px; max-width: fit-content; width: auto;">
-    <h1 class="ui header">mh1's Item List</h1>
+    <h1 class="ui inverted header">mh1's Item List</h1>
     <p>Updated on <i><b>Feb 26, 2021</b></i> for the Punk Hazzard Patch</p>
     <p>Items can be filtered through the search bar below, and you can sort columns by clicking on them</p>
-	<div class="ui horizontal section divider">Item Name Search</div>
+	<div class="ui inverted horizontal section divider">Item Name Search</div>
 	<div class="ui centered grid" style="max-width: fit-content;">
 	
-	<div class="ui icon input">
+	<div class="ui inverted transparent icon input" style="border: solid #2D2E2F 1px; padding: 10 0 10 10; margin-bottom: 14px;">
 		<input type="text" id="itemlistInput" onkeyup="itemlistSearch()" placeholder="e. copper 2h warhammer" style="width:250px;"><i class="search icon" style="margin-left: -40px;position: relative;"></i>
 	</div>
-	<div id="double-scroll" style="overflow-x:scroll; width:-webkit-fit-content;">
+	<div id="double-scroll" style="overflow-x:scroll; width:-webkit-fit-content;padding: 0 0 0 0;">
 	<table class="ui single line selectable inverted table" id="itemlistTable" style="text-align:center; vertical-align: middle; font-size:12px; padding: 0 0 0 0;">
     <thead style="white-space: nowrap; cursor: move;">
 		
@@ -164,6 +165,7 @@ function itemlistSearch() {
     </tbody>
 </table>
 </div>
+ </div>
  </div>
  </div>
 <!-- end of main body section --> 

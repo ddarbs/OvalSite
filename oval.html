@@ -28,7 +28,7 @@
 			
 			$(this).removeClass('black ui button').addClass('ui secondary double loading button');
             setTimeout(function () {
-				$(this).removeClass('ui secondary double loading button').addClass('black ui button');
+				$(this).removeClass('ui double loading button').addClass('ui inverted basic button');
             }.bind(this), 4000);
 
 		    $.ajax ({
@@ -64,6 +64,8 @@
 .main.container {
 	min-height: 100%;
 }
+
+
   <!-- end of page specific styling -->
   </style>
   <!-- end of extra style section -->
@@ -74,25 +76,27 @@
 <div id="header"></div>
 <!-- end of navbar header section -->
 <!-- start of main body section --> 
+<div class="ui inverted segment">
   <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
-    <h1 class="ui header">Oval's R Combat Simulator</h1>
+    <h1 class="ui inverted header">Oval's R Combat Simulator</h1>
     <p>End to end Combat Simulator built in R</p>
     <p>blah blah blah text inputs just use the sheet for now</p>
-    <div class="ui horizontal section divider"><button class="black ui button" id="run" style="width: 100px;">Run</button></div>
+    <div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" style="width: 100px;">Run</button></div>
 	<div class="ui centered grid">
 	</div>
   </div>
 
-  <div class="ui two column grid">
+  <div class="ui centered grid">
   <div class="ui main text container">
-	<textarea id="ovalgithubpull" style="height: 500px; width: 700px; background: transparent; margin-left:80px; margin-top:-50px"></textarea>
+	<textarea id="ovalgithubpull" style="height: 500px; width: 700px; margin-left:80px; margin-top:-50px; color: rgba(255,255,255,.9); background: #1b1c1d; text-align:center;resize: none;"></textarea>
        <script> $("#ovalgithubpull").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/oval/OvalCombatCalculator.r"); </script>
 
 </div>
   <div class="ui main text container">
-   <textarea id="code" name="ovaloutput" style="height: 500px; width: 700px; background: transparent; margin-left:-100px; margin-top:-50px" readonly></textarea>
+   <textarea id="code" name="ovaloutput" style="height: 500px; width: 700px; color: rgba(255,255,255,.9); background: #1b1c1d; margin-left:-100px; margin-top:-50px; text-align:center;resize: none;" readonly></textarea>
   </div>
   
+</div>
 </div>
 <!-- end of main body section --> 
 <!-- start of end footer section --> 

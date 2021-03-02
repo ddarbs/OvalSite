@@ -1,5 +1,6 @@
 body {
-	background-color: #fcfcfc;
+	/* background-color: #fcfcfc; */
+	background-color: rgb(27, 28, 29);
 }
 .ui.menu .item img.logo {
 	margin-right: 1.5em;
@@ -14,6 +15,16 @@ body {
 
 .ui.table>tbody>tr>td, .ui.table>tr>td { 
 	padding: .3em 0em;
+}
+
+.ui.fixed.inverted.menu {
+	border-bottom: solid #2D2E2F 2px;
+	background: #131415;
+}
+
+.ui.inverted.vertical.footer.segment {
+	border-top: solid #2D2E2F 2px;
+	background: #131415;
 }
 
 .ui.inverted.menu .header.item:hover {
