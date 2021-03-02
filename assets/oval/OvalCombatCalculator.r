@@ -22,7 +22,7 @@ PsychicAccuracy = -26
 
 # Healing Stats
 HealingAmount = 24
-HealingQuantity = 28 # Number of food brought per trip
+HealingQuantity = 10 # Number of food brought per trip
 
 # Enemy Stats
 E.CombatLevel = 291 # Use 0 if you don't want xp stats
@@ -36,7 +36,8 @@ E.Melee = 1
 E.Ranging = 250
 E.Psychic = 1
 
-
+# Area Status
+Toxic = F # Use 'T' if on Punk Hazard without a Hazmat, otherwise use 'F'
 
 
 
@@ -190,6 +191,11 @@ SimulateFightsV2 <- function(n){
         E.chargetick <- E.chargetick + 1
         if(printhealth == TRUE){
           print(paste0("Your Health : ", HealthNew))
+        }
+      }
+      if(Toxic == T) {
+        if(tick %% 10 == 0) {
+          HealthNew <- HealthNew - 5
         }
       }
       tick <- tick + 1
