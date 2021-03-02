@@ -18,6 +18,18 @@
 	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
     });
 
+$(function () {
+    $('.wrapper1').on('scroll', function (e) {
+        $('.wrapper2').scrollLeft($('.wrapper1').scrollLeft());
+    }); 
+    $('.wrapper2').on('scroll', function (e) {
+        $('.wrapper1').scrollLeft($('.wrapper2').scrollLeft());
+    });
+});
+$(window).on('load', function (e) {
+    $('.div1').width($('table').width());
+    $('.div2').width($('table').width());
+});
   
     $(document).ready(function() {
 
@@ -112,6 +124,15 @@ function itemlistSearch() {
 		cursor: default;
 	}
 
+	
+.wrapper1, .wrapper2 { width: 100%; overflow-x: scroll; overflow-y: hidden; }
+.wrapper1 { height: 10px; }
+.div1 { height: 20px; }
+.div2 { overflow: none; }
+
+
+
+
   <!-- end of page specific styling -->
   </style>
   <!-- end of extra style section -->
@@ -131,10 +152,14 @@ function itemlistSearch() {
 	<div class="ui inverted horizontal section divider">Item Name Search</div>
 	<div class="ui centered grid" style="max-width: fit-content;">
 	
-	<div class="ui inverted transparent icon input" style="border: solid #2D2E2F 1px; padding: 10 0 10 10; margin-bottom: 14px;">
+	<div class="ui inverted transparent icon input" style="border: solid #2D2E2F 1px; padding: 10 0 10 10; margin-bottom: 10px;">
 		<input type="text" id="itemlistInput" onkeyup="itemlistSearch()" placeholder="e. copper 2h warhammer" style="width:250px;"><i class="search icon" style="margin-left: -40px;position: relative;"></i>
 	</div>
-	<div id="double-scroll" style="overflow-x:scroll; width:-webkit-fit-content;padding: 0 0 0 0;">
+<div class="wrapper1" style="overflow-x:scroll; padding: 0 0 0 0;">
+  <div class="div1"></div>
+</div>
+	<div class="wrapper2" style="overflow-x:scroll; width:-webkit-fit-content;padding: 0 0 0 0;">
+	<div class="div2">
 	<table class="ui single line selectable inverted table" id="itemlistTable" style="text-align:center; vertical-align: middle; font-size:12px; padding: 0 0 0 0;">
     <thead style="white-space: nowrap; cursor: move;">
 		
@@ -164,6 +189,7 @@ function itemlistSearch() {
 
     </tbody>
 </table>
+</div>
 </div>
  </div>
  </div>
