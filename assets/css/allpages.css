@@ -39,3 +39,9 @@ body {
 	padding-bottom:20px;
 }
 
+.flex-wrapper {
+  display: flex;
+  min-height: 50vh;
+  flex-direction: column;
+  justify-content: space-between;
+}

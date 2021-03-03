@@ -134,7 +134,7 @@
 			$(this).removeClass('black ui button').addClass('ui secondary double loading button');
             setTimeout(function () {
 				$(this).removeClass('ui double loading button').addClass('ui inverted basic button');
-            }.bind(this), 4000);
+            }.bind(this), 5000);
 
 		    $.ajax ({
 			        url: "https://rextester.com/rundotnet/api",
@@ -223,6 +223,7 @@ text-align: center;
 <!-- start of navbar header section -->
 <div id="header"></div>
 <!-- end of navbar header section -->
+<div class="flex-wrapper">
 <!-- start of main body section --> 
 <div class="ui inverted segment" style="width: -webkit-fill-available;">
   <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
@@ -403,6 +404,7 @@ text-align: center;
    <textarea id="code" name="ovaloutput" style="height: 500px; width: 700px; color: rgba(255,255,255,.9); background: #1b1c1d;margin-top:-50px; text-align:center;resize: none;padding-top:20px;background: rgb(0 0 0 / 8%);" readonly></textarea>
   </div>
   
+</div>
 </div>
 </div>
 <!-- end of main body section --> 
