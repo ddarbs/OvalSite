@@ -60,7 +60,7 @@
 	
 	//shitty way of grabbing input box text and replacing in 
 	//type
-	OVALMYTYPE.addEventListener("focusout", function (e) {
+	OVALMYTYPE.addEventListener("change", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nType = \"[a-zA-Z]*\"/g, '\nType = \"' + this.value + '\"');
 	});
