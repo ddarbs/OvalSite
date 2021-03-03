@@ -208,6 +208,7 @@ select.ui.dropdown {
 .one.wide.column {
 min-width: min-content;
 align-self: flex-end;
+white-space: pre-line;
 }
 
 .ui.centered.grid>.column:not(.aligned):not(.justified):not(.row), .ui.centered.grid>.row>.column:not(.aligned):not(.justified), .ui.grid .centered.row>.column:not(.aligned):not(.justified) {
@@ -289,12 +290,12 @@ text-align: center;
 <div class="ui equal width centered grid">
 	
 	<div class="one wide column" title="Use M or R or P for Melee, Ranging, Psychic respectively">
-		Combat Type
-<select class="ui dropdown" id="OVALMYTYPE">
-  <option>M</option>
-  <option>R</option>
-  <option>P</option>
-</select>
+		Combat Style         
+		<select class="ui dropdown" id="OVALMYTYPE">
+		  <option>M</option>
+		  <option>R</option>
+		  <option>P</option>
+		</select>
 	</div>
 	<div class="one wide column">
 		Max Damage
