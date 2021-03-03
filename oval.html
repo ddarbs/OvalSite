@@ -15,10 +15,115 @@
 	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
     });
 
-  
+	
     $(document).ready(function(){
+	
+
+	//shitty way of grabbing input box text and replacing in 
+	//health
+	OVALMYHEALTH.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nHealth = .*/g, '\nHealth = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in 
+	//health
+	OVALMYACC.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nAccuracy = .*/, '\nAccuracy = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//defense
+	OVALMYDEF.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nDefense = .*/, '\nDefense = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//melee
+	OVALMYMELEE.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nMelee = .*/, '\nMelee = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//ranging
+	OVALMYRANGE.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nRanging = .*/, '\nRanging = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//psychic
+	OVALMYPSY.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nPsychic = .*/, '\nPsychic = ' + this.value);
+	});
+	
+	
+	
+	//shitty way of grabbing input box text and replacing in 
+	//type
+	OVALMYTYPE.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nType = \"[a-zA-Z]*\"/g, '\nType = \"' + this.value + '\"');
+	});
+	//shitty way of grabbing input box text and replacing in 
+	//hitmax
+	OVALMYMAX.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nHitMax = .*/, '\nHitMax = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//hitmin
+	OVALMYMIN.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nHitMin = .*/, '\nHitMin = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//attackspeed
+	OVALMYSPEED.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nAttackSpeed = .*/, '\nAttackSpeed = ' + this.value + ' # Attack Speed in ticks (Seconds*2)');
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//meleedefense
+	OVALMYMELEEDEF.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nMeleeDefense = .*/, '\nMeleeDefense = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//rangingdefense
+	OVALMYRANGEDEF.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nRangingDefense = .*/, '\nRangingDefense = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//psychicdef
+	OVALMYPSYDEF.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nPsychicDefense = .*/, '\nPsychicDefense = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//meleeacc
+	OVALMYMELEEACC.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nMeleeAccuracy = .*/, '\nMeleeAccuracy = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//rangingacc
+	OVALMYRANGEACC.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nRangingAccuracy = .*/, '\nRangingAccuracy = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//psychicacc
+	OVALMYPSYACC.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nPsychicAccuracy = .*/, '\nPsychicAccuracy = ' + this.value);
+	});
+	
+	
+		
         $("button").click(function(){
 
+			
 		    var to_compile = {
 			    "LanguageChoice": "31",
 			    "Program": $("#ovalgithubpull").val(),
@@ -52,6 +157,27 @@
 		        });
 	    });
     });
+	
+// Restricts input for the given textbox to the given inputFilter.
+function setInputFilter(textbox, inputFilter) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+    textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  });
+}
+
+
+
 	</script>
 	<!-- end of rextester API for R -->
   <!-- end of scripts section --> 
@@ -65,6 +191,28 @@
 	min-height: 100%;
 }
 
+.ui.input>input {
+    width: 100%;
+	padding: 0 0 0 0;
+	height: 30px;
+	text-align:center;
+}
+
+select.ui.dropdown {
+	height: 30px;
+	border-radius: .28571429rem;
+	padding: 0 0 0 0;
+    width: 37px;
+}
+
+.one.wide.column {
+min-width: min-content;
+align-self: flex-end;
+}
+
+.ui.centered.grid>.column:not(.aligned):not(.justified):not(.row), .ui.centered.grid>.row>.column:not(.aligned):not(.justified), .ui.grid .centered.row>.column:not(.aligned):not(.justified) {
+text-align: center;
+}
 
   <!-- end of page specific styling -->
   </style>
@@ -76,7 +224,7 @@
 <div id="header"></div>
 <!-- end of navbar header section -->
 <!-- start of main body section --> 
-<div class="ui inverted segment">
+<div class="ui inverted segment" style="width: -webkit-fill-available;">
   <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
     <h1 class="ui inverted header">Oval's R Combat Simulator</h1>
     <p>End to end Combat Simulator built in R</p>
@@ -86,9 +234,168 @@
 	</div>
   </div>
 
+  <div class="ui inverted segment">
+  
+    <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-top:0;margin-bottom:10;">
+    <h1 class="ui inverted header">Player Skill Stats</h1>
+  </div>
+  <!-- Player Char Stats -->
+	<div class="ui equal width centered grid">
+	<div class="one wide column">
+		Health
+		<div class="ui input">
+			<input type="text" placeholder="99" id="OVALMYHEALTH">
+		</div>
+	</div>
+	<div class="one wide column">
+		Accuracy
+		<div class="ui input">
+			<input type="text" placeholder="93" id="OVALMYACC">
+		</div>
+	</div>
+	<div class="one wide column">
+		Defense
+		<div class="ui input">
+			<input type="text" placeholder="97" id="OVALMYDEF">
+		</div>
+	</div>
+	<div class="one wide column">
+		Melee
+		<div class="ui input">
+			<input type="text" placeholder="96" id="OVALMYMELEE">
+		</div>
+	</div>
+	<div class="one wide column">
+		Ranging
+		<div class="ui input">
+			<input type="text" placeholder="99" id="OVALMYRANGE">
+		</div>
+	</div>
+	<div class="one wide column">
+		Psychic
+		<div class="ui input">
+			<input type="text" placeholder="69" id="OVALMYPSY">
+		</div>
+	</div>
+</div>
+
+
+  <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-top:20;margin-bottom:10;">
+    <h1 class="ui inverted header">Player Armor/Weapon Stats</h1>
+  </div>
+
+
+<div class="ui equal width centered grid">
+	
+	<div class="one wide column" title="Use M or R or P for Melee, Ranging, Psychic respectively">
+		Combat Type
+<select class="ui dropdown" id="OVALMYTYPE">
+  <option>M</option>
+  <option>R</option>
+  <option>P</option>
+</select>
+	</div>
+	<div class="one wide column">
+		Max Damage
+		<div class="ui input">
+			<input type="text" placeholder="89" id="OVALMYMAX">
+		</div>
+	</div>
+	<div class="one wide column">
+		Min Damage
+		<div class="ui input">
+			<input type="text" placeholder="51" id="OVALMYMIN">
+		</div>
+	</div>
+	<div class="one wide column" title="Speed in ticks, if copying from your Character Stats, then multiply by 2">
+		Attack Speed
+		<div class="ui input">
+			<input type="text" placeholder="3" id="OVALMYSPEED">
+		</div>
+	</div>
+	<div class="one wide column">
+		Melee Defense
+		<div class="ui input">
+			<input type="text" placeholder="175" id="OVALMYMELEEDEF">
+		</div>
+	</div>
+	<div class="one wide column">
+		Ranging Defense
+		<div class="ui input">
+			<input type="text" placeholder="200" id="OVALMYRANGEDEF">
+		</div>
+	</div>
+	<div class="one wide column">
+		Psychic Defense
+		<div class="ui input">
+			<input type="text" placeholder="60" id="OVALMYPSYDEF">
+		</div>
+	</div>
+	<div class="one wide column">
+		Melee Accuracy
+		<div class="ui input">
+			<input type="text" placeholder="29" id="OVALMYMELEEACC">
+		</div>
+	</div>
+	<div class="one wide column">
+		Ranging Accuracy
+		<div class="ui input">
+			<input type="text" placeholder="-10" id="OVALMYRANGEACC">
+		</div>
+	</div>
+	<div class="one wide column">
+		Psychic Accuracy
+		<div class="ui input">
+			<input type="text" placeholder="-26" id="OVALMYPSYACC">
+		</div>
+	</div>
+</div>
+ <!-- Player Armor/Wep Stats -->
+<!-- <div class="ui centered grid"> -->
+	<!-- <h1 style="margin-top:15px;"> Player Armor/Wep Stats </h1> -->
+	<!-- <div class="one wide column"> -->
+		<!-- Health -->
+		<!-- <div class="ui input"> -->
+			<!-- <input type="text" placeholder="99" id="OVALMYHEALTH"> -->
+		<!-- </div> -->
+	<!-- </div> -->
+	<!-- <div class="one wide column"> -->
+		<!-- Accuracy -->
+		<!-- <div class="ui input"> -->
+			<!-- <input type="text" placeholder="99" id="OVALMYACC"> -->
+		<!-- </div> -->
+	<!-- </div> -->
+	<!-- <div class="one wide column"> -->
+		<!-- Defense -->
+		<!-- <div class="ui input"> -->
+			<!-- <input type="text" placeholder="99" id="OVALMYDEF"> -->
+		<!-- </div> -->
+	<!-- </div> -->
+	<!-- <div class="one wide column"> -->
+		<!-- Melee -->
+		<!-- <div class="ui input"> -->
+			<!-- <input type="text" placeholder="99" id="OVALMYMELEE"> -->
+		<!-- </div> -->
+	<!-- </div> -->
+	<!-- <div class="one wide column"> -->
+		<!-- Ranging -->
+		<!-- <div class="ui input"> -->
+			<!-- <input type="text" placeholder="99" id="OVALMYRANGE"> -->
+		<!-- </div> -->
+	<!-- </div> -->
+	<!-- <div class="one wide column"> -->
+		<!-- Psychic -->
+		<!-- <div class="ui input"> -->
+			<!-- <input type="text" placeholder="99" id="OVALMYPSY"> -->
+		<!-- </div> -->
+	<!-- </div> -->
+<!-- </div> -->
+</div>
+
   <div class="ui centered grid" style="padding-left:50px;padding-right:50px;">
+
   <div class="ui main text container" style="margin: 90 0 0 0;">
-	<textarea id="ovalgithubpull" style="height: 500px; width: 700px;margin-top:-50px; color: rgba(255,255,255,.9); background: #1b1c1d; text-align:center;resize: none;margin-left: -30px;background: rgb(0 0 0 / 8%);"></textarea>
+	<textarea id="ovalgithubpull" name="ovalscript" style="height: 500px; width: 700px;margin-top:-50px; color: rgba(255,255,255,.9); background: #1b1c1d; text-align:center;resize: none;margin-left: -30px;background: rgb(0 0 0 / 8%);overflow-x: hidden;"></textarea>
        <script> $("#ovalgithubpull").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/oval/OvalCombatCalculator.r"); </script>
 
 </div>
@@ -102,4 +409,42 @@
 <!-- start of end footer section --> 
 <div id="footer"></div>
 <!-- end of end footer section --> 
-</body></html>
+</body>
+<script>
+// Install input filters.
+setInputFilter(document.getElementById("OVALMYHEALTH"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYACC"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYDEF"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYMELEE"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYRANGE"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYPSY"), function(value) {
+return /^-?\d*$/.test(value); });
+
+
+setInputFilter(document.getElementById("OVALMYMAX"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYMIN"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYSPEED"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYMELEEDEF"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYRANGEDEF"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYPSYDEF"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYMELEEACC"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYRANGEACC"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYPSYACC"), function(value) {
+return /^-?\d*$/.test(value); });
+
+
+  
+</script></html>
