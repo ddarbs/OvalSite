@@ -25,6 +25,7 @@ body {
 .ui.inverted.vertical.footer.segment {
 	border-top: solid #2D2E2F 2px;
 	background: #131415;
+	margin-top: 25%;
 }
 
 .ui.inverted.menu .header.item:hover {
@@ -37,3 +38,4 @@ body {
 	padding: 5em 0em;
 	padding-bottom:20px;
 }
+
