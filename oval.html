@@ -295,6 +295,17 @@ white-space: pre-line;
 text-align: center;
 }
 
+.ui.transparent.inverted.input {
+border: 1px solid rgba(255,255,255,.15);
+border-radius: .28571429rem;
+}
+
+.ui.selection.dropdown {
+min-width: min-content;
+padding: 0 1.2em 0 1em;
+min-height: 32;
+}
+
   <!-- end of page specific styling -->
   </style>
   <!-- end of extra style section -->
@@ -325,37 +336,37 @@ text-align: center;
 <div class="ui equal width centered grid" style="margin-top:-40px;">	
 	<div class="one wide column">
 		Health
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="99" id="OVALMYHEALTH">
 		</div>
 	</div>
 	<div class="one wide column">
 		Accuracy
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="93" id="OVALMYACC">
 		</div>
 	</div>
 	<div class="one wide column">
 		Defense
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="97" id="OVALMYDEF">
 		</div>
 	</div>
 	<div class="one wide column">
 		Melee
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="96" id="OVALMYMELEE">
 		</div>
 	</div>
 	<div class="one wide column">
 		Ranging
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="99" id="OVALMYRANGE">
 		</div>
 	</div>
 	<div class="one wide column">
 		Psychic
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="69" id="OVALMYPSY">
 		</div>
 	</div>
@@ -368,7 +379,7 @@ text-align: center;
 <div class="ui equal width centered grid" style="margin-top:-40px;">
 	<div class="one wide column" data-tooltip="Use M or R or P for Melee, Ranging, Psychic respectively" data-position="center">
 		Combat Style         
-		<select class="ui dropdown" id="OVALMYTYPE">
+		<select class="ui inverted selection dropdown" id="OVALMYTYPE">
 		  <option>M</option>
 		  <option>R</option>
 		  <option>P</option>
@@ -376,55 +387,55 @@ text-align: center;
 	</div>
 	<div class="one wide column">
 		Max Damage
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="89" id="OVALMYMAX">
 		</div>
 	</div>
 	<div class="one wide column">
 		Min Damage
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="51" id="OVALMYMIN">
 		</div>
 	</div>
 	<div class="one wide column" data-tooltip="Speed in ticks, if copying from your Character Stats, then multiply by 2" data-position="center">
 		Attack Speed
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="3" id="OVALMYSPEED">
 		</div>
 	</div>
 	<div class="one wide column">
 		Melee Defense
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="175" id="OVALMYMELEEDEF">
 		</div>
 	</div>
 	<div class="one wide column">
 		Ranging Defense
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="200" id="OVALMYRANGEDEF">
 		</div>
 	</div>
 	<div class="one wide column">
 		Psychic Defense
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="60" id="OVALMYPSYDEF">
 		</div>
 	</div>
 	<div class="one wide column">
 		Melee Accuracy
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="29" id="OVALMYMELEEACC">
 		</div>
 	</div>
 	<div class="one wide column">
 		Ranging Accuracy
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="-10" id="OVALMYRANGEACC">
 		</div>
 	</div>
 	<div class="one wide column">
 		Psychic Accuracy
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="-26" id="OVALMYPSYACC">
 		</div>
 	</div>
@@ -438,13 +449,13 @@ text-align: center;
 	<div class="ui equal width centered grid" style="margin-top:-40px;">
 		<div class="one wide column" data-tooltip="How much does your food heal for? EX: Large HP Pots heal for 20, Squid heals for 24" data-position="center">
 			Healing Amount
-			<div class="ui input">
+			<div class="ui inverted transparent input">
 				<input type="text" placeholder="24" id="OVALMYHEALAMT">
 			</div>
 		</div>
 		<div class="one wide column" data-tooltip="How much food are you bringing?" data-position="center">
 			Healing Quantity
-			<div class="ui input">
+			<div class="ui inverted transparent input">
 				<input type="text" placeholder="25" id="OVALMYHEALQUANT">
 			</div>
 		</div>
@@ -458,13 +469,13 @@ text-align: center;
 <div class="ui equal width centered grid" style="margin-top:-40px;">
 	<div class="one wide column">
 		Enemy Combat Level
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="89" id="MILFMYCBTLVL">
 		</div>
 	</div>
 	<div class="one wide column" data-tooltip="Use M or R or P for Melee, Ranging, Psychic respectively" data-position="center">
 		Enemy Combat Style         
-		<select class="ui dropdown" id="MILFMYTYPE">
+		<select class="ui inverted selection dropdown" id="MILFMYTYPE">
 		  <option>M</option>
 		  <option>R</option>
 		  <option>P</option>
@@ -472,49 +483,49 @@ text-align: center;
 	</div>
 	<div class="one wide column">
 		Enemy Health
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="51" id="MILFMYHEALTH">
 		</div>
 	</div>
 	<div class="one wide column">
 		Enemy Max Damage
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="3" id="MILFMYMAX">
 		</div>
 	</div>
 	<div class="one wide column">
 		Enemy Attack Speed
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="4" id="MILFMYSPEED" data-tooltip="Speed in ticks, if your number is in seconds then multiply by 2." data-position="center">
 		</div>
 	</div>
 	<div class="one wide column">
 		Enemy Accuracy
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="200" id="MILFMYACC">
 		</div>
 	</div>
 	<div class="one wide column">
 		Enemy Defense
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="69" id="MILFMYDEF">
 		</div>
 	</div>
 	<div class="one wide column">
 		Enemy Melee
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="1" id="MILFMYMELEE">
 		</div>
 	</div>
 	<div class="one wide column">
 		Enemy Ranging
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="1" id="MILFMYRANGE">
 		</div>
 	</div>
 	<div class="one wide column">
 		Enemy Psychic
-		<div class="ui input">
+		<div class="ui inverted transparent input">
 			<input type="text" placeholder="420" id="MILFMYPSY">
 		</div>
 	</div>
@@ -528,7 +539,7 @@ text-align: center;
 	<div class="ui equal width centered grid" style="margin-top:-40px;">
 		<div class="one wide column" data-tooltip="Use T if fighting on Punk Hazard without full Hazmat equipped, otherwise use F" data-position="center">
 			Punk Hazard
-			<select class="ui dropdown" id="GOOBY">
+			<select class="ui inverted selection dropdown" id="GOOBY">
 				<option hidden>F</option>
 				<option>T</option>
 				<option>F</option>
