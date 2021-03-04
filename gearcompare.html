@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
     <script src="http://d3js.org/d3.v4.js"></script>
+	<script src="assets/scripts/papaparse.js"></script>
 <!-- start of rextester API for R -->
   <script>
   $(function(){
@@ -18,21 +19,158 @@
 
      window.onload = function()
         {
+			Papa.parse("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/mh1/gearlisttest.csv", {
+			download: true,
+			complete: function(results, file) {
+			console.log(results.data);
+			bigresults = results.data;
+			<!-- console.log(output); -->
+			}
+
+			})		
         d3.csv("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/mh1/gearlisttest.csv",
 
             function(d) {
                 return {
 
-                    TPC: +d.ItemID,
+                    TPC: d.ItemID,
                     Subcategory: d.ItemName,
-
-
                 };  
             },      
             function(data) {
                 <!-- console.log(data) -->
                 populate_ComboExample(data)
             });
+			
+		// TEEHEE 
+		helmetmaccmod= 0;
+		helmetraccmod= 0;
+		helmetpaccmod= 0;
+		helmetmindamage= 0;
+		helmetmaxdamage= 0;
+		helmettickspeed= 0;
+		helmetlevelreq= 0;
+		helmetextralevelreq= 0;
+		helmetskilllevelreq= 0;
+		helmethealamount= 0;
+		helmetrange= 0;
+		helmetmdefmod= 0;
+		helmetrdefmod= 0;
+		helmetpdefmod= 0;
+		helmetdestroxp= 0;
+		helmetalchvalue= 0;
+		chestmaccmod= 0;
+		chestraccmod= 0;
+		chestpaccmod= 0;
+		chestmindamage= 0;
+		chestmaxdamage= 0;
+		chesttickspeed= 0;
+		chestlevelreq= 0;
+		chestextralevelreq= 0;
+		chestskilllevelreq= 0;
+		chesthealamount= 0;
+		chestrange= 0;
+		chestmdefmod= 0;
+		chestrdefmod= 0;
+		chestpdefmod= 0;
+		chestdestroxp= 0;
+		chestalchvalue= 0;
+		legsmaccmod= 0;
+		legsraccmod= 0;
+		legspaccmod= 0;
+		legsmindamage= 0;
+		legsmaxdamage= 0;
+		legstickspeed= 0;
+		legslevelreq= 0;
+		legsextralevelreq= 0;
+		legsskilllevelreq= 0;
+		legshealamount= 0;
+		legsrange= 0;
+		legsmdefmod= 0;
+		legsrdefmod= 0;
+		legspdefmod= 0;
+		legsdestroxp= 0;
+		legsalchvalue= 0;
+		bootsmaccmod= 0;
+		bootsraccmod= 0;
+		bootspaccmod= 0;
+		bootsmindamage= 0;
+		bootsmaxdamage= 0;
+		bootstickspeed= 0;
+		bootslevelreq= 0;
+		bootsextralevelreq= 0;
+		bootsskilllevelreq= 0;
+		bootshealamount= 0;
+		bootsrange= 0;
+		bootsmdefmod= 0;
+		bootsrdefmod= 0;
+		bootspdefmod= 0;
+		bootsdestroxp= 0;
+		bootsalchvalue= 0;
+		glovesmaccmod= 0;
+		glovesraccmod= 0;
+		glovespaccmod= 0;
+		glovesmindamage= 0;
+		glovesmaxdamage= 0;
+		glovestickspeed= 0;
+		gloveslevelreq= 0;
+		glovesextralevelreq= 0;
+		glovesskilllevelreq= 0;
+		gloveshealamount= 0;
+		glovesrange= 0;
+		glovesmdefmod= 0;
+		glovesrdefmod= 0;
+		glovespdefmod= 0;
+		glovesdestroxp= 0;
+		glovesalchvalue= 0;
+		weaponmaccmod= 0;
+		weaponraccmod= 0;
+		weaponpaccmod= 0;
+		weaponmindamage= 0;
+		weaponmaxdamage= 0;
+		weapontickspeed= 0;
+		weaponlevelreq= 0;
+		weaponextralevelreq= 0;
+		weaponskilllevelreq= 0;
+		weaponhealamount= 0;
+		weaponrange= 0;
+		weaponmdefmod= 0;
+		weaponrdefmod= 0;
+		weaponpdefmod= 0;
+		weapondestroxp= 0;
+		weaponalchvalue= 0;
+		offhandmaccmod= 0;
+		offhandraccmod= 0;
+		offhandpaccmod= 0;
+		offhandmindamage= 0;
+		offhandmaxdamage= 0;
+		offhandtickspeed= 0;
+		offhandlevelreq= 0;
+		offhandextralevelreq= 0;
+		offhandskilllevelreq= 0;
+		offhandhealamount= 0;
+		offhandrange= 0;
+		offhandmdefmod= 0;
+		offhandrdefmod= 0;
+		offhandpdefmod= 0;
+		offhanddestroxp= 0;
+		offhandalchvalue= 0;
+		ammomaccmod= 0;
+		ammoraccmod= 0;
+		ammopaccmod= 0;
+		ammomindamage= 0;
+		ammomaxdamage= 0;
+		ammotickspeed= 0;
+		ammolevelreq= 0;
+		ammoextralevelreq= 0;
+		ammoskilllevelreq= 0;
+		ammohealamount= 0;
+		ammorange= 0;
+		ammomdefmod= 0;
+		ammordefmod= 0;
+		ammopdefmod= 0;
+		ammodestroxp= 0;
+		ammoalchvalue= 0;		
         }
 
         function populate_ComboExample(data) {
@@ -46,62 +184,385 @@
                 example_text[i]=data[i].Subcategory;
             }
 
-
-            var select  = document.getElementById("weaponinput")
-			
-
+			// DROPDOWN LISTS BASED ON GEAR LIST TEST
+			var helmet = document.getElementById("helmetinput")
             for (i=0; i < data.length; i++ ) {
                 var el = document.createElement("option");
                 var temp=example_text[i]
                 el.textContent = temp;
                 el.value =example_list[i];
-                select.appendChild(el);
+				helmet.appendChild(el);
             }
-        }
-
-        function combo_change(thelist) {
-
-            var idx_1 = thelist.selectedIndex;
-            var itemid = thelist.options[idx_1].value;	// item ID
-			var itemname = thelist.options[idx_1+1].value;	// item name
-			var meleedef = thelist.options[idx_1+2].value;	// melee def
-			var rangdef = thelist.options[idx_1+3].value;	// rang def
-			var psydef = thelist.options[4].value;	// psy def
-			var meleeacc = thelist.options[5].value;	// melee acc
-			var rangacc = thelist.options[6].value;	// rang acc
-			var psyacc = thelist.options[7].value;	// psy acc
-			var mindmg = thelist.options[8].value;	// min dmg
-			var maxdmg = thelist.options[9].value;	// max dmg
-			var tickspeed = thelist.options[10].value;	// tickspeed
-			var range = thelist.options[11].value;	// range
-			var levelreq = thelist.options[12].value;	// level req
-			var skilllvlreq = thelist.options[13].value;	// skill use lvl req
-			var craftlvlreq = thelist.options[14].value;	// craft lvl req
-			var heals = thelist.options[15].value;	// heals
-			var destroxp = thelist.options[16].value;	// destro xp
-			var alchvalue = thelist.options[17].value;	// alch value
 			
-			document.getElementById("itemid").value = itemid
-			document.getElementById("itemname").value = itemname
-			document.getElementById("meleedef").value = meleedef
-			document.getElementById("rangdef").value = rangdef
-			document.getElementById("psydef").value = psydef
-			document.getElementById("meleeacc").value = meleeacc
-			document.getElementById("rangacc").value = rangacc
-			document.getElementById("psyacc").value = psyacc
-			document.getElementById("mindmg").value = mindmg
-			document.getElementById("maxdmg").value = maxdmg
-			document.getElementById("tickspeed").value = tickspeed
-			document.getElementById("range").value = range
-			document.getElementById("levelreq").value = levelreq
-			document.getElementById("skilllvlreq").value = skilllvlreq
-			document.getElementById("craftlvlreq").value = craftlvlreq
-			document.getElementById("heals").value = heals
-			document.getElementById("destroxp").value = destroxp
-			document.getElementById("alchvalue").value = alchvalue
+			var chest = document.getElementById("chestinput")
+            for (i=0; i < data.length; i++ ) {
+                var el = document.createElement("option");
+                var temp=example_text[i]
+                el.textContent = temp;
+                el.value =example_list[i];
+				chest.appendChild(el);
+            }
+			
+			var legs = document.getElementById("legsinput")
+			for (i=0; i < data.length; i++ ) {
+                var el = document.createElement("option");
+                var temp=example_text[i]
+                el.textContent = temp;
+                el.value =example_list[i];
+				legs.appendChild(el);				
+            }
+			
+			var boots = document.getElementById("bootsinput")
+			for (i=0; i < data.length; i++ ) {
+                var el = document.createElement("option");
+                var temp=example_text[i]
+                el.textContent = temp;
+                el.value =example_list[i];
+				boots.appendChild(el);	
+            }
+			
+			var gloves = document.getElementById("glovesinput")
+			for (i=0; i < data.length; i++ ) {
+                var el = document.createElement("option");
+                var temp=example_text[i]
+                el.textContent = temp;
+                el.value =example_list[i];
+				gloves.appendChild(el);	
+            }
+			
+            var weapon = document.getElementById("weaponinput")
+            for (i=0; i < data.length; i++ ) {
+                var el = document.createElement("option");
+                var temp=example_text[i]
+                el.textContent = temp;
+                el.value =example_list[i];
+				weapon.appendChild(el);
+            }
+			
+			var offhand = document.getElementById("offhandinput")
+			for (i=0; i < data.length; i++ ) {
+                var el = document.createElement("option");
+                var temp=example_text[i]
+                el.textContent = temp;
+                el.value =example_list[i];
+				offhand.appendChild(el);				
+            }
+			
+			var ammo = document.getElementById("ammoinput")
+			for (i=0; i < data.length; i++ ) {
+                var el = document.createElement("option");
+                var temp=example_text[i]
+                el.textContent = temp;
+                el.value =example_list[i];
+				ammo.appendChild(el);	
+            }
+			
+			<!-- var spell = document.getElementById("spellinput") -->
+			<!-- for (i=0; i < data.length; i++ ) { -->
+                <!-- var el = document.createElement("option"); -->
+                <!-- var temp=example_text[i] -->
+                <!-- el.textContent = temp; -->
+                <!-- el.value =example_list[i]; -->
+				<!-- spell.appendChild(el);	 -->
+            <!-- }			 -->
         }
+		
+		function addemup() {
+			totalmaccmod = +helmetmaccmod + +chestmaccmod + +legsmaccmod + +bootsmaccmod + +glovesmaccmod + +weaponmaccmod + +offhandmaccmod + +ammomaccmod;
+			totalraccmod = +helmetraccmod + +chestraccmod + +legsraccmod + +bootsraccmod + +glovesraccmod + +weaponraccmod + +offhandraccmod + +ammoraccmod;
+			totalpaccmod = +helmetpaccmod + +chestpaccmod + +legspaccmod + +bootspaccmod + +glovespaccmod + +weaponpaccmod + +offhandpaccmod + +ammopaccmod;
+			totalmdefmod = +helmetmdefmod + +chestmdefmod + +legsmdefmod + +bootsmdefmod + +glovesmdefmod + +weaponmdefmod + +offhandmdefmod + +ammomdefmod;
+			totalrdefmod = +helmetrdefmod + +chestrdefmod + +legsrdefmod + +bootsrdefmod + +glovesrdefmod + +weaponrdefmod + +offhandrdefmod + +ammordefmod;
+			totalpdefmod = +helmetpdefmod + +chestpdefmod + +legspdefmod + +bootspdefmod + +glovespdefmod + +weaponpdefmod + +offhandpdefmod + +ammopdefmod;
+			totalmindamage = +helmetmindamage + +chestmindamage + +legsmindamage + +bootsmindamage + +glovesmindamage + +weaponmindamage + +offhandmindamage + +ammomindamage;
+			totalmaxdamage = +helmetmaxdamage + +chestmaxdamage + +legsmaxdamage + +bootsmaxdamage + +glovesmaxdamage + +weaponmaxdamage + +offhandmaxdamage + +ammomaxdamage;
+			totaltickspeed = Math.max(+helmettickspeed, +chesttickspeed, +legstickspeed, +bootstickspeed, +glovestickspeed, +weapontickspeed, +offhandtickspeed, +ammotickspeed);
+			totallevelreq = Math.max(+helmetlevelreq, +chestlevelreq, +legslevelreq, +bootslevelreq, +gloveslevelreq, +weaponlevelreq, +offhandlevelreq, +ammolevelreq);
+			totalextralevelreq = Math.max(+helmetextralevelreq, +chestextralevelreq, +legsextralevelreq, +bootsextralevelreq, +glovesextralevelreq, +weaponextralevelreq, +offhandextralevelreq, +ammoextralevelreq);
+			totalskilllevelreq = Math.max(+helmetskilllevelreq, +chestskilllevelreq, +legsskilllevelreq, +bootsskilllevelreq, +glovesskilllevelreq, +weaponskilllevelreq, +offhandskilllevelreq, +ammoskilllevelreq);
+			totalhealamount = Math.max(+helmethealamount, +chesthealamount, +legshealamount, +bootshealamount, +gloveshealamount, +weaponhealamount, +offhandhealamount, +ammohealamount);
+			totalrange = +helmetrange + +chestrange + +legsrange + +bootsrange + +glovesrange + +weaponrange + +offhandrange + +ammorange;
+			totaldestroxp = +helmetdestroxp + +chestdestroxp + +legsdestroxp + +bootsdestroxp + +glovesdestroxp + +weapondestroxp + +offhanddestroxp + +ammodestroxp;
+			totalalchvalue = +helmetalchvalue + +chestalchvalue + +legsalchvalue + +bootsalchvalue + +glovesalchvalue + +weaponalchvalue + +offhandalchvalue + +ammoalchvalue;
 
-
+			document.getElementById('meleeacc').value=totalmaccmod;   
+			document.getElementById('rangacc').value=totalraccmod;
+			document.getElementById('psyacc').value=totalpaccmod;
+			document.getElementById('meleedef').value=totalmdefmod;
+			document.getElementById('rangdef').value=totalrdefmod;
+			document.getElementById('psydef').value=totalpdefmod;
+			document.getElementById('mindamage').value=totalmindamage;
+			document.getElementById('maxdamage').value=totalmaxdamage;
+			document.getElementById('tickspeed').value=totaltickspeed;
+			document.getElementById('levelreq').value=totallevelreq;
+			document.getElementById('extralevelreq').value=totalextralevelreq;
+			document.getElementById('skilllevelreq').value=totalskilllevelreq;
+			document.getElementById('healamount').value=totalhealamount;
+			document.getElementById('range').value=totalrange;
+			document.getElementById('destroxp').value=totaldestroxp;
+			document.getElementById('alchvalue').value=totalalchvalue;
+		}
+		
+		
+		
+		
+		function helmettime(thelist) {
+			var idx_1 = thelist.selectedIndex;
+            itemname = thelist.options[idx_1].value;	// item name
+			//grabbing helmet stats and assigning to variables
+			var outputhelmet = [];
+			bigresults.forEach(e => {
+			  if (e[0] == itemname) {
+				outputhelmet.push(e.slice(1));
+			  }
+			});
+			var helmetstats = outputhelmet.join().split(",");
+			<!-- console.log(helmetstats[0]); //itemid/itemname	 -->
+			<!-- weaponitemname = weaponstats[0]; //itemid/itemname -->
+			helmetmaccmod = helmetstats[1];
+			<!-- console.log(helmetmaccmod); -->
+			helmetraccmod = helmetstats[2];
+			helmetpaccmod = helmetstats[3];
+			helmetmindamage = helmetstats[4];
+			helmetmaxdamage = helmetstats[5];
+			helmettickspeed = helmetstats[6];
+			helmetlevelreq = helmetstats[7];
+			helmetextralevelreq = helmetstats[8];
+			helmetskilllevelreq = helmetstats[9];
+			helmethealamount = helmetstats[10];
+			helmetrange = helmetstats[11];
+			helmetmdefmod = helmetstats[12];
+			helmetrdefmod = helmetstats[13];
+			helmetpdefmod = helmetstats[14];
+			helmetdestroxp = helmetstats[15];
+			helmetalchvalue = helmetstats[16];
+			addemup();
+		}
+		
+		function chesttime(thelist) {
+			var idx_1 = thelist.selectedIndex;
+            itemname = thelist.options[idx_1].value;	// item name
+			//grabbing chest stats and assigning to variables
+			var outputchest = [];
+			bigresults.forEach(e => {
+			  if (e[0] == itemname) {
+				outputchest.push(e.slice(1));
+			  }
+			});
+			var cheststats = outputchest.join().split(",");
+			<!-- console.log(cheststats[0]); //itemid/itemname	 -->
+			<!-- weaponitemname = weaponstats[0]; //itemid/itemname -->
+			chestmaccmod = cheststats[1];
+			<!-- console.log(chestmaccmod); -->
+			chestraccmod = cheststats[2];
+			chestpaccmod = cheststats[3];
+			chestmindamage = cheststats[4];
+			chestmaxdamage = cheststats[5];
+			chesttickspeed = cheststats[6];
+			chestlevelreq = cheststats[7];
+			chestextralevelreq = cheststats[8];
+			chestskilllevelreq = cheststats[9];
+			chesthealamount = cheststats[10];
+			chestrange = cheststats[11];
+			chestmdefmod = cheststats[12];
+			chestrdefmod = cheststats[13];
+			chestpdefmod = cheststats[14];
+			chestdestroxp = cheststats[15];
+			chestalchvalue = cheststats[16];
+			addemup();
+		}
+		
+		function legstime(thelist) {
+			var idx_1 = thelist.selectedIndex;
+            itemname = thelist.options[idx_1].value;	// item name
+			//grabbing legs stats and assigning to variables
+			var outputlegs = [];
+			bigresults.forEach(e => {
+			  if (e[0] == itemname) {
+				outputlegs.push(e.slice(1));
+			  }
+			});
+			var legsstats = outputlegs.join().split(",");
+			<!-- console.log(legsstats[0]); //itemid/itemname	 -->
+			<!-- weaponitemname = weaponstats[0]; //itemid/itemname -->
+			legsmaccmod = legsstats[1];
+			legsraccmod = legsstats[2];
+			legspaccmod = legsstats[3];
+			legsmindamage = legsstats[4];
+			legsmaxdamage = legsstats[5];
+			legstickspeed = legsstats[6];
+			legslevelreq = legsstats[7];
+			legsextralevelreq = legsstats[8];
+			legsskilllevelreq = legsstats[9];
+			legshealamount = legsstats[10];
+			legsrange = legsstats[11];
+			legsmdefmod = legsstats[12];
+			legsrdefmod = legsstats[13];
+			legspdefmod = legsstats[14];
+			legsdestroxp = legsstats[15];
+			legsalchvalue = legsstats[16];
+			addemup();
+		}
+		
+		function bootstime(thelist) {
+			var idx_1 = thelist.selectedIndex;
+            itemname = thelist.options[idx_1].value;	// item name
+			//grabbing boots stats and assigning to variables
+			var outputboots = [];
+			bigresults.forEach(e => {
+			  if (e[0] == itemname) {
+				outputboots.push(e.slice(1));
+			  }
+			});
+			var bootsstats = outputboots.join().split(",");
+			<!-- console.log(bootsstats[0]); //itemid/itemname	 -->
+			<!-- weaponitemname = weaponstats[0]; //itemid/itemname -->
+			bootsmaccmod = bootsstats[1];
+			bootsraccmod = bootsstats[2];
+			bootspaccmod = bootsstats[3];
+			bootsmindamage = bootsstats[4];
+			bootsmaxdamage = bootsstats[5];
+			bootstickspeed = bootsstats[6];
+			bootslevelreq = bootsstats[7];
+			bootsextralevelreq = bootsstats[8];
+			bootsskilllevelreq = bootsstats[9];
+			bootshealamount = bootsstats[10];
+			bootsrange = bootsstats[11];
+			bootsmdefmod = bootsstats[12];
+			bootsrdefmod = bootsstats[13];
+			bootspdefmod = bootsstats[14];
+			bootsdestroxp = bootsstats[15];
+			bootsalchvalue = bootsstats[16];
+			addemup();
+		}
+		
+		function glovestime(thelist) {
+			var idx_1 = thelist.selectedIndex;
+            itemname = thelist.options[idx_1].value;	// item name
+			//grabbing gloves stats and assigning to variables
+			var outputgloves = [];
+			bigresults.forEach(e => {
+			  if (e[0] == itemname) {
+				outputgloves.push(e.slice(1));
+			  }
+			});
+			var glovesstats = outputgloves.join().split(",");
+			<!-- console.log(glovesstats[0]); //itemid/itemname	 -->
+			<!-- weaponitemname = weaponstats[0]; //itemid/itemname -->
+			glovesmaccmod = glovesstats[1];
+			glovesraccmod = glovesstats[2];
+			glovespaccmod = glovesstats[3];
+			glovesmindamage = glovesstats[4];
+			glovesmaxdamage = glovesstats[5];
+			glovestickspeed = glovesstats[6];
+			gloveslevelreq = glovesstats[7];
+			glovesextralevelreq = glovesstats[8];
+			glovesskilllevelreq = glovesstats[9];
+			gloveshealamount = glovesstats[10];
+			glovesrange = glovesstats[11];
+			glovesmdefmod = glovesstats[12];
+			glovesrdefmod = glovesstats[13];
+			glovespdefmod = glovesstats[14];
+			glovesdestroxp = glovesstats[15];
+			glovesalchvalue = glovesstats[16];
+			addemup();
+		}
+		
+		function weapontime(thelist) {
+			var idx_1 = thelist.selectedIndex;
+            itemname = thelist.options[idx_1].value;	// item name
+			//grabbing weapon stats and assigning to variables
+			var outputweapon = [];
+			bigresults.forEach(e => {
+			  if (e[0] == itemname) {
+				outputweapon.push(e.slice(1));
+			  }
+			});
+			var weaponstats = outputweapon.join().split(",");
+			<!-- console.log(weaponstats[0]); //itemid/itemname -->		
+			<!-- weaponitemname = weaponstats[0]; //itemid/itemname -->
+			weaponmaccmod = weaponstats[1];
+			weaponraccmod = weaponstats[2];
+			weaponpaccmod = weaponstats[3];
+			weaponmindamage = weaponstats[4];
+			weaponmaxdamage = weaponstats[5];
+			weapontickspeed = weaponstats[6];
+			weaponlevelreq = weaponstats[7];
+			weaponextralevelreq = weaponstats[8];
+			weaponskilllevelreq = weaponstats[9];
+			weaponhealamount = weaponstats[10];
+			weaponrange = weaponstats[11];
+			weaponmdefmod = weaponstats[12];
+			weaponrdefmod = weaponstats[13];
+			weaponpdefmod = weaponstats[14];
+			weapondestroxp = weaponstats[15];
+			weaponalchvalue = weaponstats[16];
+			addemup();
+		}
+		
+		function offhandtime(thelist) {
+			var idx_1 = thelist.selectedIndex;
+            itemname = thelist.options[idx_1].value;	// item name
+			//grabbing offhand stats and assigning to variables
+			var outputoffhand = [];
+			bigresults.forEach(e => {
+			  if (e[0] == itemname) {
+				outputoffhand.push(e.slice(1));
+			  }
+			});
+			var offhandstats = outputoffhand.join().split(",");
+			<!-- console.log(offhandstats[0]); //itemid/itemname -->		
+			<!-- offhanditemname = offhandstats[0]; //itemid/itemname -->
+			offhandmaccmod = offhandstats[1];
+			offhandraccmod = offhandstats[2];
+			offhandpaccmod = offhandstats[3];
+			offhandmindamage = offhandstats[4];
+			offhandmaxdamage = offhandstats[5];
+			offhandtickspeed = offhandstats[6];
+			offhandlevelreq = offhandstats[7];
+			offhandextralevelreq = offhandstats[8];
+			offhandskilllevelreq = offhandstats[9];
+			offhandhealamount = offhandstats[10];
+			offhandrange = offhandstats[11];
+			offhandmdefmod = offhandstats[12];
+			offhandrdefmod = offhandstats[13];
+			offhandpdefmod = offhandstats[14];
+			offhanddestroxp = offhandstats[15];
+			offhandalchvalue = offhandstats[16];
+			addemup();
+		}
+		
+		function ammotime(thelist) {
+			var idx_1 = thelist.selectedIndex;
+            itemname = thelist.options[idx_1].value;	// item name
+			//grabbing ammo stats and assigning to variables
+			var outputammo = [];
+			bigresults.forEach(e => {
+			  if (e[0] == itemname) {
+				outputammo.push(e.slice(1));
+			  }
+			});
+			var ammostats = outputammo.join().split(",");
+			<!-- console.log(ammostats[0]); //itemid/itemname -->		
+			<!-- ammoitemname = ammostats[0]; //itemid/itemname -->
+			ammomaccmod = ammostats[1];
+			ammoraccmod = ammostats[2];
+			ammopaccmod = ammostats[3];
+			ammomindamage = ammostats[4];
+			ammomaxdamage = ammostats[5];
+			ammotickspeed = ammostats[6];
+			ammolevelreq = ammostats[7];
+			ammoextralevelreq = ammostats[8];
+			ammoskilllevelreq = ammostats[9];
+			ammohealamount = ammostats[10];
+			ammorange = ammostats[11];
+			ammomdefmod = ammostats[12];
+			ammordefmod = ammostats[13];
+			ammopdefmod = ammostats[14];
+			ammodestroxp = ammostats[15];
+			ammoalchvalue = ammostats[16];
+			addemup();
+		}
 	</script>
 	<!-- end of rextester API for R -->
   <!-- end of scripts section --> 
@@ -114,10 +575,50 @@
 .main.container {
 	min-height: 100%;
 }
+
+.ui.input>input {
+    width: 100%;
+	padding: 0 0 0 0;
+	height: 30px;
+	text-align:center;
+}
+
+.ui.grid {
+margin-top:-3rem;
+}
+
+select.ui.dropdown {
+	height: 30px;
+	border-radius: .28571429rem;
+	padding: 0 0 0 0;
+    width: 37px;
+}
+
+.one.wide.column {
+min-width: min-content;
+align-self: flex-end;
+white-space: pre-line;
+max-height: 60;
+}
+
+.ui.centered.grid>.column:not(.aligned):not(.justified):not(.row), .ui.centered.grid>.row>.column:not(.aligned):not(.justified), .ui.grid .centered.row>.column:not(.aligned):not(.justified) {
+text-align: center;
+}
+
+.ui.transparent.inverted.input {
+border: 1px solid rgba(255,255,255,.15);
+border-radius: .28571429rem;
+}
+
+.ui.selection.dropdown {
+min-width: min-content;
+padding: 0 1.2em 0 1em;
+min-height: 32;
+}
   <!-- end of page specific styling -->
   </style>
   <!-- end of extra style section -->
-  <title>DTS - Combat Calc</title>
+  <title>DTS - Gear Simulator</title>
 </head>
 <body>
 <!-- start of navbar header section -->
@@ -127,7 +628,7 @@
 <div class="flex-wrapper">
 <div class="ui inverted segment">
   <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
-    <h1 class="ui inverted header">mh1's Gear Simulator broken af</h1>
+    <h1 class="ui inverted header">mh1's Gear Simulator getting there</h1>
     <p>"when is this going to be done" -gooby I bet</p>
     <p>yee haw there's a snake in my boot</p>
     <div class="ui inverted horizontal section divider">e</div>
@@ -136,37 +637,168 @@
   </div>
 
   <div class="ui two column grid">
-  <div class="ui main text container">
-	<input type="text" id="itemid">itemid
-	<input type="text" id="itemname">itemname
-	<input type="text" id="meleedef">meleedef
-	<input type="text" id="rangdef">rangdef
-	<input type="text" id="psydef">psydef
-	<input type="text" id="meleeacc">meleeacc
-	<input type="text" id="rangacc">rangacc
-	<input type="text" id="psyacc">psyacc
-	<input type="text" id="mindmg">mindmg
-	<input type="text" id="maxdmg">maxdmg
-	<input type="text" id="tickspeed">tickspeed
-	<input type="text" id="range">range
-	<input type="text" id="levelreq">levelreq
-	<input type="text" id="skilllvlreq">
-	<input type="text" id="craftlvlreq">
-	<input type="text" id="heals">
-	<input type="text" id="destroxp">
-	<input type="text" id="alchvalue">
-	</div>
   <div class="ui main text container" id="option">
-
+<div class="ui equal width centered grid" style="margin-top:-40px;">
 
     <form class="comboExample">
-    <h4>Subcategory</h4>
-    <select class="ui search selection dropdown" name="example_select" id="weaponinput" onChange="combo_change(this)">
-	<select class="ui search selection dropdown" name="example_select" id="weaponinput" onChange="combo_change(this)">
-    </select> 
-    </form>
-
+	<div class="one wide column">
+	helmet
+	<div class="ui inverted transparent input">
+	<select class="ui inverted selection dropdown" id="helmetinput" onChange="helmettime(this)"></select> 
+	</div>
+	</div>
+	<div class="one wide column">
+	chest
+	<div class="ui inverted transparent input">
+	<select class="ui inverted selection dropdown" id="chestinput" onChange="chesttime(this)"></select> 
+	</div>
+	</div>
+	<div class="one wide column">
+	legs
+	<div class="ui inverted transparent input"> 
+	<select class="ui inverted selection dropdown" id="legsinput" onChange="legstime(this)"></select> 
+	</div>
+	</div>
+	<div class="one wide column">
+	boots
+	<div class="ui inverted transparent input"> 
+	<select class="ui inverted selection dropdown" id="bootsinput" onChange="bootstime(this)"></select> 
+	</div>
+	</div>
+	<div class="one wide column">
+	gloves
+	<div class="ui inverted transparent input"> 
+	<select class="ui inverted selection dropdown" id="glovesinput" onChange="glovestime(this)"></select> 
+	</div>
+	</div>
+	<div class="one wide column">
+	weapon
+	<div class="ui inverted transparent input"> 
+    <select class="ui inverted selection dropdown" id="weaponinput" onChange="weapontime(this)"></select> 
+	</div>
+	</div>
+	<div class="one wide column">
+	offhand
+	<div class="ui inverted transparent input"> 
+	<select class="ui inverted selection dropdown" id="offhandinput" onChange="offhandtime(this)"></select> 
+	</div>
+	</div>
+	<div class="one wide column">
+	ammo
+	<div class="ui inverted transparent input"> 
+	<select class="ui inverted selection dropdown" id="ammoinput" onChange="ammotime(this)"></select> 
+	</div>
+	</div>
+	<div class="one wide column">
+	spell
+	<div class="ui inverted transparent input"> 
+	<!-- spell<select class="ui search selection dropdown" id="spellinput" onChange="combo_change(this)"></select>  -->
+	</div>
+	</div>
+	</form>
+	</div>
+    
   </div>
+  
+    <div class="ui main text container">
+	<div class="ui equal width centered grid" style="margin-top:-40px;">
+	<div class="one wide column">
+	meleedef
+	<div class="ui inverted transparent input">
+	<input type="text" id="meleedef" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	rangdef
+	<div class="ui inverted transparent input">
+	<input type="text" id="rangdef" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	psydef
+	<div class="ui inverted transparent input">
+	<input type="text" id="psydef" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	meleeacc
+	<div class="ui inverted transparent input">
+	<input type="text" id="meleeacc" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	rangacc
+	<div class="ui inverted transparent input">
+	<input type="text" id="rangacc" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	psyacc
+	<div class="ui inverted transparent input">
+	<input type="text" id="psyacc" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	mindmg
+	<div class="ui inverted transparent input">
+	<input type="text" id="mindamage" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	maxdmg
+	<div class="ui inverted transparent input">
+	<input type="text" id="maxdamage" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	tickspeed
+	<div class="ui inverted transparent input">
+	<input type="text" id="tickspeed" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	range
+	<div class="ui inverted transparent input">
+	<input type="text" id="range" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	levelreq
+	<div class="ui inverted transparent input">
+	<input type="text" id="levelreq" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	skilllvlreq
+	<div class="ui inverted transparent input">
+	<input type="text" id="skilllevelreq" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	extralevelreq
+	<div class="ui inverted transparent input">
+	<input type="text" id="extralevelreq" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	healamount
+	<div class="ui inverted transparent input">
+	<input type="text" id="healamount" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	destroxp
+	<div class="ui inverted transparent input">
+	<input type="text" id="destroxp" placeholder="0">
+	</div>
+	</div>
+	<div class="one wide column">
+	alchvalue
+	<div class="ui inverted transparent input">
+	<input type="text" id="alchvalue" placeholder="0">
+	</div>
+	</div>
+	</div>
  </div>
 </div>
 </div>
@@ -174,4 +806,8 @@
 <!-- start of end footer section --> 
 <div id="footer"></div>
 <!-- end of end footer section --> 
-</body></html>
+</body>
+<script>
+
+</script>
+</html>
