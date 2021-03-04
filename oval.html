@@ -540,12 +540,12 @@ text-align: center;
 <div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" style="width: 100px;">Run</button></div>
   <div class="ui centered grid" style="padding-left:50px;padding-right:50px;">
 
-  <div class="ui main text container" style="margin: 90 0 0 0;">
-	<textarea id="ovalgithubpull" name="ovalscript" style="height: 500px; width: 700px;margin-top:-50px; color: rgba(255,255,255,.9); background: #1b1c1d; text-align:center;resize: none;margin-left: -30px;background: rgb(0 0 0 / 8%);overflow-x: hidden;"></textarea>
+  <div class="ui main text container" style="margin: 90 0 0 0;" data-tooltip="Use the top section to change the values above" data-inverted="" data-position="bottom center">
+	<textarea id="ovalgithubpull" name="ovalscript" style="height: 500px; width: 700px;margin-top:-50px; color: rgba(255,255,255,.9); background: #1b1c1d; text-align:center;resize: none;margin-left: -30px;background: rgb(0 0 0 / 8%);overflow-x: hidden;" readonly></textarea>
        <script> $("#ovalgithubpull").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/oval/OvalCombatCalculator.r"); </script>
 
 </div>
-  <div class="ui main text container" style="margin: 90 0 0 0;">
+  <div class="ui main text container" style="margin: 90 0 0 0;" data-tooltip="It can take up to 20s to load" data-inverted="" data-position="bottom center">
    <textarea id="code" name="ovaloutput" style="height: 500px; width: 700px; color: rgba(255,255,255,.9); background: #1b1c1d;margin-top:-50px; text-align:center;resize: none;padding-top:20px;background: rgb(0 0 0 / 8%);" readonly></textarea>
   </div>
   
