@@ -17,13 +17,12 @@
 
 	
     $(document).ready(function(){
-	
-
+////////////////////////////////////////////	
 	//shitty way of grabbing input box text and replacing in 
 	//health
 	OVALMYHEALTH.addEventListener("focusout", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
-	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nHealth = .*/g, '\nHealth = ' + this.value);
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nHealth = .*/, '\nHealth = ' + this.value);
 	});
 	//shitty way of grabbing input box text and replacing in 
 	//health
@@ -54,15 +53,13 @@
 	OVALMYPSY.addEventListener("focusout", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nPsychic = .*/, '\nPsychic = ' + this.value);
-	});
-	
-	
-	
+	});	
+////////////////////////////////////////////	
 	//shitty way of grabbing input box text and replacing in 
 	//type
 	OVALMYTYPE.addEventListener("change", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
-	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nType = \"[a-zA-Z]*\"/g, '\nType = \"' + this.value + '\"');
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nType = \"[a-zA-Z]\"/g, '\nType = \"' + this.value + '\"');
 	});
 	//shitty way of grabbing input box text and replacing in 
 	//hitmax
@@ -118,8 +115,88 @@
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nPsychicAccuracy = .*/, '\nPsychicAccuracy = ' + this.value);
 	});
-	
-	
+////////////////////////////////////////////	
+	//shitty way of grabbing input box text and replacing in sheet
+	//healamount
+	OVALMYHEALAMT.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nHealingAmount = .*/, '\nHealingAmount = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//healquantity
+	OVALMYHEALQUANT.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nHealingQuantity = .*/, '\nHealingQuantity = ' + this.value + ' # Number of food brought per trip');
+	});	
+////////////////////////////////////////////	
+	//shitty way of grabbing input box text and replacing in 
+	//e combat lvl
+	MILFMYCBTLVL.addEventListener("change", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.CombatLevel = .*/, '\nE.CombatLevel = ' + this.value + ' # Use 0 if you don\'t want xp stats');
+	});
+	//shitty way of grabbing input box text and replacing in 
+	//e combat style
+	MILFMYTYPE.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Type = \"[a-zA-Z]\"/, '\nE.Type = \"' + this.value + '\"');
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//e health
+	MILFMYHEALTH.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Health = .*/, '\nE.Health = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//e max damage
+	MILFMYMAX.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.HitMax = .*/, '\nE.HitMax = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//e attackspeed
+	MILFMYSPEED.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.AttackSpeed = .*/, '\nE.AttackSpeed = ' + this.value + ' # Use 2 for Zenitsu\. Otherwise use 4');
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//e accuracy
+	MILFMYACC.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Accuracy = .*/, '\nE.Accuracy = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//e defense
+	MILFMYDEF.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Defense = .*/, '\nE.Defense = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//e melee
+	MILFMYMELEE.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Melee  .*/, '\nE.Melee  ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//e ranging
+	MILFMYRANGE.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Ranging = .*/, '\nE.Ranging = ' + this.value);
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//e psychic
+	MILFMYPSY.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Psychic = .*/, '\nE.Psychic = ' + this.value);
+	});
+////////////////////////////////////////////
+	//shitty way of grabbing input box text and replacing in sheet
+	//toxic punk hazard gooby shit
+	GOOBY.addEventListener("focusout", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nToxic = [a-zA-Z]/, '\nToxic = ' + this.value);
+	});
+////////////////////////////////////////////
 		
         $("button").click(function(){
 
@@ -134,7 +211,7 @@
 			$(this).removeClass('black ui button').addClass('ui secondary double loading button');
             setTimeout(function () {
 				$(this).removeClass('ui double loading button').addClass('ui inverted basic button');
-            }.bind(this), 5000);
+            }.bind(this), 6000);
 
 		    $.ajax ({
 			        url: "https://rextester.com/rundotnet/api",
@@ -155,6 +232,9 @@
 			    }).fail(function(data, err) {
 			        document.getElementsByName('ovaloutput')[0].value="fail " + JSON.stringify(data) + " " + JSON.stringify(err);
 		        });
+				
+				var elmntToView = document.getElementById("GOOBY");
+			elmntToView.scrollIntoView({behavior: "smooth"});
 	    });
     });
 	
@@ -230,19 +310,19 @@ text-align: center;
   <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
     <h1 class="ui inverted header">Oval's R Combat Simulator</h1>
     <p>End to end Combat Simulator built in R</p>
-    <p>blah blah blah text inputs just use the sheet for now</p>
-    <div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" style="width: 100px;">Run</button></div>
+    <p>All information can be found on your Character Stats Page and <a href="https://damascus.fandom.com/wiki/Enemies" target="_blank">on the Wiki</a> </p>
+    
 	<div class="ui centered grid">
 	</div>
   </div>
 
-  <div class="ui inverted segment">
+<div class="ui inverted segment">
   
-    <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-top:0;margin-bottom:10;">
-    <h1 class="ui inverted header">Player Skill Stats</h1>
+  <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-top:0;margin-bottom:0;">
+    <h1 class="ui inverted header"><div class="ui inverted horizontal section divider">Player Skill Stats</div></h1>
   </div>
   <!-- Player Char Stats -->
-	<div class="ui equal width centered grid">
+<div class="ui equal width centered grid" style="margin-top:-40px;">	
 	<div class="one wide column">
 		Health
 		<div class="ui input">
@@ -282,14 +362,11 @@ text-align: center;
 </div>
 
 
-  <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-top:20;margin-bottom:10;">
-    <h1 class="ui inverted header">Player Armor/Weapon Stats</h1>
+<div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-top:20;margin-bottom:0;">
+    <h1 class="ui inverted header"><div class="ui inverted horizontal section divider">Player Armor/Weapon Stats</div></h1>
   </div>
-
-
-<div class="ui equal width centered grid">
-	
-	<div class="one wide column" title="Use M or R or P for Melee, Ranging, Psychic respectively">
+<div class="ui equal width centered grid" style="margin-top:-40px;">
+	<div class="one wide column" data-tooltip="Use M or R or P for Melee, Ranging, Psychic respectively" data-position="center">
 		Combat Style         
 		<select class="ui dropdown" id="OVALMYTYPE">
 		  <option>M</option>
@@ -309,7 +386,7 @@ text-align: center;
 			<input type="text" placeholder="51" id="OVALMYMIN">
 		</div>
 	</div>
-	<div class="one wide column" title="Speed in ticks, if copying from your Character Stats, then multiply by 2">
+	<div class="one wide column" data-tooltip="Speed in ticks, if copying from your Character Stats, then multiply by 2" data-position="center">
 		Attack Speed
 		<div class="ui input">
 			<input type="text" placeholder="3" id="OVALMYSPEED">
@@ -352,48 +429,115 @@ text-align: center;
 		</div>
 	</div>
 </div>
- <!-- Player Armor/Wep Stats -->
-<!-- <div class="ui centered grid"> -->
-	<!-- <h1 style="margin-top:15px;"> Player Armor/Wep Stats </h1> -->
-	<!-- <div class="one wide column"> -->
-		<!-- Health -->
-		<!-- <div class="ui input"> -->
-			<!-- <input type="text" placeholder="99" id="OVALMYHEALTH"> -->
-		<!-- </div> -->
-	<!-- </div> -->
-	<!-- <div class="one wide column"> -->
-		<!-- Accuracy -->
-		<!-- <div class="ui input"> -->
-			<!-- <input type="text" placeholder="99" id="OVALMYACC"> -->
-		<!-- </div> -->
-	<!-- </div> -->
-	<!-- <div class="one wide column"> -->
-		<!-- Defense -->
-		<!-- <div class="ui input"> -->
-			<!-- <input type="text" placeholder="99" id="OVALMYDEF"> -->
-		<!-- </div> -->
-	<!-- </div> -->
-	<!-- <div class="one wide column"> -->
-		<!-- Melee -->
-		<!-- <div class="ui input"> -->
-			<!-- <input type="text" placeholder="99" id="OVALMYMELEE"> -->
-		<!-- </div> -->
-	<!-- </div> -->
-	<!-- <div class="one wide column"> -->
-		<!-- Ranging -->
-		<!-- <div class="ui input"> -->
-			<!-- <input type="text" placeholder="99" id="OVALMYRANGE"> -->
-		<!-- </div> -->
-	<!-- </div> -->
-	<!-- <div class="one wide column"> -->
-		<!-- Psychic -->
-		<!-- <div class="ui input"> -->
-			<!-- <input type="text" placeholder="99" id="OVALMYPSY"> -->
-		<!-- </div> -->
-	<!-- </div> -->
-<!-- </div> -->
+
+
+<div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-top:20;margin-bottom:0;">
+		<h1 class="ui inverted header"><div class="ui inverted horizontal section divider">Healing Stats</div></h1>
+	</div>
+  <!-- Player Char Stats -->
+	<div class="ui equal width centered grid" style="margin-top:-40px;">
+		<div class="one wide column" data-tooltip="How much does your food heal for? EX: Large HP Pots heal for 20, Squid heals for 24" data-position="center">
+			Healing Amount
+			<div class="ui input">
+				<input type="text" placeholder="24" id="OVALMYHEALAMT">
+			</div>
+		</div>
+		<div class="one wide column" data-tooltip="How much food are you bringing?" data-position="center">
+			Healing Quantity
+			<div class="ui input">
+				<input type="text" placeholder="25" id="OVALMYHEALQUANT">
+			</div>
+		</div>
+	</div>
 </div>
 
+
+<div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-top:20;margin-bottom:0;">
+    <h1 class="ui inverted header"><div class="ui inverted horizontal section divider">Enemy Stats</div></h1>
+  </div>
+<div class="ui equal width centered grid" style="margin-top:-40px;">
+	<div class="one wide column">
+		Enemy Combat Level
+		<div class="ui input">
+			<input type="text" placeholder="89" id="MILFMYCBTLVL">
+		</div>
+	</div>
+	<div class="one wide column" data-tooltip="Use M or R or P for Melee, Ranging, Psychic respectively" data-position="center">
+		Enemy Combat Style         
+		<select class="ui dropdown" id="MILFMYTYPE">
+		  <option>M</option>
+		  <option>R</option>
+		  <option>P</option>
+		</select>
+	</div>
+	<div class="one wide column">
+		Enemy Health
+		<div class="ui input">
+			<input type="text" placeholder="51" id="MILFMYHEALTH">
+		</div>
+	</div>
+	<div class="one wide column">
+		Enemy Max Damage
+		<div class="ui input">
+			<input type="text" placeholder="3" id="MILFMYMAX">
+		</div>
+	</div>
+	<div class="one wide column">
+		Enemy Attack Speed
+		<div class="ui input">
+			<input type="text" placeholder="4" id="MILFMYSPEED" data-tooltip="Speed in ticks, if your number is in seconds then multiply by 2." data-position="center">
+		</div>
+	</div>
+	<div class="one wide column">
+		Enemy Accuracy
+		<div class="ui input">
+			<input type="text" placeholder="200" id="MILFMYACC">
+		</div>
+	</div>
+	<div class="one wide column">
+		Enemy Defense
+		<div class="ui input">
+			<input type="text" placeholder="69" id="MILFMYDEF">
+		</div>
+	</div>
+	<div class="one wide column">
+		Enemy Melee
+		<div class="ui input">
+			<input type="text" placeholder="1" id="MILFMYMELEE">
+		</div>
+	</div>
+	<div class="one wide column">
+		Enemy Ranging
+		<div class="ui input">
+			<input type="text" placeholder="1" id="MILFMYRANGE">
+		</div>
+	</div>
+	<div class="one wide column">
+		Enemy Psychic
+		<div class="ui input">
+			<input type="text" placeholder="420" id="MILFMYPSY">
+		</div>
+	</div>
+</div>
+
+
+	<div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-top:20;margin-bottom:0;">
+		<h1 class="ui inverted header"><div class="ui inverted horizontal section divider">Healing Stats</div></h1>
+	</div>
+  <!-- toxic -->
+	<div class="ui equal width centered grid" style="margin-top:-40px;">
+		<div class="one wide column" data-tooltip="Use T if fighting on Punk Hazard without full Hazmat equipped, otherwise use F" data-position="center">
+			Punk Hazard
+			<select class="ui dropdown" id="GOOBY">
+				<option hidden>F</option>
+				<option>T</option>
+				<option>F</option>
+			</select>
+		</div>
+	</div>
+</div>
+
+<div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" style="width: 100px;">Run</button></div>
   <div class="ui centered grid" style="padding-left:50px;padding-right:50px;">
 
   <div class="ui main text container" style="margin: 90 0 0 0;">
@@ -448,6 +592,27 @@ return /^-?\d*$/.test(value); });
 setInputFilter(document.getElementById("OVALMYPSYACC"), function(value) {
 return /^-?\d*$/.test(value); });
 
+setInputFilter(document.getElementById("OVALMYHEALAMT"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALMYHEALQUANT"), function(value) {
+return /^-?\d*$/.test(value); });
 
-  
+setInputFilter(document.getElementById("MILFMYCBTLVL"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("MILFMYHEALTH"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("MILFMYMAX"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("MILFMYSPEED"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("MILFMYACC"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("MILFMYDEF"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("MILFMYMELEE"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("MILFMYRANGE"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("MILFMYPSY"), function(value) {
+return /^-?\d*$/.test(value); });
 </script></html>
