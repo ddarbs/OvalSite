@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
 <script src="http://damascustools.com/assets/scripts/sorttable.js"></script>
-<script src="https://raw.githubusercontent.com/avianey/jqDoubleScroll/master/jquery.doubleScroll.js"></script>
 
   <script>
   
@@ -45,7 +44,8 @@
                     row += "<tr>"
 
                 $.each(valArr, function(){
-                    row += "<td>" + this +"</td>"
+                    row += "<td><a href=\"https://damascus.fandom.com/wiki/Special:Search?query=" + this + "\" target=\"_blank\">" + this +"</a></td>"
+
                 });     
 
                     row += "</tr>"
@@ -64,6 +64,13 @@
        console.log('A failure ocurred');
     });
 
+	
+	$('td').click(function() {
+        var href = $(this).find("a").attr("href");
+        if(href) {
+            window.location = href;
+        }
+    });
 });
 
 function itemlistSearch() {
@@ -112,7 +119,14 @@ function itemlistSearch() {
 	.ui.table>tbody>tr>td {
 		cursor: default;
 	}
-
+	
+	a {
+	color: rgba(255,255,255,.9);
+	}
+	
+	a:hover {
+	color: rgb(182 239 245 / 90%);
+	}
   <!-- end of page specific styling -->
   </style>
   <!-- end of extra style section -->
