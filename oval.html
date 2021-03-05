@@ -219,7 +219,7 @@
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Defense = .*/, '\nE.Defense = ' + presetdef);
 	document.getElementById('MILFMYDEF').value = presetdef
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
-	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Melee .*/, '\nE.Melee  ' + presetmel);
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Melee .*/, '\nE.Melee = ' + presetmel);
 	document.getElementById('MILFMYMELEE').value = presetmel
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Ranging = .*/, '\nE.Ranging = ' + presetran);
@@ -277,7 +277,7 @@
 	//e melee
 	MILFMYMELEE.addEventListener("focusout", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
-	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Melee  .*/, '\nE.Melee  ' + this.value);
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Melee  .*/, '\nE.Melee = ' + this.value);
 	});
 	//shitty way of grabbing input box text and replacing in sheet
 	//e ranging
