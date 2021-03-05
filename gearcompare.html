@@ -28,19 +28,7 @@
 			}
 
 			})		
-        d3.csv("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/mh1/gearlisttest.csv",
 
-            function(d) {
-                return {
-
-                    TPC: d.ItemID,
-                    Subcategory: d.ItemName,
-                };  
-            },      
-            function(data) {
-                <!-- console.log(data) -->
-                populate_ComboExample(data)
-            });
 			
 		// TEEHEE 
 		helmetmaccmod= 0;
@@ -172,100 +160,6 @@
 		ammodestroxp= 0;
 		ammoalchvalue= 0;		
         }
-
-        function populate_ComboExample(data) {
-
-            var example_list= {};
-            var example_text= {};
-
-            <!-- console.log(data.length) -->
-            for (i=0;i<data.length; i++ ) { // you can calculate the length with js, I choose 10 here for the example
-                example_list[i]=data[i].TPC;	
-                example_text[i]=data[i].Subcategory;
-            }
-
-			// DROPDOWN LISTS BASED ON GEAR LIST TEST
-			var helmet = document.getElementById("helmetinput")
-            for (i=0; i < data.length; i++ ) {
-                var el = document.createElement("option");
-                var temp=example_text[i]
-                el.textContent = temp;
-                el.value =example_list[i];
-				helmet.appendChild(el);
-            }
-			
-			var chest = document.getElementById("chestinput")
-            for (i=0; i < data.length; i++ ) {
-                var el = document.createElement("option");
-                var temp=example_text[i]
-                el.textContent = temp;
-                el.value =example_list[i];
-				chest.appendChild(el);
-            }
-			
-			var legs = document.getElementById("legsinput")
-			for (i=0; i < data.length; i++ ) {
-                var el = document.createElement("option");
-                var temp=example_text[i]
-                el.textContent = temp;
-                el.value =example_list[i];
-				legs.appendChild(el);				
-            }
-			
-			var boots = document.getElementById("bootsinput")
-			for (i=0; i < data.length; i++ ) {
-                var el = document.createElement("option");
-                var temp=example_text[i]
-                el.textContent = temp;
-                el.value =example_list[i];
-				boots.appendChild(el);	
-            }
-			
-			var gloves = document.getElementById("glovesinput")
-			for (i=0; i < data.length; i++ ) {
-                var el = document.createElement("option");
-                var temp=example_text[i]
-                el.textContent = temp;
-                el.value =example_list[i];
-				gloves.appendChild(el);	
-            }
-			
-            var weapon = document.getElementById("weaponinput")
-            for (i=0; i < data.length; i++ ) {
-                var el = document.createElement("option");
-                var temp=example_text[i]
-                el.textContent = temp;
-                el.value =example_list[i];
-				weapon.appendChild(el);
-            }
-			
-			var offhand = document.getElementById("offhandinput")
-			for (i=0; i < data.length; i++ ) {
-                var el = document.createElement("option");
-                var temp=example_text[i]
-                el.textContent = temp;
-                el.value =example_list[i];
-				offhand.appendChild(el);				
-            }
-			
-			var ammo = document.getElementById("ammoinput")
-			for (i=0; i < data.length; i++ ) {
-                var el = document.createElement("option");
-                var temp=example_text[i]
-                el.textContent = temp;
-                el.value =example_list[i];
-				ammo.appendChild(el);	
-            }
-			
-			<!-- var spell = document.getElementById("spellinput") -->
-			<!-- for (i=0; i < data.length; i++ ) { -->
-                <!-- var el = document.createElement("option"); -->
-                <!-- var temp=example_text[i] -->
-                <!-- el.textContent = temp; -->
-                <!-- el.value =example_list[i]; -->
-				<!-- spell.appendChild(el);	 -->
-            <!-- }			 -->
-        }
 		
 		function addemup() {
 			totalmaccmod = +helmetmaccmod + +chestmaccmod + +legsmaccmod + +bootsmaccmod + +glovesmaccmod + +weaponmaccmod + +offhandmaccmod + +ammomaccmod;
@@ -284,7 +178,7 @@
 			totalrange = +helmetrange + +chestrange + +legsrange + +bootsrange + +glovesrange + +weaponrange + +offhandrange + +ammorange;
 			totaldestroxp = +helmetdestroxp + +chestdestroxp + +legsdestroxp + +bootsdestroxp + +glovesdestroxp + +weapondestroxp + +offhanddestroxp + +ammodestroxp;
 			totalalchvalue = +helmetalchvalue + +chestalchvalue + +legsalchvalue + +bootsalchvalue + +glovesalchvalue + +weaponalchvalue + +offhandalchvalue + +ammoalchvalue;
-
+			
 			document.getElementById('meleeacc').value=totalmaccmod;   
 			document.getElementById('rangacc').value=totalraccmod;
 			document.getElementById('psyacc').value=totalpaccmod;
@@ -307,12 +201,11 @@
 		
 		
 		function helmettime(thelist) {
-			var idx_1 = thelist.selectedIndex;
-            itemname = thelist.options[idx_1].value;	// item name
+			itemname = document.getElementById("helmetinput").value;	// item name
 			//grabbing helmet stats and assigning to variables
 			var outputhelmet = [];
 			bigresults.forEach(e => {
-			  if (e[0] == itemname) {
+			  if (e[1] == itemname) {
 				outputhelmet.push(e.slice(1));
 			  }
 			});
@@ -340,12 +233,11 @@
 		}
 		
 		function chesttime(thelist) {
-			var idx_1 = thelist.selectedIndex;
-            itemname = thelist.options[idx_1].value;	// item name
+			itemname = document.getElementById("chestinput").value;	// item name
 			//grabbing chest stats and assigning to variables
 			var outputchest = [];
 			bigresults.forEach(e => {
-			  if (e[0] == itemname) {
+			  if (e[1] == itemname) {
 				outputchest.push(e.slice(1));
 			  }
 			});
@@ -373,12 +265,11 @@
 		}
 		
 		function legstime(thelist) {
-			var idx_1 = thelist.selectedIndex;
-            itemname = thelist.options[idx_1].value;	// item name
+			itemname = document.getElementById("legsinput").value;	// item name
 			//grabbing legs stats and assigning to variables
 			var outputlegs = [];
 			bigresults.forEach(e => {
-			  if (e[0] == itemname) {
+			  if (e[1] == itemname) {
 				outputlegs.push(e.slice(1));
 			  }
 			});
@@ -405,12 +296,11 @@
 		}
 		
 		function bootstime(thelist) {
-			var idx_1 = thelist.selectedIndex;
-            itemname = thelist.options[idx_1].value;	// item name
+			itemname = document.getElementById("bootsinput").value;	// item name
 			//grabbing boots stats and assigning to variables
 			var outputboots = [];
 			bigresults.forEach(e => {
-			  if (e[0] == itemname) {
+			  if (e[1] == itemname) {
 				outputboots.push(e.slice(1));
 			  }
 			});
@@ -437,12 +327,11 @@
 		}
 		
 		function glovestime(thelist) {
-			var idx_1 = thelist.selectedIndex;
-            itemname = thelist.options[idx_1].value;	// item name
+			itemname = document.getElementById("glovesinput").value;	// item name
 			//grabbing gloves stats and assigning to variables
 			var outputgloves = [];
 			bigresults.forEach(e => {
-			  if (e[0] == itemname) {
+			  if (e[1] == itemname) {
 				outputgloves.push(e.slice(1));
 			  }
 			});
@@ -469,12 +358,11 @@
 		}
 		
 		function weapontime(thelist) {
-			var idx_1 = thelist.selectedIndex;
-            itemname = thelist.options[idx_1].value;	// item name
+            itemname = document.getElementById("weaponinput").value;	// item name
 			//grabbing weapon stats and assigning to variables
 			var outputweapon = [];
 			bigresults.forEach(e => {
-			  if (e[0] == itemname) {
+			  if (e[1] == itemname) {  //swap e[0] to e[1] to capture item name from our dropdown instead
 				outputweapon.push(e.slice(1));
 			  }
 			});
@@ -501,12 +389,11 @@
 		}
 		
 		function offhandtime(thelist) {
-			var idx_1 = thelist.selectedIndex;
-            itemname = thelist.options[idx_1].value;	// item name
+			itemname = document.getElementById("offhandinput").value;	// item name
 			//grabbing offhand stats and assigning to variables
 			var outputoffhand = [];
 			bigresults.forEach(e => {
-			  if (e[0] == itemname) {
+			  if (e[1] == itemname) {
 				outputoffhand.push(e.slice(1));
 			  }
 			});
@@ -533,12 +420,11 @@
 		}
 		
 		function ammotime(thelist) {
-			var idx_1 = thelist.selectedIndex;
-            itemname = thelist.options[idx_1].value;	// item name
+			itemname = document.getElementById("ammoinput").value;	// item name
 			//grabbing ammo stats and assigning to variables
 			var outputammo = [];
 			bigresults.forEach(e => {
-			  if (e[0] == itemname) {
+			  if (e[1] == itemname) {
 				outputammo.push(e.slice(1));
 			  }
 			});
@@ -644,55 +530,476 @@ min-height: 32;
 	<div class="one wide column">
 	helmet
 	<div class="ui inverted transparent input">
-	<select class="ui inverted selection dropdown" id="helmetinput" onChange="helmettime(this)"></select> 
+	<select class="ui inverted selection dropdown" id="helmetinput" onChange="helmettime(this)">
+	<option>none</option>
+	<option>Copper Helmet</option>
+	<option>Bronze Helmet</option>
+	<option>Iron Helmet</option>
+	<option>Steel Helmet</option>
+	<option>Psywood Helmet</option>
+	<option>E. Copper Helmet</option>
+	<option>E. Gold Helmet</option>
+	<option>Damascus Helmet</option>
+	<option>E. Damascus Helmet</option>
+	<option>Leather Hood</option>
+	<option>Bear Hide Hood</option>
+	<option>Dragon Hide Hood</option>
+	<option>Unicorn Leather Hood</option>
+	<option>Honey Badger Hide Hood</option>
+	<option>Fiery Hood</option>
+	<option>Copper Leather Hat</option>
+	<option>Bronze Bear Hat</option>
+	<option>Iron Dragon Hat</option>
+	<option>Steel Unicorn Hat</option>
+	<option>Psywood Honey Badger Hat</option>
+	<option>Cultist Hat</option>
+	<option>Helm of the Bull</option>
+	<option>Hazmat Mask</option>
+	</select> 
 	</div>
 	</div>
 	<div class="one wide column">
 	chest
 	<div class="ui inverted transparent input">
-	<select class="ui inverted selection dropdown" id="chestinput" onChange="chesttime(this)"></select> 
+	<select class="ui inverted selection dropdown" id="chestinput" onChange="chesttime(this)">
+	<option>none</option>
+	<option>Leather Top</option>
+	<option>Bear Hide Top</option>
+	<option>Dragon Hide Top</option>
+	<option>Unicorn Leather Top</option>
+	<option>Honey Badger Hide Top</option>
+	<option>Copper Leather Robe Top</option>
+	<option>Bronze Bear Robe Top</option>
+	<option>Iron Dragon Robe Top</option>
+	<option>Steel Unicorn Robe Top</option>
+	<option>Psywood Honey Badger Robe Top</option>
+	<option>Fiery Top</option>
+	<option>Cultist Robe Top</option>
+	<option>Hazmat Top</option>
+	<option>Copper Platebody</option>
+	<option>Bronze Platebody</option>
+	<option>Iron Platebody</option>
+	<option>Steel Platebody</option>
+	<option>Psywood Platebody</option>
+	<option>E. Copper Platebody</option>
+	<option>E. Gold Platebody</option>
+	<option>Damascus Platebody</option>
+	<option>E. Damascus Platebody</option>
+	<option>Copper Chainbody</option>
+	<option>Bronze Chainbody</option>
+	<option>Iron Chainbody</option>
+	<option>Steel Chainbody</option>
+	<option>Psywood Chainbody</option>
+	<option>E. Copper Chainbody</option>
+	<option>E. Gold Chainbody</option>
+	<option>Damascus Chainbody</option>
+	<option>E. Damascus Chainbody</option>
+	</select> 
 	</div>
 	</div>
 	<div class="one wide column">
 	legs
 	<div class="ui inverted transparent input"> 
-	<select class="ui inverted selection dropdown" id="legsinput" onChange="legstime(this)"></select> 
+	<select class="ui inverted selection dropdown" id="legsinput" onChange="legstime(this)">
+	<option>none</option>
+	<option>Leather Pants</option>
+	<option>Bear Hide Pants</option>
+	<option>Dragon Hide Pants</option>
+	<option>Unicorn Leather Pants</option>
+	<option>Honey Badger Hide Pants</option>
+	<option>Fiery Pants</option>
+	<option>Hazmat Pants</option>
+	<option>Copper Leather Robe Bottom</option>
+	<option>Bronze Bear Robe Bottom</option>
+	<option>Iron Dragon Robe Bottom</option>
+	<option>Steel Unicorn Robe Bottom</option>
+	<option>Psywood Honey Badger Robe Bottom</option>
+	<option>Cultist Robe Bottom</option>
+	<option>Copper Plateskirt</option>
+	<option>Bronze Plateskirt</option>
+	<option>Iron Plateskirt</option>
+	<option>Steel Plateskirt</option>
+	<option>Psywood Plateskirt</option>
+	<option>E. Copper Plateskirt</option>
+	<option>E. Gold Plateskirt</option>
+	<option>Damascus Plateskirt</option>
+	<option>E. Damascus Plateskirt</option>
+	<option>Copper Platelegs</option>
+	<option>Bronze Platelegs</option>
+	<option>Iron Platelegs</option>
+	<option>Steel Platelegs</option>
+	<option>Psywood Platelegs</option>
+	<option>E. Copper Platelegs</option>
+	<option>E. Gold Platelegs</option>
+	<option>Damascus Platelegs</option>
+	<option>E. Damascus Platelegs</option>
+	</select> 
 	</div>
 	</div>
 	<div class="one wide column">
 	boots
 	<div class="ui inverted transparent input"> 
-	<select class="ui inverted selection dropdown" id="bootsinput" onChange="bootstime(this)"></select> 
+	<select class="ui inverted selection dropdown" id="bootsinput" onChange="bootstime(this)">
+	<option>none</option>
+	<option>Leather Boots</option>
+	<option>Bear Hide Boots</option>
+	<option>Dragon Hide Boots</option>
+	<option>Unicorn Leather Boots</option>
+	<option>Honey Badger Hide Boots</option>
+	<option>Copper Boots</option>
+	<option>Bronze Boots</option>
+	<option>Iron Boots</option>
+	<option>Steel Boots</option>
+	<option>Psywood Boots</option>
+	<option>E. Copper Boots</option>
+	<option>E. Gold Boots</option>
+	<option>Damascus Boots</option>
+	<option>Copper Leather Boots</option>
+	<option>Bronze Bear Boots</option>
+	<option>Iron Dragon Boots</option>
+	<option>Steel Unicorn Boots</option>
+	<option>Psywood Honey Badger Boots</option>
+	<option>Boots of the Bull</option>
+	<option>Fiery Boots</option>
+	<option>Cultist Boots</option>
+	<option>E. Damascus Boots</option>
+	<option>Hazmat Boots</option>
+	</select> 
 	</div>
 	</div>
 	<div class="one wide column">
 	gloves
 	<div class="ui inverted transparent input"> 
-	<select class="ui inverted selection dropdown" id="glovesinput" onChange="glovestime(this)"></select> 
+	<select class="ui inverted selection dropdown" id="glovesinput" onChange="glovestime(this)">
+	<option>none</option>
+	<option>Leather Gloves</option>
+	<option>Bear Hide Gloves</option>
+	<option>Dragon Hide Gloves</option>
+	<option>Unicorn Leather Gloves</option>
+	<option>Honey Badger Hide Gloves</option>
+	<option>Copper Gloves</option>
+	<option>Bronze Gloves</option>
+	<option>Iron Gloves</option>
+	<option>Steel Gloves</option>
+	<option>Psywood Gloves</option>
+	<option>E. Copper Gloves</option>
+	<option>E. Gold Gloves</option>
+	<option>Damascus Gloves</option>
+	<option>Copper Leather Gloves</option>
+	<option>Bronze Bear Gloves</option>
+	<option>Iron Dragon Gloves</option>
+	<option>Steel Unicorn Gloves</option>
+	<option>Psywood Honey Badger Gloves</option>
+	<option>Fiery Gloves</option>
+	<option>Cultist Gloves</option>
+	<option>E. Damascus Gloves</option>
+	<option>Hazmat Gloves</option>
+	</select> 
 	</div>
 	</div>
 	<div class="one wide column">
 	weapon
 	<div class="ui inverted transparent input"> 
-    <select class="ui inverted selection dropdown" id="weaponinput" onChange="weapontime(this)"></select> 
+    <select class="ui inverted selection dropdown" id="weaponinput" onChange="weapontime(this)">
+	<option>none</option>
+	<option>Copper Dagger</option>
+	<option>Copper Short Sword</option>
+	<option>Copper Long Sword</option>
+	<option>Copper Katana</option>
+	<option>Copper Battleaxe</option>
+	<option>Copper Warhammer</option>
+	<option>Copper Spear</option>
+	<option>Copper 2H Sword</option>
+	<option>Copper Scimitar</option>
+	<option>Copper 2H Warhammer</option>
+	<option>Copper Mace</option>
+	<option>Copper Gladius</option>
+	<option>Copper Halberd</option>
+	<option>Bronze Dagger</option>
+	<option>Bronze Short Sword</option>
+	<option>Bronze Long Sword</option>
+	<option>Bronze Katana</option>
+	<option>Bronze Battleaxe</option>
+	<option>Bronze Warhammer</option>
+	<option>Bronze Spear</option>
+	<option>Bronze 2H Sword</option>
+	<option>Bronze Scimitar</option>
+	<option>Bronze 2H Warhammer</option>
+	<option>Bronze Mace</option>
+	<option>Bronze Gladius</option>
+	<option>Bronze Halberd</option>
+	<option>Iron Dagger</option>
+	<option>Iron Short Sword</option>
+	<option>Iron Long Sword</option>
+	<option>Iron Katana</option>
+	<option>Iron Battleaxe</option>
+	<option>Iron Warhammer</option>
+	<option>Iron Spear</option>
+	<option>Iron 2H Sword</option>
+	<option>Iron Scimitar</option>
+	<option>Iron 2H Warhammer</option>
+	<option>Iron Mace</option>
+	<option>Iron Gladius</option>
+	<option>Iron Halberd</option>
+	<option>Steel Dagger</option>
+	<option>Steel Short Sword</option>
+	<option>Steel Long Sword</option>
+	<option>Steel Katana</option>
+	<option>Steel Battleaxe</option>
+	<option>Steel Warhammer</option>
+	<option>Steel Spear</option>
+	<option>Steel 2H Sword</option>
+	<option>Steel Scimitar</option>
+	<option>Steel 2H Warhammer</option>
+	<option>Steel Mace</option>
+	<option>Steel Gladius</option>
+	<option>Steel Halberd</option>
+	<option>Psywood Dagger</option>
+	<option>Psywood Short Sword</option>
+	<option>Psywood Long Sword</option>
+	<option>Psywood Katana</option>
+	<option>Psywood Battleaxe</option>
+	<option>Psywood Warhammer</option>
+	<option>Psywood Spear</option>
+	<option>Psywood 2H Sword</option>
+	<option>Psywood Scimitar</option>
+	<option>Psywood 2H Warhammer</option>
+	<option>Psywood Mace</option>
+	<option>Psywood Gladius</option>
+	<option>Psywood Halberd</option>
+	<option>E. Copper Dagger</option>
+	<option>E. Copper Short Sword</option>
+	<option>E. Copper Long Sword</option>
+	<option>E. Copper Katana</option>
+	<option>E. Copper Battleaxe</option>
+	<option>E. Copper Warhammer</option>
+	<option>E. Copper Spear</option>
+	<option>E. Copper 2H Sword</option>
+	<option>E. Copper Scimitar</option>
+	<option>E. Copper 2H Warhammer</option>
+	<option>E. Copper Mace</option>
+	<option>E. Copper Gladius</option>
+	<option>E. Copper Halberd</option>
+	<option>E. Gold Dagger</option>
+	<option>E. Gold Short Sword</option>
+	<option>E. Gold Long Sword</option>
+	<option>E. Gold Katana</option>
+	<option>E. Gold Battleaxe</option>
+	<option>E. Gold Warhammer</option>
+	<option>E. Gold Spear</option>
+	<option>E. Gold 2H Sword</option>
+	<option>E. Gold Scimitar</option>
+	<option>E. Gold 2H Warhammer</option>
+	<option>E. Gold Mace</option>
+	<option>E. Gold Gladius</option>
+	<option>E. Gold Halberd</option>
+	<option>Damascus Dagger</option>
+	<option>Damascus Short Sword</option>
+	<option>Damascus Long Sword</option>
+	<option>Damascus Katana</option>
+	<option>Damascus Battleaxe</option>
+	<option>Damascus Warhammer</option>
+	<option>Damascus Spear</option>
+	<option>Damascus 2H Sword</option>
+	<option>Damascus Scimitar</option>
+	<option>Damascus 2H Warhammer</option>
+	<option>Damascus Mace</option>
+	<option>Damascus Gladius</option>
+	<option>Damascus Halberd</option>
+	<option>Small Grenade</option>
+	<option>Small Gas Grenade</option>
+	<option>Small Napalm Grenade</option>
+	<option>Small Freeze Grenade</option>
+	<option>Small Lifesteal Grenade</option>
+	<option>Medium Grenade</option>
+	<option>Medium Gas Grenade</option>
+	<option>Medium Napalm Grenade</option>
+	<option>Medium Freeze Grenade</option>
+	<option>Medium Lifesteal Grenade</option>
+	<option>Large Grenade</option>
+	<option>Large Gas Grenade</option>
+	<option>Large Napalm Grenade</option>
+	<option>Large Freeze Grenade</option>
+	<option>Deadwood Shortbow</option>
+	<option>Deadwood Longbow</option>
+	<option>Pine Shortbow</option>
+	<option>Pine Longbow</option>
+	<option>Oak Shortbow</option>
+	<option>Oak Longbow</option>
+	<option>Willow Shortbow</option>
+	<option>Willow Longbow</option>
+	<option>Yellowwood Shortbow</option>
+	<option>Yellowwood Longbow</option>
+	<option>Psywood Shortbow</option>
+	<option>Psywood Longbow</option>
+	<option>Acacia Shortbow</option>
+	<option>Acacia Longbow</option>
+	<option>Weerwood Shortbow</option>
+	<option>Weerwood Longbow</option>
+	<option>Redwood Shortbow</option>
+	<option>Redwood Longbow</option>
+	<option>Baobab Shortbow</option>
+	<option>Baobab Longbow</option>
+	<option>Deadwood Staff</option>
+	<option>Pine Staff</option>
+	<option>Oak Staff</option>
+	<option>Willow Staff</option>
+	<option>Yellowwood Staff</option>
+	<option>Copper Staff</option>
+	<option>Bronze Staff</option>
+	<option>Iron Staff</option>
+	<option>Steel Staff</option>
+	<option>Psywood Staff</option>
+	<option>Steel Crossbow</option>
+	<option>Steel Pistol</option>
+	<option>Steel Rifle</option>
+	<option>Psywood Crossbow</option>
+	<option>Psywood Pistol</option>
+	<option>Psywood Rifle</option>
+	<option>E. Copper Crossbow</option>
+	<option>E. Copper Pistol</option>
+	<option>E. Copper Rifle</option>
+	<option>E. Gold Crossbow</option>
+	<option>E. Gold Pistol</option>
+	<option>E. Gold Rifle</option>
+	<option>Damascus Crossbow</option>
+	<option>Damascus Pistol</option>
+	<option>Damascus Rifle</option>
+	<option>Slingshot</option>
+	<option>Copper Throwing Knife</option>
+	<option>Bronze Throwing Knife</option>
+	<option>Iron Throwing Knife</option>
+	<option>Steel Throwing Knife</option>
+	<option>Psywood Throwing Knife</option>
+	<option>E. Copper Throwing Knife</option>
+	<option>E. Gold Throwing Knife</option>
+	<option>Damascus Throwing Knife</option>
+	<option>E. Copper Staff</option>
+	<option>Demon Slayer Katana</option>
+	<option>Demonic Scimitar</option>
+	<option>Demonic Staff</option>
+	<option>Demonic Crossbow</option>
+	<option>E. Damascus 2H Warhammer</option>
+	<option>E. Damascus 2H Sword</option>
+	<option>E. Damascus Battleaxe</option>
+	<option>E. Damascus Dagger</option>
+	<option>E. Damascus Gladius</option>
+	<option>E. Damascus Halbred</option>
+	<option>E. Damascus Katana</option>
+	<option>E. Damascus Long Sword</option>
+	<option>E. Damascus Mace</option>
+	<option>E. Damascus Scimitar</option>
+	<option>E. Damascus Short Sword</option>
+	<option>E. Damascus Spear</option>
+	<option>E. Damascus Warhammer
+	</select> 
 	</div>
 	</div>
 	<div class="one wide column">
 	offhand
 	<div class="ui inverted transparent input"> 
-	<select class="ui inverted selection dropdown" id="offhandinput" onChange="offhandtime(this)"></select> 
+	<select class="ui inverted selection dropdown" id="offhandinput" onChange="offhandtime(this)">
+	<option>none</option>
+	<option>Copper Kiteshield</option>
+	<option>Bronze Kiteshield</option>
+	<option>Iron Kiteshield</option>
+	<option>Steel Kiteshield</option>
+	<option>Psywood Kiteshield</option>
+	<option>E. Copper Kiteshield</option>
+	<option>E. Gold Kiteshield</option>
+	<option>Damascus Kiteshield</option>
+	<option>E. Damascus Kiteshield</option>
+	<option>Shield of the Bull</option>
+	<option>Copper Buckler</option>
+	<option>Bronze Buckler</option>
+	<option>Iron Buckler</option>
+	<option>Steel Buckler</option>
+	<option>Psywood Buckler</option>
+	<option>E. Copper Buckler</option>
+	<option>E. Gold Buckler</option>
+	<option>Damascus Buckler</option>
+	<option>E. Damascus Buckler</option>
+	</select> 
 	</div>
 	</div>
 	<div class="one wide column">
 	ammo
 	<div class="ui inverted transparent input"> 
-	<select class="ui inverted selection dropdown" id="ammoinput" onChange="ammotime(this)"></select> 
+	<select class="ui inverted selection dropdown" id="ammoinput" onChange="ammotime(this)">
+	<option>none</option>
+	<option>Copper Deadwood Arrows</option>
+	<option>Copper Pine Arrows</option>
+	<option>Copper Oak Arrows</option>
+	<option>Copper Willow Arrows</option>
+	<option>Copper Yellowwood Arrows</option>
+	<option>Copper Psywood Arrows</option>
+	<option>Copper Acacia Arrows</option>
+	<option>Copper Weerwood Arrows</option>
+	<option>Copper Redwood Arrows</option>
+	<option>Copper Baobab Arrows</option>
+	<option>Bronze Pine Arrows</option>
+	<option>Bronze Oak Arrows</option>
+	<option>Bronze Willow Arrows</option>
+	<option>Bronze Yellowwood Arrows</option>
+	<option>Bronze Psywood Arrows</option>
+	<option>Bronze Acacia Arrows</option>
+	<option>Bronze Weerwood Arrows</option>
+	<option>Bronze Redwood Arrows</option>
+	<option>Bronze Baobab Arrows</option>
+	<option>Iron Oak Arrows</option>
+	<option>Iron Willow Arrows</option>
+	<option>Iron Yellowwood Arrows</option>
+	<option>Iron Psywood Arrows</option>
+	<option>Iron Acacia Arrows</option>
+	<option>Iron Weerwood Arrows</option>
+	<option>Iron Redwood Arrows</option>
+	<option>Iron Baobab Arrows</option>
+	<option>Steel Willow Arrows</option>
+	<option>Steel Yellowwood Arrows</option>
+	<option>Steel Psywood Arrows</option>
+	<option>Steel Acacia Arrows</option>
+	<option>Steel Weerwood Arrows</option>
+	<option>Steel Redwood Arrows</option>
+	<option>Steel Baobab Arrows</option>
+	<option>Psywood Yellowwood Arrows</option>
+	<option>Psywood Arrows</option>
+	<option>Psywood Acacia Arrows</option>
+	<option>Psywood Weerwood Arrows</option>
+	<option>Psywood Redwood Arrows</option>
+	<option>Psywood Baobab Arrows</option>
+	<option>E. Copper Psywood Arrows</option>
+	<option>E. Copper Acacia Arrows</option>
+	<option>E. Copper Weerwood Arrows</option>
+	<option>E. Copper Redwood Arrows</option>
+	<option>E. Copper Baobab Arrows</option>
+	<option>E. Gold Acacia Arrows</option>
+	<option>E. Gold Weerwood Arrows</option>
+	<option>E. Gold Redwood Arrows</option>
+	<option>E. Gold Baobab Arrows</option>
+	<option>Damascus Weerwood Arrows</option>
+	<option>Damascus Redwood Arrows</option>
+	<option>Damascus Baobab Arrows</option>
+	<option>Copper Bolts</option>
+	<option>Bronze Bolts</option>
+	<option>Iron Bolts</option>
+	<option>Steel Bolts</option>
+	<option>Psywood Bolts</option>
+	<option>E. Copper Bolts</option>
+	<option>E. Gold Bolts</option>
+	<option>Damascus Bolts</option>
+	<option>Pebbles</option>
+	<option>Steel Bullets</option>
+	<option>Psywood Bullets</option>
+	<option>E. Copper Bullets</option>
+	<option>E. Gold Bullets</option>
+	<option>Damascus Bullets</option>
+	</select> 
 	</div>
 	</div>
 	<div class="one wide column">
 	spell
 	<div class="ui inverted transparent input"> 
-	<!-- spell<select class="ui search selection dropdown" id="spellinput" onChange="combo_change(this)"></select>  -->
+	<!-- <select class="ui search selection dropdown" id="spellinput" onChange="combo_change(this)"></select>  -->
 	</div>
 	</div>
 	</form>
