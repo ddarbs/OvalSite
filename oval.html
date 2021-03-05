@@ -115,7 +115,45 @@
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nPsychicAccuracy = .*/, '\nPsychicAccuracy = ' + this.value);
 	});
-////////////////////////////////////////////	
+////////////////////////////////////////////
+	//shitty way of grabbing input box text and replacing in 
+	//healing preset
+	OVALMYHEALPRESET.addEventListener("change", function (e) {
+	if (OVALMYHEALPRESET.value === "Squid") {
+		var presethealamount = "24"
+		var presethealquantity = "28"	
+	} else if (OVALMYHEALPRESET.value === "Sturgeon") {
+		var presethealamount = "23"
+		var presethealquantity = "28"
+	} else if (OVALMYHEALPRESET.value === "Tigerfish") {
+		var presethealamount = "20"
+		var presethealquantity = "28"
+	} else if (OVALMYHEALPRESET.value === "Lg HP Pot") {
+		var presethealamount = "20"
+		var presethealquantity = "28"
+	} else if (OVALMYHEALPRESET.value === "Barracuda") {
+		var presethealamount = "18"
+		var presethealquantity = "28"
+	} else if (OVALMYHEALPRESET.value === "Crab") {
+		var presethealamount = "15"
+		var presethealquantity = "28"
+	} else if (OVALMYHEALPRESET.value === "Lobster") {
+		var presethealamount = "12"
+		var presethealquantity = "28"
+	} else if (OVALMYHEALPRESET.value === "Sm HP Pot") {
+		var presethealamount = "10"
+		var presethealquantity = "28"
+	} else if (OVALMYHEALPRESET.value === "None") {
+		var presethealamount = "0"
+		var presethealquantity = "0"
+	};
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nHealingAmount = .*/, '\nHealingAmount = ' + presethealamount);
+	document.getElementById('OVALMYHEALAMT').value = presethealamount
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nHealingQuantity = .*/, '\nHealingQuantity = ' + presethealquantity + ' # Number of food brought per trip');
+	document.getElementById('OVALMYHEALQUANT').value = presethealquantity
+	});	
 	//shitty way of grabbing input box text and replacing in sheet
 	//healamount
 	OVALMYHEALAMT.addEventListener("focusout", function (e) {
@@ -130,6 +168,70 @@
 	});	
 ////////////////////////////////////////////	
 	//shitty way of grabbing input box text and replacing in 
+	//e preset
+	MILFMYPRESET.addEventListener("change", function (e) {
+	if (MILFMYPRESET.value === "Jealous Witch") {
+		var presetlvl = "69420"
+		var presettype = "P"
+		var presethp = "69420"
+		var presetmax = "69420"
+		var presetspeed = "69420"
+		var presetacc = "69420"
+		var presetdef = "69420"
+		var presetmel = "69420"
+		var presetran = "69420"
+		var presetpsy = "69420"
+		var presettox = "T"
+		
+	} else if (MILFMYPRESET === "Dead Eye Jones") {
+	
+	} else if (MILFMYPRESET === "Tikitama") {
+	
+	} else if (MILFMYPRESET === "Jaime Goliver") {
+	
+	} else if (MILFMYPRESET === "Zenitsu") {
+	
+	} else if (MILFMYPRESET === "Cursed Yeti") {
+	
+	} else if (MILFMYPRESET === "Demon Prince") {
+	
+	};
+	
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.CombatLevel = .*/, '\nE.CombatLevel = ' + presetlvl + ' # Use 0 if you don\'t want xp stats');
+	document.getElementById('MILFMYCBTLVL').value = presetlvl
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Type = \"[a-zA-Z]*\"/, '\nE.Type = \"' + presettype + '\"');
+	document.getElementById('MILFMYTYPE').value = presettype
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Health = .*/, '\nE.Health = ' + presethp);
+	document.getElementById('MILFMYHEALTH').value = presethp
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.HitMax = .*/, '\nE.HitMax = ' + presetmax);
+	document.getElementById('MILFMYMAX').value = presetmax
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.AttackSpeed = .*/, '\nE.AttackSpeed = ' + presetspeed + ' # Use 2 for Zenitsu\. Otherwise use 4');
+	document.getElementById('MILFMYSPEED').value = presetspeed
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Accuracy = .*/, '\nE.Accuracy = ' + presetacc);
+	document.getElementById('MILFMYACC').value = presetacc
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Defense = .*/, '\nE.Defense = ' + presetdef);
+	document.getElementById('MILFMYDEF').value = presetdef
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Melee .*/, '\nE.Melee  ' + presetmel);
+	document.getElementById('MILFMYMELEE').value = presetmel
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Ranging = .*/, '\nE.Ranging = ' + presetran);
+	document.getElementById('MILFMYRANGE').value = presetran
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Psychic = .*/, '\nE.Psychic = ' + presetpsy);
+	document.getElementById('MILFMYPSY').value = presetpsy
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nToxic = [a-zA-Z]*/, '\nToxic = ' + presettox);
+	document.getElementById('GOOBY').value = presettox
+	});
+	//shitty way of grabbing input box text and replacing in 
 	//e combat lvl
 	MILFMYCBTLVL.addEventListener("change", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
@@ -139,7 +241,7 @@
 	//e combat style
 	MILFMYTYPE.addEventListener("focusout", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
-	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Type = \"[a-zA-Z]\"/, '\nE.Type = \"' + this.value + '\"');
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Type = \"[a-zA-Z]*\"/, '\nE.Type = \"' + this.value + '\"');
 	});
 	//shitty way of grabbing input box text and replacing in sheet
 	//e health
@@ -306,6 +408,15 @@ padding: 0 1.2em 0 1em;
 min-height: 32;
 }
 
+a {
+	color: rgb(208 251 255 / 90%);
+	transition: 0.3s;
+	}
+	
+	a:hover {
+	color: rgb(134 238 249);
+	}
+
   <!-- end of page specific styling -->
   </style>
   <!-- end of extra style section -->
@@ -321,7 +432,7 @@ min-height: 32;
   <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
     <h1 class="ui inverted header">Oval's R Combat Simulator</h1>
     <p>End to end Combat Simulator built in R</p>
-    <p>All information can be found on your Character Stats Page and <a href="https://damascus.fandom.com/wiki/Enemies" target="_blank">on the Wiki</a> </p>
+    <p>All information can be found on your Character Stats Page, our <a href="gearcompare" target="_blank">Gear Simulator</a>, or on <a href="https://damascus.fandom.com/wiki/Enemies" target="_blank">the Wiki</a> </p>
     
 	<div class="ui centered grid">
 	</div>
@@ -445,8 +556,23 @@ min-height: 32;
 <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-top:20;margin-bottom:0;">
 		<h1 class="ui inverted header"><div class="ui inverted horizontal section divider">Healing Stats</div></h1>
 	</div>
-  <!-- Player Char Stats -->
+  <!-- Heal Stats -->
 	<div class="ui equal width centered grid" style="margin-top:-40px;">
+		<div class="one wide column">
+		Healing Preset
+		<select class="ui inverted selection dropdown" id="OVALMYHEALPRESET">
+		  <option hidden> </option>
+		  <option>Squid</option>
+		  <option>Sturgeon</option>
+		  <option>Tigerfish</option>
+		  <option>Lg HP Pot</option>
+		  <option>Barracuda</option>
+		  <option>Crab</option>
+		  <option>Lobster</option>
+		  <option>Sm HP Pot</option>
+		  <option>None</option>
+		</select>
+	</div>
 		<div class="one wide column" data-tooltip="How much does your food heal for? EX: Large HP Pots heal for 20, Squid heals for 24" data-position="center">
 			Healing Amount
 			<div class="ui inverted transparent input">
@@ -467,6 +593,19 @@ min-height: 32;
     <h1 class="ui inverted header"><div class="ui inverted horizontal section divider">Enemy Stats</div></h1>
   </div>
 <div class="ui equal width centered grid" style="margin-top:-40px;">
+	<div class="one wide column">
+		Enemy Preset
+		<select class="ui inverted selection dropdown" id="MILFMYPRESET">
+		  <option hidden> </option>
+		  <option>Tikitama</option>
+		  <option>Jaime Goliver</option>
+		  <option>Zenitsu</option>
+		  <option>Jealous Witch</option>
+		  <option>Dead Eye Jones</option>
+		  <option>Demon Prince</option>
+		  <option>Cursed Yeti</option>
+		</select>
+	</div>
 	<div class="one wide column">
 		Enemy Combat Level
 		<div class="ui inverted transparent input">
