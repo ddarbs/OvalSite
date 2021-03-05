@@ -18,6 +18,7 @@
     });
 
 
+
   
     $(document).ready(function() {
 
@@ -28,6 +29,8 @@
         cache:false
     });
 
+	
+	
     promise.done(function(data){
 
         //Parse CSV File
@@ -45,6 +48,9 @@
 
                 $.each(valArr, function(){
                     row += "<td><a href=\"https://damascus.fandom.com/wiki/Special:Search?query=" + this + "\" target=\"_blank\">" + this +"</a></td>"
+					if (regexIndexOf(this, /[0-9]/) === 0 || regexIndexOf(this, /\-[0-9]/) === 0) {
+						row = row.replace('<a href=\"https://damascus.fandom.com/wiki/Special:Search?query=' + this + '\" target=\"_blank\">' + this +'</a>', this);
+					}
 
                 });     
 
@@ -56,7 +62,7 @@
             }
 
         });
-
+	stripethatshit();
     });
 
     // Run script if request fails
@@ -71,7 +77,14 @@
             window.location = href;
         }
     });
+
 });
+
+function stripethatshit() {
+	$("tr:visible").each(function (index) {
+        $(this).css("background-color", !!(index & 1)? "#333333" : "#3D3D3D");
+    });
+};
 
 function itemlistSearch() {
   var input, filter, table, tr, td, cell, i, j;
@@ -83,9 +96,9 @@ function itemlistSearch() {
     // Hide the row initially.
     tr[i].style.display = "none";
   
-    td = tr[i].getElementsByTagName("td");
+    td = tr[i].getElementsByTagName("a");
     for (var j = 0; j < td.length; j++) {
-      cell = tr[i].getElementsByTagName("td")[j];
+      cell = tr[i].getElementsByTagName("a")[j];
       if (cell) {
         if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
@@ -93,7 +106,13 @@ function itemlistSearch() {
         } 
       }
     }
+	
   }
+    stripethatshit();
+}
+	function regexIndexOf(string, regex, startpos) {
+    var indexOf = string.substring(startpos || 0).search(regex);
+    return (indexOf >= 0) ? (indexOf + (startpos || 0)) : indexOf;
 }
 	</script>
 	
@@ -121,12 +140,16 @@ function itemlistSearch() {
 	}
 	
 	a {
-	color: rgba(255,255,255,.9);
+	color: rgb(208 251 255 / 90%);
 	}
 	
 	a:hover {
-	color: rgb(182 239 245 / 90%);
+	color: rgb(134 238 249);
 	}
+	
+	<!-- tr:nth-child(even) { -->
+  <!-- background-color: red; -->
+<!-- } -->
   <!-- end of page specific styling -->
   </style>
   <!-- end of extra style section -->
@@ -142,17 +165,17 @@ function itemlistSearch() {
   <div class="ui main text container" style="text-align:center; vertical-align:middle; margin-left: 10px; margin-right: 10px; max-width: -webkit-fill-available; width: auto;">
     <h1 class="ui inverted header">mh1's Item List</h1>
     <p>Updated on <i><b>Feb 26, 2021</b></i> for the Punk Hazard Patch</p>
-    <p>Items can be filtered through the search bar below, and you can sort columns by clicking on them</p>
+    <p>Filter Item List through the search bar below, sort columns by clicking on them, click on Item Names to search the Wiki</p>
 	<div class="ui inverted horizontal section divider">Item Name Search</div>
 	<div class="ui centered grid" style="max-width: fit-content;">
 	
 	<div class="ui inverted transparent icon input" style="border: solid #2D2E2F 1px; padding: 10 0 10 10; margin: 0 20 10 20;">
-		<input type="text" id="itemlistInput" onkeyup="itemlistSearch()" placeholder="e. copper 2h warhammer" style="width:250px;"><i class="search icon" style="margin-left: -40px;position: relative;"></i>
+		<input type="text" id="itemlistInput" oninput="itemlistSearch()" placeholder="e. copper 2h warhammer" style="width:250px;"><i class="search icon" style="margin-left: -40px;position: relative;"></i>
 	</div>
 
 	<div style="overflow-x:scroll; width:-webkit-fit-content;padding: 0 0 0 0;transform: rotateX(180deg);">
 
-	<table class="ui striped single line selectable inverted table" id="itemlistTable" style="transform: rotateX(180deg);text-align:center; vertical-align: middle; font-size:12px; padding: 0 0 0 0;">
+	<table class="ui single line selectable inverted table" id="itemlistTable" style="transform: rotateX(180deg);text-align:center; vertical-align: middle; font-size:12px; padding: 0 0 0 0;">
     <thead style="white-space: nowrap; cursor: move;">
 		
         <tr>
