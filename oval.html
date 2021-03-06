@@ -427,6 +427,22 @@
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nToxic = [a-zA-Z]/, '\nToxic = ' + this.value);
 	});
 ////////////////////////////////////////////
+	//shitty way of grabbing input box text and replacing in sheet
+	//number of iterations dev tool
+	SIMCOUNT.addEventListener("change", function (e) {
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	if (SIMCOUNT.value === "0") {
+		var ddsimcount = "1"
+	} else if (SIMCOUNT.value === "1") {
+		var ddsimcount = "5000"
+	} else if (SIMCOUNT.value === "2") {
+		var ddsimcount = "7500"
+	} else if (SIMCOUNT.value === "3") {
+		var ddsimcount = "10000"
+	};
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nSimulateFightsV2\([0-9]*/, '\nSimulateFightsV2\(' + ddsimcount);
+	});
+////////////////////////////////////////////
 		
         $("button").click(function(){
 
@@ -836,7 +852,7 @@ a {
 			</select>
 		</div>
 	</div>
-</div>
+
 
 <div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" style="width: 100px;">Run</button></div>
   <div class="ui centered grid" style="padding-left:50px;padding-right:50px;">
@@ -850,6 +866,24 @@ a {
    <textarea id="code" name="ovaloutput" style="height: 500px; width: 700px; color: rgba(255,255,255,.9); background: #1b1c1d;margin-top:-50px; text-align:center;resize: none;padding-top:20px;background: rgb(0 0 0 / 8%);" readonly></textarea>
   </div>
   
+</div>
+<div class="ui equal width centered grid" style="margin-top:-80px;">
+	
+<div class="ui main text container" style="margin: 90 0 0 0;" data-tooltip="Lower the number if your sim is getting killed" data-inverted="" data-position="bottom center">
+<div class="one wide column">
+	Number of Iterations 
+   <div class="ui inverted transparent input">
+			
+			<select class="ui inverted selection dropdown" id="SIMCOUNT">
+			<option hidden>10000</option>
+		  <option value="0">1</option>
+		  <option value="1">5000</option>
+		  <option value="2">7500</option>
+		  <option value="3">10000</option>
+		</select>
+		</div>
+   </div>
+</div>
 </div>
 </div>
 </div>
