@@ -19,6 +19,7 @@ PsychicDefense = 60
 MeleeAccuracy = 29
 RangingAccuracy = -10
 PsychicAccuracy = -26
+Spell = "None"
 
 # Healing Stats
 HealingAmount = 24
@@ -78,10 +79,10 @@ E.hitprob <- (E.Accuracy + (E.primarystat/4))/(E.Accuracy + trueDef + (E.primary
 
 
 SimulateFights <- function(n){
-  Win <- 0
-  fights <- 0
-  while(n > fights){
-    FtickW <- 0
+  Win <- 0 
+  fights <- 0 
+  while(n > fights){ 
+    FtickW <- 0 
     rawtickW <- 0
     tickL <- 0
     HealthNew <- Health
@@ -130,10 +131,10 @@ SimulateFights <- function(n){
 
 SimulateFightsV2 <- function(n){
   if(n == 1){
-      printhealth <- TRUE
-    } else if(n > 1){
-      printhealth <- FALSE
-    }
+    printhealth <- TRUE
+  } else if(n > 1){
+    printhealth <- FALSE
+  }
   Win <- 0
   fights <- 0
   BattleTimeV <- c()
@@ -141,7 +142,9 @@ SimulateFightsV2 <- function(n){
   HitsV <- c()
   E.MissV <- c()
   HealthLostV <- c()
+  AttacksV <- c()
   while(n > fights){
+    Attacks <- 0
     Hits <- 0
     E.Miss <- 0
     tick <- 0
@@ -162,13 +165,12 @@ SimulateFightsV2 <- function(n){
         if(PlayerRoll == 1){
           PlayerDamage <- sample(HitMin:HitMax,1)
           E.HealthNew <- E.HealthNew - PlayerDamage
-          if(PlayerDamage > 0){
-            Hits <- Hits + 1
-          }
+          Hits <- Hits + 1
           if(printhealth == TRUE){
             print(paste0("Enemy Health : ", E.HealthNew))
           }
         }
+        Attacks = Attacks + 1
         chargetick <- chargetick + 1
       } else if(chargetick %% AttackSpeed != 0){
         chargetick <- chargetick + 1
@@ -209,11 +211,79 @@ SimulateFightsV2 <- function(n){
         HealingUsedV[fights] <- HealingQuantity - HealingQuantityNew
         BattleTimeV[fights] <- tick/2
         HitsV[fights] <- Hits
+        AttacksV[fights] <- Attacks
         E.MissV[fights] <- E.Miss
         HealthLostV[fights] <- (HealingQuantity - HealingQuantityNew)*HealingAmount + (Health - HealthNew)
       }
     }
   }
+  
+  
+  LesserAct = 0
+  BindingAct = 0
+  GreaterAct = 0
+  CombatAct = 0
+  
+  if(Spell == "Lesser Earth"){
+    LesserAct = 1
+  } else if(Spell == "Lesser Water"){
+    LesserAct = 2
+  } else if(Spell == "Lesser Wind"){
+    LesserAct = 3
+  } else if(Spell == "Lesser Fire"){
+    LesserAct = 4
+  } else if(Spell == "Lesser Lightning"){
+    LesserAct = 5
+  } else if(Spell == "Greater Earth"){
+    GreaterAct = 1
+  } else if(Spell == "Greater Water"){
+    GreaterAct = 2
+  } else if(Spell == "Greater Wind"){
+    GreaterAct = 3
+  } else if(Spell == "Greater Fire"){
+    GreaterAct = 4
+  } else if(Spell == "Greater Lightning"){
+    GreaterAct = 5
+  } else if(Spell == "Lesser Bind"){
+    LesserAct = 1
+    BindingAct = 1
+  } else if(Spell == "Greater Bind"){
+    GreaterAct = 1
+    BindingAct = 1
+  } else if(Spell == "Lesser Lifesteal"){
+    LesserAct = 1
+    CombatAct = 1
+  } else if(Spell == "Lesser Freeze"){
+    LesserAct = 5
+    CombatAct = 1
+  } else if(Spell == "Greater Lifesteal"){
+    GreaterAct = 1
+    CombatAct = 1
+  } else if(Spell == "Greater Freeze"){
+    GreaterAct = 5
+    CombatAct = 2
+  }
+  
+  ActXP <- function(){
+    if(LesserAct > 0 & BindingAct == 0 & CombatAct == 0) {
+      print(paste0("Average Lesser Actuators Used : ", LesserAct*mean(AttacksV)))
+    } else if(GreaterAct > 0 & BindingAct == 0 & CombatAct == 0) {
+      print(paste0("Average Greater Actuators Used : ", GreaterAct*mean(AttacksV)))
+    } else if(LesserAct > 0 & BindingAct > 0) {
+      print(paste0("Average Lesser Actuators Used : ", LesserAct*mean(AttacksV)))
+      print(paste0("Average Binding Actuators Used : ", BindingAct*mean(AttacksV)))
+    } else if(GreaterAct > 0 & BindingAct > 0) {
+      print(paste0("Average Greater Actuators Used : ", GreaterAct*mean(AttacksV)))
+      print(paste0("Average Binding Actuators Used : ", BindingAct*mean(AttacksV)))
+    } else if(LesserAct > 0 & CombatAct > 0) {
+      print(paste0("Average Lesser Actuators Used : ", LesserAct*mean(AttacksV)))
+      print(paste0("Average Combat Actuators Used : ", CombatAct*mean(AttacksV)))
+    } else if(GreaterAct > 0 & CombatAct > 0) {
+      print(paste0("Average Greater Actuators Used : ", GreaterAct*mean(AttacksV)))
+      print(paste0("Average Combat Actuators Used : ", CombatAct*mean(AttacksV)))
+    }
+  }
+  
   HealingUsedLower <- round(mean(HealingUsedV)-qnorm(0.9995)*sd(HealingUsedV)/sqrt(n),digits = 4)
   HealingUsedUpper <- round(mean(HealingUsedV)+qnorm(0.9995)*sd(HealingUsedV)/sqrt(n),digits = 4)
   if(E.CombatLevel > 0 & E.CombatLevel < 33){
@@ -223,21 +293,26 @@ SimulateFightsV2 <- function(n){
       AvgDefXP <- mean(E.MissV)*floor(E.CombatLevel/8)
     }
     if(E.CombatLevel < 17){
-      AvgAccXP <- mean(HitsV)*ceiling(E.CombatLevel/16)
+      AvgAccXP <- mean(HitsV)*ceiling(E.CombatLevel/16) + (mean(AttacksV) - mean(HitsV))
     } else if(E.CombatLevel >= 17) {
-      AvgAccXP <- mean(HitsV)*floor(E.CombatLevel/16)
+      AvgAccXP <- mean(HitsV)*floor(E.CombatLevel/16) + (mean(AttacksV) - mean(HitsV))
     }
     AvgHealthXP <- mean(HealthLostV)*ceiling(E.CombatLevel/32)
     print(paste0("Average Defense XP : ", AvgDefXP, " XP"))
     print(paste0("Average Accuracy XP : ", AvgAccXP, " XP"))
     print(paste0("Average Health XP : ", AvgHealthXP, " XP"))
   } else if(E.CombatLevel >= 33){
-    AvgAccXP <- mean(HitsV)*floor(E.CombatLevel/16)
+    AvgAccXP <- mean(HitsV)*floor(E.CombatLevel/16) + (mean(AttacksV) - mean(HitsV))
     AvgDefXP <- mean(E.MissV)*floor(E.CombatLevel/8)
     AvgHealthXP <- mean(HealthLostV)*floor(E.CombatLevel/32)
     print(paste0("Average Defense XP : ", AvgDefXP, " XP"))
     print(paste0("Average Accuracy XP : ", AvgAccXP, " XP"))
     print(paste0("Average Health XP : ", AvgHealthXP, " XP"))
+  }
+  print(paste0("Average Successful Attacks : ",mean(HitsV)))
+  print(paste0("Average Attacks Done : ",mean(AttacksV)))
+  if(Spell != "None") {
+    ActXP()
   }
   print(paste0("Average Healing Used : ",mean(HealingUsedV)))
   print(paste0("Standard Deviation of Healing Used : ",sd(HealingUsedV)))
@@ -260,3 +335,4 @@ SimulateFightsV2 <- function(n){
 # Fight Simulator V2
 
 SimulateFightsV2(10000)
+
