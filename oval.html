@@ -17,6 +17,7 @@
 
 	
     $(document).ready(function(){
+	$("#OVALMYSPELLDIV").hide();
 ////////////////////////////////////////////	
 	//shitty way of grabbing input box text and replacing in 
 	//health
@@ -60,6 +61,17 @@
 	OVALMYTYPE.addEventListener("change", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nType = \"[a-zA-Z]\"/g, '\nType = \"' + this.value + '\"');
+	if (OVALMYTYPE.value === '2') {
+        $("#OVALMYSPELLDIV").show();
+      }
+      else
+      {
+        $("#OVALMYSPELLDIV").hide();
+		var presetspell = "None"
+		ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+		document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nSpell = .*/, '\nSpell = \"' + presetspell + '\"');
+		document.getElementById('OVALMYSPELL').value = presetspell
+      }
 	});
 	//shitty way of grabbing input box text and replacing in 
 	//e preset
@@ -215,89 +227,89 @@
 	//e preset
 	MILFMYPRESET.addEventListener("change", function (e) {
 	if (MILFMYPRESET.value === "Jealous Witch") {
-		var presetlvl = "69420"
+		var presetlvl = "424"
 		var presettype = "P"
-		var presethp = "69420"
-		var presetmax = "69420"
-		var presetspeed = "69420"
-		var presetacc = "69420"
-		var presetdef = "69420"
-		var presetmel = "69420"
-		var presetran = "69420"
-		var presetpsy = "69420"
-		var presettox = "T"		
+		var presethp = "999"
+		var presetmax = "40"
+		var presetspeed = "4"
+		var presetacc = "225"
+		var presetdef = "165"
+		var presetmel = "1"
+		var presetran = "1"
+		var presetpsy = "310"
+		var presettox = "F"		
 	} else if (MILFMYPRESET.value === "Dead Eye Jones") {
-		var presetlvl = "69420"
+		var presetlvl = "440"
 		var presettype = "R"
-		var presethp = "69420"
-		var presetmax = "69420"
-		var presetspeed = "69420"
-		var presetacc = "69420"
-		var presetdef = "69420"
-		var presetmel = "69420"
-		var presetran = "69420"
-		var presetpsy = "69420"
-		var presettox = "T"	
+		var presethp = "999"
+		var presetmax = "41"
+		var presetspeed = "4"
+		var presetacc = "205"
+		var presetdef = "215"
+		var presetmel = "1"
+		var presetran = "340"
+		var presetpsy = "1"
+		var presettox = "F"	
 	} else if (MILFMYPRESET.value === "Tikitama") {
-		var presetlvl = "69420"
+		var presetlvl = "392"
 		var presettype = "P"
-		var presethp = "69420"
-		var presetmax = "69420"
-		var presetspeed = "69420"
-		var presetacc = "69420"
-		var presetdef = "69420"
-		var presetmel = "69420"
-		var presetran = "69420"
-		var presetpsy = "69420"
-		var presettox = "T"	
+		var presethp = "999"
+		var presetmax = "33"
+		var presetspeed = "4"
+		var presetacc = "150"
+		var presetdef = "150"
+		var presetmel = "1"
+		var presetran = "1"
+		var presetpsy = "270"
+		var presettox = "F"	
 	} else if (MILFMYPRESET.value === "Jaime Goliver") {
-		var presetlvl = "69420"
+		var presetlvl = "291"
 		var presettype = "R"
-		var presethp = "69420"
-		var presetmax = "69420"
-		var presetspeed = "69420"
-		var presetacc = "69420"
-		var presetdef = "69420"
-		var presetmel = "69420"
-		var presetran = "69420"
-		var presetpsy = "69420"
-		var presettox = "T"	
+		var presethp = "650"
+		var presetmax = "30"
+		var presetspeed = "4"
+		var presetacc = "155"
+		var presetdef = "110"
+		var presetmel = "1"
+		var presetran = "250"
+		var presetpsy = "1"
+		var presettox = "F"	
 	} else if (MILFMYPRESET.value === "Zenitsu") {
-		var presetlvl = "69420"
+		var presetlvl = "368"
 		var presettype = "M"
-		var presethp = "69420"
-		var presetmax = "69420"
-		var presetspeed = "69420"
-		var presetacc = "69420"
-		var presetdef = "69420"
-		var presetmel = "69420"
-		var presetran = "69420"
-		var presetpsy = "69420"
-		var presettox = "T"	
+		var presethp = "850"
+		var presetmax = "28"
+		var presetspeed = "2"
+		var presetacc = "190"
+		var presetdef = "195"
+		var presetmel = "240"
+		var presetran = "1"
+		var presetpsy = "1"
+		var presettox = "F"	
 	} else if (MILFMYPRESET.value === "Cursed Yeti") {
-		var presetlvl = "69420"
+		var presetlvl = "403"
 		var presettype = "P"
-		var presethp = "69420"
-		var presetmax = "69420"
-		var presetspeed = "69420"
-		var presetacc = "69420"
-		var presetdef = "69420"
-		var presetmel = "69420"
-		var presetran = "69420"
-		var presetpsy = "69420"
+		var presethp = "999"
+		var presetmax = "35"
+		var presetspeed = "3"
+		var presetacc = "160"
+		var presetdef = "175"
+		var presetmel = "9999"
+		var presetran = "1"
+		var presetpsy = "280"
 		var presettox = "T"	
 	} else if (MILFMYPRESET.value === "Demon Prince") {
-		var presetlvl = "69420"
+		var presetlvl = "1170"
 		var presettype = "M"
-		var presethp = "69420"
+		var presethp = "3500"
 		var presetmax = "69420"
 		var presetspeed = "69420"
-		var presetacc = "69420"
-		var presetdef = "69420"
-		var presetmel = "69420"
-		var presetran = "69420"
-		var presetpsy = "69420"
-		var presettox = "T"	
+		var presetacc = "280"
+		var presetdef = "350"
+		var presetmel = "550"
+		var presetran = "1"
+		var presetpsy = "1"
+		var presettox = "F"	
 	};
 	
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
@@ -507,7 +519,7 @@ border-radius: .28571429rem;
 
 .ui.selection.dropdown {
 min-width: min-content;
-padding: 0 1.2em 0 1em;
+padding: 0 .4em 0 .4em;
 min-height: 32;
 }
 
@@ -595,13 +607,13 @@ a {
 	<div class="one wide column" data-tooltip="Use M or R or P for Melee, Ranging, Psychic respectively" data-position="center">
 		Combat Style         
 		<select class="ui inverted selection dropdown" id="OVALMYTYPE">
-		  <option>M</option>
-		  <option>R</option>
-		  <option>P</option>
+		  <option value="0">M</option>
+		  <option value="1">R</option>
+		  <option value="2">P</option>
 		</select>
 	</div>
-	<div class="one wide column">
-		Spell Preset
+	<div class="one wide column" id="OVALMYSPELLDIV">
+		Spell
 		<select class="ui inverted selection dropdown" id="OVALMYSPELL">
 		  <option>None</option>
 		  <option>Lesser Earth</option>
@@ -721,7 +733,7 @@ a {
 	<div class="one wide column">
 		Enemy Preset
 		<select class="ui inverted selection dropdown" id="MILFMYPRESET">
-		  <option hidden> </option>
+		  <option hidden>Default (Jaime Goliver)</option>
 		  <option>Tikitama</option>
 		  <option>Jaime Goliver</option>
 		  <option>Zenitsu</option>
