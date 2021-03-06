@@ -60,7 +60,14 @@
 	//type
 	OVALMYTYPE.addEventListener("change", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
-	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nType = \"[a-zA-Z]\"/g, '\nType = \"' + this.value + '\"');
+	if (this.value === "0") {
+		var mytype = "M"
+	} else if (this.value === "1") {
+		var mytype = "R"
+	} else if (this.value === "2") {
+		var mytype = "P"
+	};
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nType = \"[a-zA-Z]\"/g, '\nType = \"' + mytype + '\"');
 	if (OVALMYTYPE.value === '2') {
         $("#OVALMYSPELLDIV").show();
       }
@@ -76,7 +83,6 @@
 	//shitty way of grabbing input box text and replacing in 
 	//e preset
 	OVALMYSPELL.addEventListener("change", function (e) {
-
 	var presetspell = "None"
 	if (OVALMYSPELL.value === "None"){
 		var presetspell = "None"
@@ -354,9 +360,16 @@
 	});
 	//shitty way of grabbing input box text and replacing in 
 	//e combat style
-	MILFMYTYPE.addEventListener("focusout", function (e) {
+	MILFMYTYPE.addEventListener("change", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
-	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Type = \"[a-zA-Z]*\"/, '\nE.Type = \"' + this.value + '\"');
+	if (this.value === "0") {
+		var enemytype = "M"
+	} else if (this.value === "1") {
+		var enemytype = "R"
+	} else if (this.value === "2") {
+		var enemytype = "P"
+	};
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Type = \"[a-zA-Z]*\"/, '\nE.Type = \"' + enemytype + '\"');
 	});
 	//shitty way of grabbing input box text and replacing in sheet
 	//e health
@@ -409,7 +422,7 @@
 ////////////////////////////////////////////
 	//shitty way of grabbing input box text and replacing in sheet
 	//toxic punk hazard gooby shit
-	GOOBY.addEventListener("focusout", function (e) {
+	GOOBY.addEventListener("change", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nToxic = [a-zA-Z]/, '\nToxic = ' + this.value);
 	});
@@ -607,9 +620,9 @@ a {
 	<div class="one wide column" data-tooltip="Use M or R or P for Melee, Ranging, Psychic respectively" data-position="center">
 		Combat Style         
 		<select class="ui inverted selection dropdown" id="OVALMYTYPE">
-		  <option value="0">M</option>
-		  <option value="1">R</option>
-		  <option value="2">P</option>
+		  <option value="0">Melee</option>
+		  <option value="1">Ranging</option>
+		  <option value="2">Psychic</option>
 		</select>
 	</div>
 	<div class="one wide column" id="OVALMYSPELLDIV">
@@ -719,7 +732,7 @@ a {
 		<div class="one wide column" data-tooltip="How much food are you bringing?" data-position="center">
 			Healing Quantity
 			<div class="ui inverted transparent input">
-				<input type="text" placeholder="25" id="OVALMYHEALQUANT">
+				<input type="text" placeholder="28" id="OVALMYHEALQUANT">
 			</div>
 		</div>
 	</div>
@@ -752,10 +765,10 @@ a {
 	<div class="one wide column" data-tooltip="Use M or R or P for Melee, Ranging, Psychic respectively" data-position="center">
 		Enemy Combat Style         
 		<select class="ui inverted selection dropdown" id="MILFMYTYPE">
-		  <option hidden>R</option>
-		  <option>M</option>
-		  <option>R</option>
-		  <option>P</option>
+		  <option hidden>Ranging</option>
+		  <option value="0">Melee</option>
+		  <option value="1">Ranging</option>
+		  <option value="2">Psychic</option>
 		</select>
 	</div>
 	<div class="one wide column">
