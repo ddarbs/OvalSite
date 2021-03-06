@@ -23,7 +23,7 @@ Spell = "None"
 
 # Healing Stats
 HealingAmount = 24
-HealingQuantity = 10 # Number of food brought per trip
+HealingQuantity = 28 # Number of food brought per trip
 
 # Enemy Stats
 E.CombatLevel = 291 # Use 0 if you don't want xp stats

@@ -62,6 +62,50 @@
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nType = \"[a-zA-Z]\"/g, '\nType = \"' + this.value + '\"');
 	});
 	//shitty way of grabbing input box text and replacing in 
+	//e preset
+	OVALMYSPELL.addEventListener("change", function (e) {
+
+	var presetspell = "None"
+	if (OVALMYSPELL.value === "None"){
+		var presetspell = "None"
+	} else if (OVALMYSPELL.value === "Lesser Earth"){
+		var presetspell = "Lesser Earth"
+	} else if (OVALMYSPELL.value === "Lesser Water"){
+		var presetspell = "Lesser Water"
+	} else if (OVALMYSPELL.value === "Lesser Wind"){
+		var presetspell = "Lesser Wind"
+	} else if (OVALMYSPELL.value === "Lesser Fire"){
+		var presetspell = "Lesser Fire"
+	} else if (OVALMYSPELL.value === "Lesser Lightning"){
+		var presetspell = "Lesser Lightning"
+	} else if (OVALMYSPELL.value === "Greater Earth"){
+		var presetspell = "Greater Earth"
+	} else if (OVALMYSPELL.value === "Greater Water"){
+		var presetspell = "Greater Water"
+	} else if (OVALMYSPELL.value === "Greater Wind"){
+		var presetspell = "Greater Wind"
+	} else if (OVALMYSPELL.value === "Greater Fire"){
+		var presetspell = "Greater Fire"
+	} else if (OVALMYSPELL.value === "Greater Lightning"){
+		var presetspell = "Greater Lightning"
+	} else if (OVALMYSPELL.value === "Lesser Bind"){
+		var presetspell = "Lesser Bind"
+	} else if (OVALMYSPELL.value === "Greater Bind"){
+		var presetspell = "Greater Bind"
+	} else if (OVALMYSPELL.value === "Lesser Lifesteal"){
+		var presetspell = "Lesser Lifesteal"
+	} else if (OVALMYSPELL.value === "Lesser Freeze"){
+		var presetspell = "Lesser Freeze"
+	} else if (OVALMYSPELL.value === "Greater Lifesteal"){
+		var presetspell = "Greater Lifesteal"
+	} else if (OVALMYSPELL.value === "Greater Freeze"){
+		var presetspell = "Greater Freeze"
+	};
+	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
+	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nSpell = .*/, '\nSpell = \"' + presetspell + '\"');
+	document.getElementById('OVALMYSPELL').value = presetspell
+	});
+	//shitty way of grabbing input box text and replacing in 
 	//hitmax
 	OVALMYMAX.addEventListener("focusout", function (e) {
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
@@ -181,20 +225,79 @@
 		var presetmel = "69420"
 		var presetran = "69420"
 		var presetpsy = "69420"
-		var presettox = "T"
-		
-	} else if (MILFMYPRESET === "Dead Eye Jones") {
-	
-	} else if (MILFMYPRESET === "Tikitama") {
-	
-	} else if (MILFMYPRESET === "Jaime Goliver") {
-	
-	} else if (MILFMYPRESET === "Zenitsu") {
-	
-	} else if (MILFMYPRESET === "Cursed Yeti") {
-	
-	} else if (MILFMYPRESET === "Demon Prince") {
-	
+		var presettox = "T"		
+	} else if (MILFMYPRESET.value === "Dead Eye Jones") {
+		var presetlvl = "69420"
+		var presettype = "R"
+		var presethp = "69420"
+		var presetmax = "69420"
+		var presetspeed = "69420"
+		var presetacc = "69420"
+		var presetdef = "69420"
+		var presetmel = "69420"
+		var presetran = "69420"
+		var presetpsy = "69420"
+		var presettox = "T"	
+	} else if (MILFMYPRESET.value === "Tikitama") {
+		var presetlvl = "69420"
+		var presettype = "P"
+		var presethp = "69420"
+		var presetmax = "69420"
+		var presetspeed = "69420"
+		var presetacc = "69420"
+		var presetdef = "69420"
+		var presetmel = "69420"
+		var presetran = "69420"
+		var presetpsy = "69420"
+		var presettox = "T"	
+	} else if (MILFMYPRESET.value === "Jaime Goliver") {
+		var presetlvl = "69420"
+		var presettype = "R"
+		var presethp = "69420"
+		var presetmax = "69420"
+		var presetspeed = "69420"
+		var presetacc = "69420"
+		var presetdef = "69420"
+		var presetmel = "69420"
+		var presetran = "69420"
+		var presetpsy = "69420"
+		var presettox = "T"	
+	} else if (MILFMYPRESET.value === "Zenitsu") {
+		var presetlvl = "69420"
+		var presettype = "M"
+		var presethp = "69420"
+		var presetmax = "69420"
+		var presetspeed = "69420"
+		var presetacc = "69420"
+		var presetdef = "69420"
+		var presetmel = "69420"
+		var presetran = "69420"
+		var presetpsy = "69420"
+		var presettox = "T"	
+	} else if (MILFMYPRESET.value === "Cursed Yeti") {
+		var presetlvl = "69420"
+		var presettype = "P"
+		var presethp = "69420"
+		var presetmax = "69420"
+		var presetspeed = "69420"
+		var presetacc = "69420"
+		var presetdef = "69420"
+		var presetmel = "69420"
+		var presetran = "69420"
+		var presetpsy = "69420"
+		var presettox = "T"	
+	} else if (MILFMYPRESET.value === "Demon Prince") {
+		var presetlvl = "69420"
+		var presettype = "M"
+		var presethp = "69420"
+		var presetmax = "69420"
+		var presetspeed = "69420"
+		var presetacc = "69420"
+		var presetdef = "69420"
+		var presetmel = "69420"
+		var presetran = "69420"
+		var presetpsy = "69420"
+		var presettox = "T"	
 	};
 	
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
@@ -498,6 +601,28 @@ a {
 		</select>
 	</div>
 	<div class="one wide column">
+		Spell Preset
+		<select class="ui inverted selection dropdown" id="OVALMYSPELL">
+		  <option>None</option>
+		  <option>Lesser Earth</option>
+		  <option>Lesser Water</option>
+		  <option>Lesser Wind</option>
+		  <option>Lesser Fire</option>
+		  <option>Lesser Bind</option>
+		  <option>Lesser Lightning</option>
+		  <option>Greater Earth</option>
+		  <option>Greater Water</option>
+		  <option>Greater Wind</option>
+		  <option>Greater Fire</option>
+		  <option>Greater Bind</option>
+		  <option>Greater Lightning</option>	  
+		  <option>Lesser Lifesteal</option>
+		  <option>Lesser Freeze</option>
+		  <option>Greater Lifesteal</option>
+		  <option>Greater Freeze</option>		  
+		</select>
+	</div>
+	<div class="one wide column">
 		Max Damage
 		<div class="ui inverted transparent input">
 			<input type="text" placeholder="89" id="OVALMYMAX">
@@ -562,7 +687,6 @@ a {
 		<div class="one wide column">
 		Healing Preset
 		<select class="ui inverted selection dropdown" id="OVALMYHEALPRESET">
-		  <option hidden> </option>
 		  <option>Squid</option>
 		  <option>Sturgeon</option>
 		  <option>Tigerfish</option>
