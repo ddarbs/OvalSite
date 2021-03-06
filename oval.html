@@ -232,9 +232,10 @@
 	//shitty way of grabbing input box text and replacing in 
 	//e preset
 	MILFMYPRESET.addEventListener("change", function (e) {
-	if (MILFMYPRESET.value === "Jealous Witch") {
+	if (MILFMYPRESET.value === "3") {
 		var presetlvl = "424"
 		var presettype = "P"
+		var presettypedropdown = "2"
 		var presethp = "999"
 		var presetmax = "40"
 		var presetspeed = "4"
@@ -244,9 +245,10 @@
 		var presetran = "1"
 		var presetpsy = "310"
 		var presettox = "F"		
-	} else if (MILFMYPRESET.value === "Dead Eye Jones") {
+	} else if (MILFMYPRESET.value === "4") {
 		var presetlvl = "440"
 		var presettype = "R"
+		var presettypedropdown = "1"
 		var presethp = "999"
 		var presetmax = "41"
 		var presetspeed = "4"
@@ -256,9 +258,10 @@
 		var presetran = "340"
 		var presetpsy = "1"
 		var presettox = "F"	
-	} else if (MILFMYPRESET.value === "Tikitama") {
+	} else if (MILFMYPRESET.value === "0") {
 		var presetlvl = "392"
 		var presettype = "P"
+		var presettypedropdown = "2"
 		var presethp = "999"
 		var presetmax = "33"
 		var presetspeed = "4"
@@ -268,9 +271,10 @@
 		var presetran = "1"
 		var presetpsy = "270"
 		var presettox = "F"	
-	} else if (MILFMYPRESET.value === "Jaime Goliver") {
+	} else if (MILFMYPRESET.value === "1") {
 		var presetlvl = "291"
 		var presettype = "R"
+		var presettypedropdown = "1"
 		var presethp = "650"
 		var presetmax = "30"
 		var presetspeed = "4"
@@ -280,9 +284,10 @@
 		var presetran = "250"
 		var presetpsy = "1"
 		var presettox = "F"	
-	} else if (MILFMYPRESET.value === "Zenitsu") {
+	} else if (MILFMYPRESET.value === "2") {
 		var presetlvl = "368"
 		var presettype = "M"
+		var presettypedropdown = "0"
 		var presethp = "850"
 		var presetmax = "28"
 		var presetspeed = "2"
@@ -292,9 +297,10 @@
 		var presetran = "1"
 		var presetpsy = "1"
 		var presettox = "F"	
-	} else if (MILFMYPRESET.value === "Cursed Yeti") {
+	} else if (MILFMYPRESET.value === "6") {
 		var presetlvl = "403"
 		var presettype = "P"
+		var presettypedropdown = "2"
 		var presethp = "999"
 		var presetmax = "35"
 		var presetspeed = "3"
@@ -304,12 +310,13 @@
 		var presetran = "1"
 		var presetpsy = "280"
 		var presettox = "T"	
-	} else if (MILFMYPRESET.value === "Demon Prince") {
+	} else if (MILFMYPRESET.value === "5") {
 		var presetlvl = "1170"
 		var presettype = "M"
+		var presettypedropdown = "0"
 		var presethp = "3500"
-		var presetmax = "69420"
-		var presetspeed = "69420"
+		var presetmax = "70"
+		var presetspeed = "4"
 		var presetacc = "280"
 		var presetdef = "350"
 		var presetmel = "550"
@@ -323,7 +330,7 @@
 	document.getElementById('MILFMYCBTLVL').value = presetlvl
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Type = \"[a-zA-Z]*\"/, '\nE.Type = \"' + presettype + '\"');
-	document.getElementById('MILFMYTYPE').value = presettype
+	document.getElementById('MILFMYTYPE').value = presettypedropdown
 	ovalscript = document.getElementsByName('ovalscript')[0].innerHTML;
 	document.getElementsByName('ovalscript')[0].innerHTML=ovalscript.replace(/\nE.Health = .*/, '\nE.Health = ' + presethp);
 	document.getElementById('MILFMYHEALTH').value = presethp
@@ -763,13 +770,13 @@ a {
 		Enemy Preset
 		<select class="ui inverted selection dropdown" id="MILFMYPRESET">
 		  <option hidden>Default (Jaime Goliver)</option>
-		  <option>Tikitama</option>
-		  <option>Jaime Goliver</option>
-		  <option>Zenitsu</option>
-		  <option>Jealous Witch</option>
-		  <option>Dead Eye Jones</option>
-		  <option>Demon Prince</option>
-		  <option>Cursed Yeti</option>
+		  <option value="0">Tikitama</option>
+		  <option value="1">Jaime Goliver</option>
+		  <option value="2">Zenitsu</option>
+		  <option value="3">Jealous Witch</option>
+		  <option value="4">Dead Eye Jones</option>
+		  <option value="5">Demon Prince</option>
+		  <option value="6">Cursed Yeti</option>
 		</select>
 	</div>
 	<div class="one wide column">
