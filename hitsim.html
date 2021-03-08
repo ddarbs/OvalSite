@@ -21,7 +21,7 @@
 	//shitty way of grabbing input box text and replacing in 
 	//e acc
 	MILFACCURACY.addEventListener("change", function (e) {
-	var milfacc = this.value
+	milfacc = this.value
 	});
 	//shitty way of grabbing input box text and replacing in 
 	//e style custom
@@ -32,31 +32,33 @@
 		var milftype = "Ranging"
 	} else if (this.value === "2") {
 		var milftype = "Psychic"
-	};
-	var captureovalstat = document.getElementById('OVALSTYLESTAT').value
-	document.getElementById('estyle').innerHTML=document.getElementById('estyle').innerHTML.replace(/\n.*/, '\nEnemy ' + milftype + ' Level');
-	document.getElementById('pstyle').innerHTML=document.getElementById('pstyle').innerHTML.replace(/\n.*/, '\nPlayer ' + milftype + ' Level');
+	}
+	captureovalstat = document.getElementById('OVALSTYLESTAT').value
+	document.getElementById('estyle').value= document.getElementById('estyle').innerText.replace(/\n.*/, '\nEnemy ' + milftype + ' Level');
+	document.getElementById('pstyle').value= document.getElementById('pstyle').innerText.replace(/\n.*/, '\nPlayer ' + milftype + ' Level');
+	document.getElementById('MILFACCURACY').value= milfacc;
+	document.getElementById('MILFSTYLESTAT').value= milfstat;
 	if (captureovalstat != 'undefined') {
-		document.getElementById('MILFSTYLESTAT').value= "0"
 		document.getElementById('OVALSTYLESTAT').value= captureovalstat;
+		ovalstat = captureovalstat
 	}
 	});
 	//shitty way of grabbing input box text and replacing in 
 	//e style stat
 	MILFSTYLESTAT.addEventListener("change", function (e) {
-	var milfstat = this.value
+	milfstat = this.value
 	});
 	
 	
 	//shitty way of grabbing input box text and replacing in sheet
 	//defense
 	OVALDEFENSE.addEventListener("change", function (e) {
-	var ovaldef = this.value
+	ovaldef = this.value
 	});
 	//shitty way of grabbing input box text and replacing in sheet
 	//style stat
 	OVALSTYLESTAT.addEventListener("change", function (e) {
-	var ovalstat = this.value
+	ovalstat = this.value
 	});
 ////////////////////////////////////////////	
 	//shitty way of grabbing input box text and replacing in 
@@ -64,67 +66,68 @@
 	MILFMYPRESET.addEventListener("change", function (e) {
 	if (MILFMYPRESET.value === "3") {
 		$("#MILFSTYLEDIV").hide();
-		var milftype = "Psychic"
-		var presettypedropdown = "2"
-		var milfacc = "225"
-		var milfstat = "310"
+		milftype = "Psychic"
+		presettypedropdown = "2"
+		milfacc = "225"
+		milfstat = "310"
 	} else if (MILFMYPRESET.value === "4") {
 		$("#MILFSTYLEDIV").hide();
-		var milftype = "Ranging"
-		var presettypedropdown = "1"
-		var milfacc = "205"
-		var milfstat = "340"
+		milftype = "Ranging"
+		presettypedropdown = "1"
+		milfacc = "205"
+		milfstat = "340"
 	} else if (MILFMYPRESET.value === "0") {
 		$("#MILFSTYLEDIV").hide();
-		var milftype = "Psychic"
-		var presettypedropdown = "2"
-		var milfacc = "150"
-		var milfstat = "270"
+		milftype = "Psychic"
+		presettypedropdown = "2"
+		milfacc = "150"
+		milfstat = "270"
 	} else if (MILFMYPRESET.value === "1") {
 		$("#MILFSTYLEDIV").hide();
-		var milftype = "Ranging"
-		var presettypedropdown = "1"
-		var milfacc = "155"
-		var milfstat = "250"
+		milftype = "Ranging"
+		presettypedropdown = "1"
+		milfacc = "155"
+		milfstat = "250"
 	} else if (MILFMYPRESET.value === "2") {
 		$("#MILFSTYLEDIV").hide();
-		var milftype = "Melee"
-		var presettypedropdown = "0"
-		var milfacc = "190"
-		var milfstat = "240"
+		milftype = "Melee"
+		presettypedropdown = "0"
+		milfacc = "190"
+		milfstat = "240"
 	} else if (MILFMYPRESET.value === "6") {
 		$("#MILFSTYLEDIV").hide();
-		var milftype = "Psychic"
-		var presettypedropdown = "2"
-		var milfacc = "160"
-		var milfstat = "280"
+		milftype = "Psychic"
+		presettypedropdown = "2"
+		milfacc = "160"
+		milfstat = "280"
 	} else if (MILFMYPRESET.value === "5") {
 		$("#MILFSTYLEDIV").hide();
-		var milftype = "Melee"
-		var presettypedropdown = "0"
-		var milfacc = "280"
-		var milfstat = "550"
+		milftype = "Melee"
+		presettypedropdown = "0"
+		milfacc = "280"
+		milfstat = "550"
 	} else if (MILFMYPRESET.value === "7") {
 		//custom inputs
 		$("#MILFSTYLEDIV").show();
-		var milftype = "Melee"
-		var milfacc = "0"
-		var milfstat = "0"
+		milftype = "Melee"
+		milfacc = "0"
+		milfstat = "0"
 	};
-	var captureovalstat = document.getElementById('OVALSTYLESTAT').value
-	document.getElementById('estyle').innerHTML= document.getElementById('estyle').innerHTML.replace(/\n.*/, '\nEnemy ' + milftype + ' Level');
-	document.getElementById('pstyle').innerHTML= document.getElementById('pstyle').innerHTML.replace(/\n.*/, '\nPlayer ' + milftype + ' Level');
+	captureovalstat = document.getElementById('OVALSTYLESTAT').value
+	document.getElementById('estyle').value= document.getElementById('estyle').innerText.replace(/\n.*/, '\nEnemy ' + milftype + ' Level');
+	document.getElementById('pstyle').value= document.getElementById('pstyle').innerText.replace(/\n.*/, '\nPlayer ' + milftype + ' Level');
 	document.getElementById('MILFACCURACY').value= milfacc;
 	document.getElementById('MILFSTYLESTAT').value= milfstat;
 	if (captureovalstat != 'undefined') {
 		document.getElementById('OVALSTYLESTAT').value= captureovalstat;
+		ovalstat = captureovalstat
 	}
 	});
 });
 
 
 function setInputFilter(textbox, inputFilter) {
-  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu"].forEach(function(event) {
     textbox.addEventListener(event, function() {
       if (inputFilter(this.value)) {
         this.oldValue = this.value;
@@ -138,6 +141,17 @@ function setInputFilter(textbox, inputFilter) {
       }
     });
   });
+}
+
+function doitup() {
+	var goober = Math.floor(Math.random() * 101);
+	var tophalf = +milfacc + +milfstat * 0.25
+	var bottomhalf = (+ovaldef + +ovalstat * 0.25) + tophalf
+	var hitchance = tophalf / bottomhalf
+	var adjhitchance = Math.round((hitchance * 100) * 100) / 100;
+	document.getElementById('MILFHITCHANCE').value= adjhitchance + '%';
+	
+
 }
 	</script>
   <!-- end of scripts section --> 
@@ -207,9 +221,18 @@ a {
 <!-- start of main body section --> 
 <div class="flex-wrapper">
 <div class="ui inverted segment">
+<div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-bottom:-80px;">
+    <h1 class="ui inverted header">Enemy Hit Simulator</h1>
+    <p>Simulate an enemy hitting you once</p>
+    <p>All information can be found on your Character Skills Page, or on <a href="https://damascus.fandom.com/wiki/Enemies" target="_blank">the Wiki</a> </p>
+    
+	<div class="ui centered grid">
+	</div>
+  </div>
+  <div class="ui centered grid" style="padding-left:50px;padding-right:50px;">
+  
   <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
-    <h1 class="ui inverted header" style="margin: 0 0 0 0;">Enemy Hit Sim</h1>
-    <p>gooby -gooby</p>
+    
 	<div class="one wide column">
 		Enemy Preset
 		<select class="ui inverted selection dropdown" id="MILFMYPRESET">
@@ -258,7 +281,19 @@ a {
 	</div>
 	
   </div>
-  <div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" style="width: 100px;">Run</button></div>
+  
+  
+  <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
+	<div class="one wide column">
+		Enemy Hit Chance
+		<div class="ui inverted transparent input">
+			<input type="text" placeholder="0%" id="MILFHITCHANCE">
+		</div>
+	</div>
+	
+  </div>
+</div>
+<div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" onclick="doitup()" style="width: 100px;">Run</button></div>
 </div>
 </div>
 <!-- end of main body section --> 
