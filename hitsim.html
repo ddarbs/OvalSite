@@ -1,0 +1,279 @@
+<html><head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  <!-- start of scripts section --> 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+  <script>
+  $(function(){
+      $("#header").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/header.html");
+	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
+    });
+	
+	
+	   $(document).ready(function(){
+	   $("#MILFSTYLEDIV").hide();
+////////////////////////////////////////////	
+	//shitty way of grabbing input box text and replacing in 
+	//e acc
+	MILFACCURACY.addEventListener("change", function (e) {
+	var milfacc = this.value
+	});
+	//shitty way of grabbing input box text and replacing in 
+	//e style custom
+	MILFSTYLE.addEventListener("change", function (e) {
+	if (this.value === "0") {
+		var milftype = "Melee"
+	} else if (this.value === "1") {
+		var milftype = "Ranging"
+	} else if (this.value === "2") {
+		var milftype = "Psychic"
+	};
+	var captureovalstat = document.getElementById('OVALSTYLESTAT').value
+	document.getElementById('estyle').innerHTML=document.getElementById('estyle').innerHTML.replace(/\n.*/, '\nEnemy ' + milftype + ' Level');
+	document.getElementById('pstyle').innerHTML=document.getElementById('pstyle').innerHTML.replace(/\n.*/, '\nPlayer ' + milftype + ' Level');
+	if (captureovalstat != 'undefined') {
+		document.getElementById('MILFSTYLESTAT').value= "0"
+		document.getElementById('OVALSTYLESTAT').value= captureovalstat;
+	}
+	});
+	//shitty way of grabbing input box text and replacing in 
+	//e style stat
+	MILFSTYLESTAT.addEventListener("change", function (e) {
+	var milfstat = this.value
+	});
+	
+	
+	//shitty way of grabbing input box text and replacing in sheet
+	//defense
+	OVALDEFENSE.addEventListener("change", function (e) {
+	var ovaldef = this.value
+	});
+	//shitty way of grabbing input box text and replacing in sheet
+	//style stat
+	OVALSTYLESTAT.addEventListener("change", function (e) {
+	var ovalstat = this.value
+	});
+////////////////////////////////////////////	
+	//shitty way of grabbing input box text and replacing in 
+	//boss preset
+	MILFMYPRESET.addEventListener("change", function (e) {
+	if (MILFMYPRESET.value === "3") {
+		$("#MILFSTYLEDIV").hide();
+		var milftype = "Psychic"
+		var presettypedropdown = "2"
+		var milfacc = "225"
+		var milfstat = "310"
+	} else if (MILFMYPRESET.value === "4") {
+		$("#MILFSTYLEDIV").hide();
+		var milftype = "Ranging"
+		var presettypedropdown = "1"
+		var milfacc = "205"
+		var milfstat = "340"
+	} else if (MILFMYPRESET.value === "0") {
+		$("#MILFSTYLEDIV").hide();
+		var milftype = "Psychic"
+		var presettypedropdown = "2"
+		var milfacc = "150"
+		var milfstat = "270"
+	} else if (MILFMYPRESET.value === "1") {
+		$("#MILFSTYLEDIV").hide();
+		var milftype = "Ranging"
+		var presettypedropdown = "1"
+		var milfacc = "155"
+		var milfstat = "250"
+	} else if (MILFMYPRESET.value === "2") {
+		$("#MILFSTYLEDIV").hide();
+		var milftype = "Melee"
+		var presettypedropdown = "0"
+		var milfacc = "190"
+		var milfstat = "240"
+	} else if (MILFMYPRESET.value === "6") {
+		$("#MILFSTYLEDIV").hide();
+		var milftype = "Psychic"
+		var presettypedropdown = "2"
+		var milfacc = "160"
+		var milfstat = "280"
+	} else if (MILFMYPRESET.value === "5") {
+		$("#MILFSTYLEDIV").hide();
+		var milftype = "Melee"
+		var presettypedropdown = "0"
+		var milfacc = "280"
+		var milfstat = "550"
+	} else if (MILFMYPRESET.value === "7") {
+		//custom inputs
+		$("#MILFSTYLEDIV").show();
+		var milftype = "Melee"
+		var milfacc = "0"
+		var milfstat = "0"
+	};
+	var captureovalstat = document.getElementById('OVALSTYLESTAT').value
+	document.getElementById('estyle').innerHTML= document.getElementById('estyle').innerHTML.replace(/\n.*/, '\nEnemy ' + milftype + ' Level');
+	document.getElementById('pstyle').innerHTML= document.getElementById('pstyle').innerHTML.replace(/\n.*/, '\nPlayer ' + milftype + ' Level');
+	document.getElementById('MILFACCURACY').value= milfacc;
+	document.getElementById('MILFSTYLESTAT').value= milfstat;
+	if (captureovalstat != 'undefined') {
+		document.getElementById('OVALSTYLESTAT').value= captureovalstat;
+	}
+	});
+});
+
+
+function setInputFilter(textbox, inputFilter) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+    textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  });
+}
+	</script>
+  <!-- end of scripts section --> 
+  
+  <!-- start of extra style section -->
+<link rel="stylesheet" type="text/css" href="assets/css/allpages.css">
+
+  <style type="text/css">
+  <!-- start of page specific styling -->
+.main.container {
+	min-height: 100%;
+}
+
+.ui.input>input {
+    width: 100%;
+	padding: 0 0 0 0;
+	height: 30px;
+	text-align:center;
+}
+
+select.ui.dropdown {
+	height: 30px;
+	border-radius: .28571429rem;
+	padding: 0 0 0 0;
+    width: 37px;
+}
+
+.one.wide.column {
+min-width: min-content;
+align-self: flex-end;
+white-space: pre-line;
+}
+
+.ui.centered.grid>.column:not(.aligned):not(.justified):not(.row), .ui.centered.grid>.row>.column:not(.aligned):not(.justified), .ui.grid .centered.row>.column:not(.aligned):not(.justified) {
+text-align: center;
+}
+
+.ui.transparent.inverted.input {
+border: 1px solid rgba(255,255,255,.15);
+border-radius: .28571429rem;
+}
+
+.ui.selection.dropdown {
+min-width: min-content;
+padding: 0 .4em 0 .4em;
+min-height: 32;
+}
+
+a {
+	color: rgb(208 251 255 / 90%);
+	transition: 0.3s;
+	}
+	
+	a:hover {
+	color: rgb(134 238 249);
+	transition: 0.3s;
+	}
+  <!-- end of page specific styling -->
+  </style>
+  <!-- end of extra style section -->
+  <title>DTS - Enemy Hit Sim</title>
+</head>
+<body>
+<!-- start of navbar header section -->
+<div id="header"></div>
+<!-- end of navbar header section -->
+<!-- start of main body section --> 
+<div class="flex-wrapper">
+<div class="ui inverted segment">
+  <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
+    <h1 class="ui inverted header" style="margin: 0 0 0 0;">Enemy Hit Sim</h1>
+    <p>gooby -gooby</p>
+	<div class="one wide column">
+		Enemy Preset
+		<select class="ui inverted selection dropdown" id="MILFMYPRESET">
+		  <option hidden>Default (Jaime Goliver)</option>
+		  <option value="0">Tikitama</option>
+		  <option value="1">Jaime Goliver</option>
+		  <option value="2">Zenitsu</option>
+		  <option value="3">Jealous Witch</option>
+		  <option value="4">Dead Eye Jones</option>
+		  <option value="5">Demon Prince</option>
+		  <option value="6">Cursed Yeti</option>
+		  <option value="7">Custom</option>
+		</select>
+	</div>
+	<div class="one wide column" id="MILFSTYLEDIV">
+		Enemy Combat Style
+		<select class="ui inverted selection dropdown" id="MILFSTYLE">
+		  <option value="0">Melee</option>
+		  <option value="1">Ranging</option>
+		  <option value="2">Psychic</option>	  
+		</select>
+	</div>
+	<div class="one wide column">
+		Enemy Accuracy Level
+		<div class="ui inverted transparent input">
+			<input type="text" placeholder="205" id="MILFACCURACY">
+		</div>
+	</div>
+	<div class="one wide column" id="estyle">
+		Enemy Combat Style Stat
+		<div class="ui inverted transparent input">
+			<input type="text" placeholder="340" id="MILFSTYLESTAT">
+		</div>
+	</div>
+	<div class="one wide column">
+		Player Defense Level
+		<div class="ui inverted transparent input">
+			<input type="text" placeholder="99" id="OVALDEFENSE">
+		</div>
+	</div>
+	<div class="one wide column" id="pstyle">
+		Player Combat Style Stat
+		<div class="ui inverted transparent input">
+			<input type="text" placeholder="99" id="OVALSTYLESTAT">
+		</div>
+	</div>
+	
+  </div>
+  <div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" style="width: 100px;">Run</button></div>
+</div>
+</div>
+<!-- end of main body section --> 
+<!-- start of end footer section --> 
+<div id="footer"></div>
+<!-- end of end footer section --> 
+</body>
+<script>
+setInputFilter(document.getElementById("OVALDEFENSE"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("OVALSTYLESTAT"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("MILFACCURACY"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("MILFSTYLESTAT"), function(value) {
+return /^-?\d*$/.test(value); });
+</script>
+</html>
