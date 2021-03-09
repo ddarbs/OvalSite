@@ -17,20 +17,13 @@
 	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
     });
 
-
-
-  
     $(document).ready(function() {
-
     promise = $.ajax({
         type:"GET",
         dataType:"text",
         url:"https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/mh1/itemlist.csv",
         cache:false
     });
-
-	
-	
     promise.done(function(data){
 
         //Parse CSV File
