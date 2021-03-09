@@ -14,14 +14,20 @@
 	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
     });
 	
-	
 	   $(document).ready(function(){
-	   $("#MILFSTYLEDIV").hide();
+	   $("#MILFSTYLEDIV").hide();   
+		milfname = "Jaime Goliver";
+		milftype = "Ranging";
+		milfacc = "155";
+		milfstat = "250";
+		ovaldef = "99";
+		ovalstat = "99";
 ////////////////////////////////////////////	
 	//shitty way of grabbing input box text and replacing in 
 	//e acc
 	MILFACCURACY.addEventListener("change", function (e) {
 	milfacc = this.value
+	doitupmini();
 	});
 	//shitty way of grabbing input box text and replacing in 
 	//e style custom
@@ -34,31 +40,33 @@
 		var milftype = "Psychic"
 	}
 	captureovalstat = document.getElementById('OVALSTYLESTAT').value
-	document.getElementById('estyle').value= document.getElementById('estyle').innerText.replace(/\n.*/, '\nEnemy ' + milftype + ' Level');
-	document.getElementById('pstyle').value= document.getElementById('pstyle').innerText.replace(/\n.*/, '\nPlayer ' + milftype + ' Level');
-	document.getElementById('MILFACCURACY').value= milfacc;
-	document.getElementById('MILFSTYLESTAT').value= milfstat;
+	var milfstattext = document.getElementById('milfstattext').innerText
+	var ovalstattext = document.getElementById('ovalstattext').innerText
+	document.getElementById('milfstattext').innerText= milfstattext.replace(/.*/, 'Enemy ' + milftype + ' Level');
+	document.getElementById('ovalstattext').innerText= ovalstattext.replace(/.*/, 'Player ' + milftype + ' Level');
 	if (captureovalstat != 'undefined') {
 		document.getElementById('OVALSTYLESTAT').value= captureovalstat;
 		ovalstat = captureovalstat
 	}
+	doitupmini();
 	});
 	//shitty way of grabbing input box text and replacing in 
 	//e style stat
 	MILFSTYLESTAT.addEventListener("change", function (e) {
 	milfstat = this.value
-	});
-	
-	
+	doitupmini();
+	});	
 	//shitty way of grabbing input box text and replacing in sheet
 	//defense
 	OVALDEFENSE.addEventListener("change", function (e) {
 	ovaldef = this.value
+	doitupmini();
 	});
 	//shitty way of grabbing input box text and replacing in sheet
 	//style stat
 	OVALSTYLESTAT.addEventListener("change", function (e) {
 	ovalstat = this.value
+	doitupmini();
 	});
 ////////////////////////////////////////////	
 	//shitty way of grabbing input box text and replacing in 
@@ -67,61 +75,66 @@
 	if (MILFMYPRESET.value === "3") {
 		$("#MILFSTYLEDIV").hide();
 		milftype = "Psychic"
-		presettypedropdown = "2"
+		milfname = "Jealous Witch"
 		milfacc = "225"
 		milfstat = "310"
 	} else if (MILFMYPRESET.value === "4") {
 		$("#MILFSTYLEDIV").hide();
 		milftype = "Ranging"
-		presettypedropdown = "1"
+		milfname = "Dead Eye Jones"
 		milfacc = "205"
 		milfstat = "340"
 	} else if (MILFMYPRESET.value === "0") {
 		$("#MILFSTYLEDIV").hide();
 		milftype = "Psychic"
-		presettypedropdown = "2"
+		milfname = "Tikitama"
 		milfacc = "150"
 		milfstat = "270"
 	} else if (MILFMYPRESET.value === "1") {
 		$("#MILFSTYLEDIV").hide();
+		milfname = "Jaime Goliver"
 		milftype = "Ranging"
-		presettypedropdown = "1"
 		milfacc = "155"
 		milfstat = "250"
 	} else if (MILFMYPRESET.value === "2") {
 		$("#MILFSTYLEDIV").hide();
 		milftype = "Melee"
-		presettypedropdown = "0"
+		milfname = "Zenitsu"
 		milfacc = "190"
 		milfstat = "240"
 	} else if (MILFMYPRESET.value === "6") {
 		$("#MILFSTYLEDIV").hide();
 		milftype = "Psychic"
-		presettypedropdown = "2"
+		milfname = "Cursed Yeti"
 		milfacc = "160"
 		milfstat = "280"
 	} else if (MILFMYPRESET.value === "5") {
 		$("#MILFSTYLEDIV").hide();
 		milftype = "Melee"
-		presettypedropdown = "0"
+		milfname = "Demon Prince"
 		milfacc = "280"
 		milfstat = "550"
 	} else if (MILFMYPRESET.value === "7") {
 		//custom inputs
 		$("#MILFSTYLEDIV").show();
 		milftype = "Melee"
+		milfname = "Custom"
 		milfacc = "0"
 		milfstat = "0"
 	};
 	captureovalstat = document.getElementById('OVALSTYLESTAT').value
-	document.getElementById('estyle').value= document.getElementById('estyle').innerText.replace(/\n.*/, '\nEnemy ' + milftype + ' Level');
-	document.getElementById('pstyle').value= document.getElementById('pstyle').innerText.replace(/\n.*/, '\nPlayer ' + milftype + ' Level');
+	console.log(captureovalstat);
+	var milfstattext = document.getElementById('milfstattext').innerHTML
+	var ovalstattext = document.getElementById('ovalstattext').innerHTML
+	document.getElementById('milfstattext').innerHTML= milfstattext.replace(/.*/, 'Enemy ' + milftype + ' Level');
+	document.getElementById('ovalstattext').innerHTML= ovalstattext.replace(/.*/, 'Player ' + milftype + ' Level');
 	document.getElementById('MILFACCURACY').value= milfacc;
 	document.getElementById('MILFSTYLESTAT').value= milfstat;
-	if (captureovalstat != 'undefined') {
+	if (captureovalstat != '' && captureovalstat != 'undefined') {
 		document.getElementById('OVALSTYLESTAT').value= captureovalstat;
 		ovalstat = captureovalstat
 	}
+	doitupmini();
 	});
 });
 
@@ -143,15 +156,39 @@ function setInputFilter(textbox, inputFilter) {
   });
 }
 
-function doitup() {
-	var goober = Math.floor(Math.random() * 101);
-	var tophalf = +milfacc + +milfstat * 0.25
-	var bottomhalf = (+ovaldef + +ovalstat * 0.25) + tophalf
-	var hitchance = tophalf / bottomhalf
-	var adjhitchance = Math.round((hitchance * 100) * 100) / 100;
-	document.getElementById('MILFHITCHANCE').value= adjhitchance + '%';
-	
+function doitupmini() {
+		var tophalf = +milfacc + +milfstat * 0.25
+		var bottomhalf = (+ovaldef + +ovalstat * 0.25) + tophalf
+		var hitchance = tophalf / bottomhalf							//num9
+		var adjhitchance = Math.round((hitchance * 100) * 100) / 100;	//num10
+		document.getElementById('MILFHITCHANCE').value= adjhitchance + '%';
+}
 
+function doitup() {
+		var goober = Math.floor(Math.random() * 101);					//num8
+		var tophalf = +milfacc + +milfstat * 0.25
+		var bottomhalf = (+ovaldef + +ovalstat * 0.25) + tophalf
+		var hitchance = tophalf / bottomhalf							//num9
+		var adjhitchance = Math.round((hitchance * 100) * 100) / 100;	//num10
+		document.getElementById('MILFHITCHANCE').value= adjhitchance + '%';
+		document.getElementById('MILFRNG').value= goober;
+		var poober = Math.ceil(100 - adjhitchance)						//if num8 >= 100-num10
+		if (goober >= poober) {
+			//color hitchance green
+		var basedmg = ((+milfstat * 1.25) / 10) + 1						//num11
+		var modperc = (goober - (100 - adjhitchance)) / adjhitchance	//num12
+		var basedmgredo = basedmg * modperc
+		//placeholder, does nothing right now
+		var ewepmax = 0
+		var ewepmin = 0
+		var eweprange = ewepmax - ewepmin								//num13
+		var ewepdamage = eweprange * modperc + ewepmin					//num14
+		var efinaldamage = Math.ceil(basedmgredo + ewepdamage)			//num15
+		document.getElementById('MILFFINAL').value= milfname + ' hits you for ' + efinaldamage + '!';
+	} else {
+		//color that shit red cause ya missed
+		document.getElementById('MILFFINAL').value= milfname + ' misses you!';
+	}
 }
 	</script>
   <!-- end of scripts section --> 
@@ -222,11 +259,12 @@ a {
 <div class="flex-wrapper">
 <div class="ui inverted segment">
 <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-bottom:-80px;">
-    <h1 class="ui inverted header">Enemy Hit Simulator</h1>
-    <p>Simulate an enemy hitting you once</p>
-    <p>All information can be found on your Character Skills Page, or on <a href="https://damascus.fandom.com/wiki/Enemies" target="_blank">the Wiki</a> </p>
-    
+    <h1 class="ui inverted header">Enemy Hit Simulator (WIP)</h1>
+    <p>Simulate an enemy hitting you once with more or less ±1 min/max damage</p>
+    <p>All information can be found on your Character Skills Page, and on <a href="https://damascus.fandom.com/wiki/Enemies" target="_blank">the Wiki</a> </p>
+    <div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" onclick="doitup()" style="width: 100px;">ROLL</button></div>
 	<div class="ui centered grid">
+	
 	</div>
   </div>
   <div class="ui centered grid" style="padding-left:50px;padding-right:50px;">
@@ -256,25 +294,25 @@ a {
 		</select>
 	</div>
 	<div class="one wide column">
-		Enemy Accuracy Level
+		<div style="margin-bottom:-22px;">Enemy Accuracy Level</div>
 		<div class="ui inverted transparent input">
 			<input type="text" placeholder="205" id="MILFACCURACY">
 		</div>
 	</div>
 	<div class="one wide column" id="estyle">
-		Enemy Combat Style Stat
+		<div id="milfstattext" style="margin-bottom:-22px;">Enemy Combat Style Stat</div>
 		<div class="ui inverted transparent input">
 			<input type="text" placeholder="340" id="MILFSTYLESTAT">
 		</div>
 	</div>
 	<div class="one wide column">
-		Player Defense Level
+	<div style="margin-bottom:-22px;">Player Defense Level</div>
 		<div class="ui inverted transparent input">
 			<input type="text" placeholder="99" id="OVALDEFENSE">
 		</div>
 	</div>
 	<div class="one wide column" id="pstyle">
-		Player Combat Style Stat
+		<div id="ovalstattext" style="margin-bottom:-22px;">Player Combat Style Stat</div>
 		<div class="ui inverted transparent input">
 			<input type="text" placeholder="99" id="OVALSTYLESTAT">
 		</div>
@@ -285,15 +323,27 @@ a {
   
   <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
 	<div class="one wide column">
-		Enemy Hit Chance
+		<div id="ovalstattext" style="margin-bottom:-22px;">Enemy Hit Chance</div>
 		<div class="ui inverted transparent input">
-			<input type="text" placeholder="0%" id="MILFHITCHANCE">
+			<input type="text" placeholder="63.74%" id="MILFHITCHANCE">
 		</div>
 	</div>
-	
+	<div class="one wide column">
+		<div style="margin-bottom:-22px;">Your RNG Roll</div>
+		<div class="ui inverted transparent input">
+			<input type="text" placeholder="0" id="MILFRNG">
+		</div>
+	</div>
+	<div class="one wide column">
+		<div style="margin-bottom:-22px;">Final Result</div>
+		<div class="ui inverted transparent input" style="border:0;">
+			<input type="text" placeholder="roll it up boi" id="MILFFINAL" style="min-width:500px;font-weight:bolder;">
+		</div>
+	</div>
   </div>
+  
+  
 </div>
-<div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" onclick="doitup()" style="width: 100px;">Run</button></div>
 </div>
 </div>
 <!-- end of main body section --> 
