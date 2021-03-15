@@ -40,6 +40,9 @@ E.Psychic = 1
 # Area Status
 Toxic = F # Use 'T' if on Punk Hazard without a Hazmat, otherwise use 'F'
 
+# Other Stats
+HealingH = T # Use 'F' if you don't want a distribution of healing used
+
 
 
 # _______DO NOT CHANGE BELOW THIS_______
@@ -321,6 +324,9 @@ SimulateFightsV2 <- function(n){
   print(paste0("Battles Won : ",Win))
   WinProbability <- Win/fights
   print(paste0("Running Probability of Winning : ",WinProbability))
+  if(HealingH == T & n >= 10){
+    hist(HealingUsedV, main = "Quantity of Healing Used Over the Fights", xlab = "Quanity of Healing Used", xlim = c(0,HealingQuantity))
+  }
   binom.test(n*WinProbability,n,WinProbability,conf.level = 0.999)
 }
 
