@@ -162,6 +162,8 @@ function doitupmini() {
 		var hitchance = tophalf / bottomhalf							//num9
 		var adjhitchance = Math.round((hitchance * 100) * 100) / 100;	//num10
 		document.getElementById('MILFHITCHANCE').value= adjhitchance + '%';
+		var basedmg = ((+milfstat * 1.25) / 10) + 1						//num11
+		document.getElementById('MILFMAXHIT').value= Math.floor(basedmg)
 }
 
 function doitup() {
@@ -176,6 +178,7 @@ function doitup() {
 		if (goober >= poober) {
 			//color hitchance green
 		var basedmg = ((+milfstat * 1.25) / 10) + 1						//num11
+		document.getElementById('MILFMAXHIT').value= Math.floor(basedmg);
 		var modperc = (goober - (100 - adjhitchance)) / adjhitchance	//num12
 		var basedmgredo = basedmg * modperc
 		//placeholder, does nothing right now
@@ -184,10 +187,10 @@ function doitup() {
 		var eweprange = ewepmax - ewepmin								//num13
 		var ewepdamage = eweprange * modperc + ewepmin					//num14
 		var efinaldamage = Math.ceil(basedmgredo + ewepdamage)			//num15
-		document.getElementById('MILFFINAL').value= milfname + ' hits you for ' + efinaldamage + '!';
+		document.getElementById('MILFFINAL').value= milfname + ' rolls a ' + goober + ' and hits you for ' + efinaldamage + '!';
 	} else {
 		//color that shit red cause ya missed
-		document.getElementById('MILFFINAL').value= milfname + ' misses you!';
+		document.getElementById('MILFFINAL').value= milfname + ' rolls a ' + goober + ' and misses you!';
 	}
 }
 	</script>
@@ -264,7 +267,12 @@ a {
     <p>All information can be found on your Character Skills Page, and on <a href="https://damascus.fandom.com/wiki/Enemies" target="_blank">the Wiki</a> </p>
     <div class="ui inverted horizontal section divider"><button class="ui inverted basic button" id="run" onclick="doitup()" style="width: 100px;">ROLL</button></div>
 	<div class="ui centered grid">
-	
+	<div class="one wide column">
+		<div style="margin-bottom:-22px;margin-top:-22px;margin-left:-3px;">Final Result</div>
+		<div class="ui inverted transparent input" style="border:0;margin-left:-3px;">
+			<input type="text" placeholder="roll it up boi" id="MILFFINAL" style="min-width:500px;font-weight:bolder;">
+		</div>
+	</div>
 	</div>
   </div>
   <div class="ui centered grid" style="padding-left:50px;padding-right:50px;">
@@ -296,13 +304,13 @@ a {
 	<div class="one wide column">
 		<div style="margin-bottom:-22px;">Enemy Accuracy Level</div>
 		<div class="ui inverted transparent input">
-			<input type="text" placeholder="205" id="MILFACCURACY">
+			<input type="text" placeholder="155" id="MILFACCURACY">
 		</div>
 	</div>
 	<div class="one wide column" id="estyle">
-		<div id="milfstattext" style="margin-bottom:-22px;">Enemy Combat Style Stat</div>
+		<div id="milfstattext" style="margin-bottom:-22px;">Enemy Ranging Level</div>
 		<div class="ui inverted transparent input">
-			<input type="text" placeholder="340" id="MILFSTYLESTAT">
+			<input type="text" placeholder="250" id="MILFSTYLESTAT">
 		</div>
 	</div>
 	<div class="one wide column">
@@ -312,7 +320,7 @@ a {
 		</div>
 	</div>
 	<div class="one wide column" id="pstyle">
-		<div id="ovalstattext" style="margin-bottom:-22px;">Player Combat Style Stat</div>
+		<div id="ovalstattext" style="margin-bottom:-22px;">Player Ranging Level</div>
 		<div class="ui inverted transparent input">
 			<input type="text" placeholder="99" id="OVALSTYLESTAT">
 		</div>
@@ -329,15 +337,15 @@ a {
 		</div>
 	</div>
 	<div class="one wide column">
-		<div style="margin-bottom:-22px;">Your RNG Roll</div>
+		<div style="margin-bottom:-22px;">Enemy Max Hit</div>
 		<div class="ui inverted transparent input">
-			<input type="text" placeholder="0" id="MILFRNG">
+			<input type="text" placeholder="32" id="MILFMAXHIT">
 		</div>
 	</div>
 	<div class="one wide column">
-		<div style="margin-bottom:-22px;">Final Result</div>
-		<div class="ui inverted transparent input" style="border:0;">
-			<input type="text" placeholder="roll it up boi" id="MILFFINAL" style="min-width:500px;font-weight:bolder;">
+		<div style="margin-bottom:-22px;">Your RNG Roll</div>
+		<div class="ui inverted transparent input">
+			<input type="text" placeholder="0" id="MILFRNG">
 		</div>
 	</div>
   </div>
