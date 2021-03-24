@@ -1,0 +1,199 @@
+<html><head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  <!-- start of scripts section --> 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+  <script>
+  $(function(){
+      $("#header").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/header.html");
+	  $("#footer").load("https://raw.githubusercontent.com/iKrazy/OvalSite/main/assets/html/footer.html");	  
+    });
+	
+	   $(document).ready(function(){
+	   $("#MILFSTYLEDIV").hide();   
+		desiredlevel = 0;
+		desiredxp = 0;
+		currentxp = 0;
+		actionxp = 0;
+		actionstolevel = 0;	
+		levelarray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99];		
+		xparray = [1,50,105,166,234,308,392,483,584,695,818,954,1104,1269,1452,1652,1877,2122,2393,2693,3023,3388,3790,4234,4724,5265,5861,6520,7248,8050,8936,9913,10992,12183,13498,14949,16550,18318,20270,22424,24802,27427,30325,33523,37055,40954,45257,50008,55254,61044,67437,74494,82286,90887,100383,110867,122442,135220,149329,164905,182101,201087,222048,245190,270740,298498,330092,364477,402440,444354,490630,541721,598130,660408,729169,805086,888904,981446,1083619,1196427,1320975,1458486,1610310,1777936,1963008,2167345,2392948,2642034,2917045,3220682,3555922,3926056,4334716,4785912,5284071,5834083,6441343,7111811,7852067];
+		////////////////////////////////////////////	
+		currentxptext.addEventListener("change", function (e) {
+		doitupmini();
+		});
+		desiredleveltext.addEventListener("change", function (e) {
+		doitupmini();
+		});
+		actionxptext.addEventListener("change", function (e) {
+		doitupmini();
+	});
+	
+	
+});
+
+
+function setInputFilter(textbox, inputFilter) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu"].forEach(function(event) {
+    textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  });
+}
+
+function doitupmini() {
+	var desiredlevel = document.getElementById('desiredleveltext').value
+	for (var i = 0; i < levelarray.length; i++) {
+		if (levelarray[i] === +desiredlevel) {
+			var desiredxp = xparray[i];
+		}
+	}
+	var currentxp = document.getElementById('currentxptext').value
+	var actionxp = document.getElementById('actionxptext').value
+	var xpdiffog = +desiredxp - +currentxp
+	var actionstolevelog = Math.ceil( +xpdiffog / +actionxp );
+	var xpdiff = xpdiffog.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+	var actionstolevel = actionstolevelog.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+	if (actionstolevelog > 0 && actionxp > 0) {
+		document.getElementById('actionstoleveltext').value= actionstolevel + ' actions to hit Level ' + desiredlevel;
+		if (xpdiffog >= 4000000) {
+			document.getElementById('xpdifftext').value= 'Yikes you are ' + xpdiff + ' XP away... Good luck! \:\)';
+		} else if (xpdiffog >= 2000000) {
+			document.getElementById('xpdifftext').value= 'You\'re getting closer, ' + xpdiff + ' XP left!';
+		} else {
+			document.getElementById('xpdifftext').value= 'Only ' + xpdiff + ' XP to go, you\'re almost there!';
+		}
+	} else if (xpdiffog < 0) {
+		document.getElementById('actionstoleveltext').value= 'You\'re already past that level tho';
+		document.getElementById('xpdifftext').value= '';
+	} else {
+		document.getElementById('actionstoleveltext').value= 'speed it up with the numbers there bud';
+		document.getElementById('xpdifftext').value= '';
+	}
+}
+
+	</script>
+  <!-- end of scripts section --> 
+  
+  <!-- start of extra style section -->
+<link rel="stylesheet" type="text/css" href="assets/css/allpages.css">
+
+  <style type="text/css">
+  <!-- start of page specific styling -->
+.main.container {
+	min-height: 100%;
+}
+
+.ui.input>input {
+    width: 100%;
+	padding: 0 0 0 0;
+	height: 30px;
+	text-align:center;
+}
+
+.one.wide.column {
+min-width: min-content;
+align-self: flex-end;
+white-space: pre-line;
+}
+
+.ui.centered.grid>.column:not(.aligned):not(.justified):not(.row), .ui.centered.grid>.row>.column:not(.aligned):not(.justified), .ui.grid .centered.row>.column:not(.aligned):not(.justified) {
+text-align: center;
+}
+
+.ui.transparent.inverted.input {
+border: 1px solid rgba(255,255,255,.15);
+border-radius: .28571429rem;
+}
+
+a {
+	color: rgb(208 251 255 / 90%);
+	transition: 0.3s;
+	}
+	
+	a:hover {
+	color: rgb(134 238 249);
+	transition: 0.3s;
+	}
+  <!-- end of page specific styling -->
+  </style>
+  <!-- end of extra style section -->
+  <title>DTS - XP Calculator</title>
+</head>
+<body>
+<!-- start of navbar header section -->
+<div id="header"></div>
+<!-- end of navbar header section -->
+<!-- start of main body section --> 
+<div class="flex-wrapper">
+<div class="ui inverted segment">
+<div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;margin-bottom:-80px;">
+    <h1 class="ui inverted header">XP Calculator</h1>
+    <p>Find out how many hits/kills/actions/etc it takes to hit a specific level</p>
+    <p>All information can be found on your Character Skills Page, and on <a href="https://damascus.fandom.com/wiki/Skills" target="_blank">the Wiki</a> </p>
+    <div class="ui inverted horizontal section divider">dedicated to lucifer</div>
+  </div>
+  
+  
+  <div class="ui main text container" style="text-align:center; vertical-align:middle; min-height: 0;">
+	<div class="one wide column">
+		<div style="margin-bottom:-22px;">Current XP</div>
+		<div class="ui inverted transparent input">
+			<input type="text" placeholder="1" id="currentxptext">
+		</div>
+	</div>
+	<div class="one wide column">
+	<div style="margin-bottom:-22px;">Desired Level</div>
+		<div class="ui inverted transparent input">
+			<input type="text" placeholder="69" id="desiredleveltext">
+		</div>
+	</div>
+	<div class="one wide column">
+	<div style="margin-bottom:-22px;">XP per Action</div>
+		<div class="ui inverted transparent input">
+			<input type="text" placeholder="3" id="actionxptext">
+		</div>
+	</div>
+	<div class="one wide column">
+		<div style="margin-bottom:-22px;font-size:30;font-family:cursive;">Magic 8-Ball Says</div>
+		<div class="ui inverted transparent input" style="min-width:500px;cursor:auto;border:none;">
+			<input type="text" placeholder="" id="actionstoleveltext" readonly>
+		</div>
+	</div>	
+	<div class="one wide column" style="margin-top:-25px;">
+		<div class="ui inverted transparent input" style="min-width:500px;cursor:auto;border:none;">
+			<input type="text" placeholder="" id="xpdifftext" readonly>
+		</div>
+	</div>
+  </div>  
+</div>
+</div>
+
+<!-- end of main body section --> 
+<!-- start of end footer section --> 
+<div id="footer"></div>
+<!-- end of end footer section --> 
+</body>
+<script>
+setInputFilter(document.getElementById("currentxptext"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("desiredleveltext"), function(value) {
+return /^-?\d*$/.test(value); });
+setInputFilter(document.getElementById("actionxptext"), function(value) {
+return /^-?\d*$/.test(value); });
+</script>
+</html>
