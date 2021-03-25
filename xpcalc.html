@@ -71,11 +71,13 @@ function doitupmini() {
 	if (actionstolevelog > 0 && actionxp > 0) {
 		document.getElementById('actionstoleveltext').value= actionstolevel + ' actions to hit Level ' + desiredlevel;
 		if (xpdiffog >= 4000000) {
-			document.getElementById('xpdifftext').value= 'Yikes you are ' + xpdiff + ' XP away... Good luck! \:\)';
+			document.getElementById('xpdifftext').value= 'Yikes you are ' + xpdiff + ' XP away... Good luck!';
 		} else if (xpdiffog >= 2000000) {
 			document.getElementById('xpdifftext').value= 'You\'re getting closer, ' + xpdiff + ' XP left!';
+		} else if (xpdiffog >= 500000) {
+			document.getElementById('xpdifftext').value= 'You\'re so close, ' + xpdiff + ' XP to go!';
 		} else {
-			document.getElementById('xpdifftext').value= 'Only ' + xpdiff + ' XP to go, you\'re almost there!';
+			document.getElementById('xpdifftext').value= 'You\'re basically there! Only ' + xpdiff + ' XP!';
 		}
 	} else if (xpdiffog < 0) {
 		document.getElementById('actionstoleveltext').value= 'You\'re already past that level tho';
