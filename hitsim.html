@@ -162,7 +162,7 @@ function doitupmini() {
 		var hitchance = tophalf / bottomhalf							//num9
 		var adjhitchance = Math.round((hitchance * 100) * 100) / 100;	//num10
 		document.getElementById('MILFHITCHANCE').value= adjhitchance + '%';
-		var basedmg = ((+milfstat * 1.25) / 10) + 1						//num11
+		var basedmg = ((+milfstat * 1.25) / 10)						//num11
 		document.getElementById('MILFMAXHIT').value= Math.floor(basedmg)
 }
 
@@ -177,7 +177,7 @@ function doitup() {
 		var poober = Math.ceil(100 - adjhitchance)						//if num8 >= 100-num10
 		if (goober >= poober) {
 			//color hitchance green
-		var basedmg = ((+milfstat * 1.25) / 10) + 1						//num11
+		var basedmg = ((+milfstat * 1.25) / 10) 					//num11
 		document.getElementById('MILFMAXHIT').value= Math.floor(basedmg);
 		var modperc = (goober - (100 - adjhitchance)) / adjhitchance	//num12
 		var basedmgredo = basedmg * modperc
